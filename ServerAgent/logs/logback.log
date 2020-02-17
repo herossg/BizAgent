@@ -1,0 +1,14 @@
+[2020-02-04 21:19:59:881][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 9840 (E:\BIZ\ServerAgent\target\classes started by WE in E:\BIZ\ServerAgent)
+[2020-02-04 21:19:59:886][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2020-02-04 21:20:14:15755][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 15.665 seconds (JVM running for 17.526)
+[2020-02-04 21:23:57:239619][http-nio-8282-exec-1] INFO  c.d.agent.controller.DhnController - File Name : 5c16ca58ec667f048da7217e4180e852.png
+[2020-02-04 21:47:30:352][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 13716 (E:\BIZ\ServerAgent\target\classes started by WE in E:\BIZ\ServerAgent)
+[2020-02-04 21:47:30:361][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2020-02-04 21:47:45:15203][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 15.104 seconds (JVM running for 15.66)
+[2020-02-04 21:48:02:32979][http-nio-8282-exec-1] INFO  c.d.agent.controller.DhnController - File Name : 366475881cf5aedd6247aabd962e0ab9.png
+[2020-02-04 21:49:21:111569][http-nio-8282-exec-3] INFO  c.d.agent.controller.DhnController - File Name : e9284396fe9e498329600f2f8d106488.png
+[2020-02-04 21:50:24:174735][http-nio-8282-exec-5] INFO  c.d.agent.controller.DhnController - File Name : b2a49de9d50862a6fa63fa0bbafa496b.png
+[2020-02-04 21:51:26:237038][http-nio-8282-exec-7] INFO  c.d.agent.controller.DhnController - File Name : 73bc4134bcd54f8838caaadc3ec7a882.png
+[2020-02-04 22:01:21:489][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 13920 (started by WE in E:\BIZ\ServerAgent)
+[2020-02-04 22:01:21:490][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
+[2020-02-04 22:01:37:16576][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 16.305 seconds (JVM running for 17.023)
