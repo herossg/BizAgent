@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DHN_REQUEST")
+@Table(name="TBL_REQUEST")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

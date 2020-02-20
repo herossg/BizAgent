@@ -12,7 +12,7 @@ import com.dhn.client.model.DhnRequest;
 
 @Repository
 public interface DhnRequestRepo extends JpaRepository<DhnRequest, String>, JpaSpecificationExecutor<DhnRequest> {
-	final static String DEL_MSGID = "delete from dhn_request where msgid = :msgid";
+	final static String DEL_MSGID = "delete from TBL_REQUEST where MSGID = :msgid";
 	
 	@Modifying
 	@Transactional
