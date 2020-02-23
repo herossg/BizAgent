@@ -28,7 +28,7 @@ public class BizAgent implements Daemon, Runnable {
     private boolean isStop = false;
     public static int GRS_Proc_cnt = 0;
     BizDBCPInit bizDBCP;
-    //SmtDBCPInit smtDBCP;
+    SmtDBCPInit smtDBCP;
 
     @Override
     public void init(DaemonContext context) throws DaemonInitException, Exception {
@@ -51,13 +51,15 @@ public class BizAgent implements Daemon, Runnable {
             this.thread = new Thread(this);
             
             bizDBCP = BizDBCPInit.getInstance(log);
-            //smtDBCP = SmtDBCPInit.getInstance(log);
             
             log.info("init OK.");
             
             //init_p.load(new FileInputStream("E:\\Git\\BizAgent\\conf\\init.properties")); 
         	//init_p.load(new FileInputStream("D:\\BIZ\\BizAgent\\BizAgent\\conf\\init.properties")); 
         	init_p.load(new FileInputStream("/root/BizAgent/conf/init.properties"));;
+
+            if(init_p.get("SMTPHNDB").equals("1"))
+            	smtDBCP = SmtDBCPInit.getInstance(log);
             
             log.info("Init Properties Load OK!!");
             
@@ -190,6 +192,17 @@ public class BizAgent implements Daemon, Runnable {
 				if(!isStop)
 					smt_proc.start();
 				if(Smt_Proc.isRunning)
+	        		isRunning = true;
+        	}
+        	
+        	// SMT PHN DB 직접 연결 처리 
+        	if(init_p.get("SMTPHNDB").equals("1")) {
+	        	SmtDB_Proc smtdbproc = new SmtDB_Proc(log);
+	        	smtdbproc.isRefund = Boolean.parseBoolean( init_p.getProperty("REFUND") );
+				Thread smtdb_proc = new Thread(smtdbproc);
+				if(!isStop)
+					smtdb_proc.start();
+				if(SmtDB_Proc.isRunning)
 	        		isRunning = true;
         	}
         	

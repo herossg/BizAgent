@@ -69,16 +69,39 @@ public class SMART_Proc implements Runnable {
 			sms_auto_finish.executeUpdate();
 			sms_auto_finish.close(); 
 			
-			String sms_movestr = "INSERT INTO " + SMSTable + " SELECT * FROM OShotSMS WHERE SendResult>1 AND SendDT is not null and telecom = '000'";
-			PreparedStatement sms_movest = conn.prepareStatement(sms_movestr);
-			sms_movest.executeUpdate();
-			sms_movest.close(); 
-
-			String sms_delstr = "DELETE d FROM OShotSMS d WHERE EXISTS (SELECT * FROM " + SMSTable + " b WHERE b.MsgID = d.MsgID)";
-			PreparedStatement sms_delst = conn.prepareStatement(sms_delstr);
-			sms_delst.executeUpdate();
-			sms_delst.close(); 
-			
+			String sms_exp_str = "SELECT * FROM OShotSMS WHERE SendResult>1 AND SendDT is not null and telecom = '000'";
+			ResultSet sms_rs = smtsms_msg.executeQuery(sms_exp_str);
+			while(sms_rs.next()) {
+				String sms_movestr = "INSERT INTO " + SMSTable + "(MsgID, Sender, Receiver, Msg, URL, ReserveDT, TimeoutDT, SendDT, SendResult, Telecom, InsertDT, mst_id, proc_flag, cb_msg_id) " +
+									"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				PreparedStatement sms_movest = conn.prepareStatement(sms_movestr);
+				sms_movest.setString(0, sms_rs.getString(0));
+				sms_movest.setString(1, sms_rs.getString(1));
+				sms_movest.setString(2, sms_rs.getString(2));
+				sms_movest.setString(3, sms_rs.getString(3));
+				sms_movest.setString(4, sms_rs.getString(4));
+				sms_movest.setString(5, sms_rs.getString(5));
+				sms_movest.setString(6, sms_rs.getString(6));
+				sms_movest.setString(7, sms_rs.getString(7));
+				sms_movest.setString(8, sms_rs.getString(8));
+				sms_movest.setString(9, sms_rs.getString(9));
+				sms_movest.setString(10, sms_rs.getString(10));
+				sms_movest.setString(11, sms_rs.getString(11));
+				sms_movest.setString(12, sms_rs.getString(12));
+				sms_movest.setString(13, sms_rs.getString(13));
+				
+				sms_movest.executeUpdate();
+				sms_movest.close();
+				
+				String sms_delstr = "DELETE d FROM OShotSMS d WHERE d.msg_id = ?";
+				PreparedStatement sms_delst = conn.prepareStatement(sms_delstr);
+				sms_delst.setString(0, sms_rs.getString("MsgID"));
+				sms_delst.executeUpdate();
+				sms_delst.close(); 
+					
+			}
+				
+			sms_rs.close();
 			
 			/*
 			 * MMS 6시간 지나면 자동 성공 처리 함.
@@ -88,16 +111,44 @@ public class SMART_Proc implements Runnable {
 			mms_auto_finish.executeUpdate();
 			mms_auto_finish.close(); 
 			
-			String mms_movestr = "INSERT INTO " + MMSTable + " SELECT * FROM OShotMMS WHERE SendResult>1 AND SendDT is not null and telecom = '000'";
-			PreparedStatement mms_movest = conn.prepareStatement(mms_movestr);
-			mms_movest.executeUpdate();
-			mms_movest.close(); 
-
-			String mms_delstr = "DELETE d FROM OShotMMS d WHERE EXISTS (SELECT * FROM " + MMSTable + " b WHERE b.MsgID = d.MsgID)";
-			PreparedStatement mms_delst = conn.prepareStatement(mms_delstr);
-			mms_delst.executeUpdate();
-			mms_delst.close(); 
-			
+			String mms_exp_str = "SELECT * FROM OShotMMS WHERE SendResult>1 AND SendDT is not null and telecom = '000'";
+			ResultSet mms_rs = smtsms_msg.executeQuery(mms_exp_str);
+			while(mms_rs.next()) {
+				String mms_movestr = "INSERT INTO " + MMSTable + "(MsgID, MsgGroupID, Sender, Receiver, Subject, Msg, ReserveDT, TimeoutDT, SendDT, SendResult, Telecom, File_Path1, File_Path2, File_Path3, File_Path4, InsertDT, mst_id, proc_flag, cb_msg_Id) " +
+									"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				PreparedStatement mms_movest = conn.prepareStatement(mms_movestr);
+				mms_movest.setString(0, mms_rs.getString(0));
+				mms_movest.setString(1, mms_rs.getString(1));
+				mms_movest.setString(2, mms_rs.getString(2));
+				mms_movest.setString(3, mms_rs.getString(3));
+				mms_movest.setString(4, mms_rs.getString(4));
+				mms_movest.setString(5, mms_rs.getString(5));
+				mms_movest.setString(6, mms_rs.getString(6));
+				mms_movest.setString(7, mms_rs.getString(7));
+				mms_movest.setString(8, mms_rs.getString(8));
+				mms_movest.setString(9, mms_rs.getString(9));
+				mms_movest.setString(10, mms_rs.getString(10));
+				mms_movest.setString(11, mms_rs.getString(11));
+				mms_movest.setString(12, mms_rs.getString(12));
+				mms_movest.setString(13, mms_rs.getString(13));
+				mms_movest.setString(14, mms_rs.getString(14));
+				mms_movest.setString(15, mms_rs.getString(15));
+				mms_movest.setString(16, mms_rs.getString(16));
+				mms_movest.setString(17, mms_rs.getString(17));
+				mms_movest.setString(18, mms_rs.getString(18));
+				
+				mms_movest.executeUpdate();
+				mms_movest.close();
+				
+				String mms_delstr = "DELETE d FROM OShotMMS d WHERE d.msg_id = ?";
+				PreparedStatement mms_delst = conn.prepareStatement(mms_delstr);
+				mms_delst.setString(0, mms_rs.getString("MsgID"));
+				mms_delst.executeUpdate();
+				mms_delst.close(); 
+					
+			}
+						
+			mms_rs.close();
 			
 			String sms_str = "SELECT SQL_NO_CACHE " + 
 							 "       a.MsgID " + 

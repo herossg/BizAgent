@@ -37,6 +37,7 @@ public class TBLReqProcess implements Runnable {
 	}
 	
 	public void run() {
+		//log.info("TBL 시작  : " + div_str);
 		if(!TBLReqProcess.isRunning[div_str]) {
 			Proc();
 		} 
@@ -47,18 +48,18 @@ public class TBLReqProcess implements Runnable {
 		
 		//log.info("TBL RESULT PROC 실행");
 		Connection conn = null;
-		Connection nconn = null;
+		//Connection nconn = null;
 		Statement tbl_result = null;
-		Connection smtconn = null;
+		//Connection smtconn = null;
 		boolean isPass = false; // 전체 Loop 를 그냥 지나 가기 위한 변수 Loop 가 시작시에는 무조건 False
 		try {
 			//Class.forName(JDBC_DRIVER);
 			//conn =  DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
 			conn = BizDBCPInit.getConnection();
 			
-			if(p.get("SMTPHNDB").equals("1")) {
-				smtconn = SmtDBCPInit.getConnection();
-			}
+			//if(p.get("SMTPHNDB").equals("1")) {
+			//	smtconn = SmtDBCPInit.getConnection();
+			//}
 			
 			tbl_result = conn.createStatement();
 						
@@ -1314,7 +1315,7 @@ public class TBLReqProcess implements Runnable {
 									
 									break;	 									
 								case "SMT_PHN_DB":
-									String smtdbstr = "insert into SMT_SEND(user_id"
+									String smtdbstr = "insert into SMT_SEND_DB(user_id"
 																	  + ",sub_id"
 																	  + ",send_type"
 																	  + ",sender"
@@ -1326,8 +1327,14 @@ public class TBLReqProcess implements Runnable {
 																	  + ",reserve_dt"
 																	  + ",request_id"
 																	  + ",request_dt"
-																	  + ",send_status)"
+																	  + ",send_status"
+																	  + ",userid"
+																	  + ",mem_Id"
+																	  + ",msg_id)"
 																+ "values(?"
+																	  + ",?"
+																	  + ",?"
+																	  + ",?"
 																	  + ",?"
 																	  + ",?"
 																	  + ",?"
@@ -1341,7 +1348,7 @@ public class TBLReqProcess implements Runnable {
 																	  + ",?"
 																	  + ",?)";
 									PreparedStatement smtdbins = conn.prepareStatement(smtdbstr, Statement.RETURN_GENERATED_KEYS);
-									smtdbins.setString(1,  "dhn7985" ); //rs.getString("user_id"));
+									smtdbins.setString(1,  "dhs1904" ); //rs.getString("user_id"));
 									smtdbins.setString(2, null); //  폰문자 일때는 sub_id 는 Null 처리 함.   rs.getString("mem_id"));
 									smtdbins.setString(3, msgtype);
 									smtdbins.setString(4, rs.getString("SMS_SENDER") );
@@ -1362,18 +1369,21 @@ public class TBLReqProcess implements Runnable {
 									//}
 									smtdbins.setString(11,  sent_key );
 									smtdbins.setTimestamp(12, new java.sql.Timestamp(System.currentTimeMillis()));
-									smtdbins.setString(13, "SMTDB");
+									smtdbins.setString(13, "READY");
+									smtdbins.setString(14, userid);
+									smtdbins.setString(15, mem_id);
+									smtdbins.setString(16, msg_id);
 									
 									smtdbins.executeUpdate();
 									smtdbins.close();
 						            
-									wtudstr = "update cb_wt_msg_sent set mst_imc=ifnull(mst_imc,0) + 1 where mst_id=?";
+									wtudstr = "update cb_wt_msg_sent set mst_wait=ifnull(mst_wait,0) + 1 where mst_id=?";
 									wtud = conn.prepareStatement(wtudstr);
 									wtud.setString(1, sent_key);
 									wtud.executeUpdate();
 									wtud.close();
 									
-									msgudstr = "update cb_msg_" + userid + " set MESSAGE_TYPE='sm',CODE='SMT', MESSAGE = '폰 성공', RESULT='Y' where MSGID=?";
+									msgudstr = "update cb_msg_" + userid + " set MESSAGE_TYPE='sd',CODE='SMD', MESSAGE = '결과 수신대기' where MSGID=?";
 									msgud = conn.prepareStatement(msgudstr);
 									msgud.setString(1, msg_id);
 									msgud.executeUpdate();
@@ -1384,7 +1394,7 @@ public class TBLReqProcess implements Runnable {
 									amount = price.member_price.price_imc;
 									payback = price.member_price.price_imc - price.parent_price.price_imc;
 									admin_amt = price.base_price.price_imc;
-									memo = "SMT PHN";
+									memo = "SMT PHN DB";
 									
 									if(amount == 0 || amount == 0.0f) {
 										amount = admin_amt;
@@ -1664,12 +1674,12 @@ public class TBLReqProcess implements Runnable {
 			log.info("TBL REQUEST RESULT " + div_str + " 처리 중 오류 : "+ex.toString());
 		}
 		
-		try {
-			if(nconn!=null) {
-				nconn.close();
-			}
-		} catch(Exception e) {}
-		
+//		try {
+//			if(nconn!=null) {
+//				nconn.close();
+//			}
+//		} catch(Exception e) {}
+//		
 		try {
 			if(tbl_result!=null) {
 				tbl_result.close();
