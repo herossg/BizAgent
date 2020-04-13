@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -36,28 +35,40 @@ public class SendRequest {
 	private static String PROFILE_KEY = "8afe8c802d0b767929c58e4c193c24517a9341db";
 	private static String API_SERVER = "https://dev-bzm-api.kakao.com";
 	
-	private static DhnRequestService dhnReqService ;
+	private DhnRequestService dhnReqService ;
 	
 	public static boolean isRunning = false;
 	private static final Logger log = LoggerFactory.getLogger(SendRequest.class);
-	private static Environment env;
+	private Environment env;
 	
-	@Autowired
 	public SendRequest(DhnRequestService dhnReqService, Environment env) {
-		SendRequest.dhnReqService = dhnReqService;
-		SendRequest.env = env;
+		this.dhnReqService = dhnReqService;
+		this.env = env;
 		SendRequest.API_SERVER = env.getProperty("API_SERVER");
 		SendRequest.PROFILE_KEY = env.getProperty("PROFILE_KEY");
 	}
 	
-	public static void run() {
+	public void run() {
+		//log.info("발송 호출 됨");
 		if(!isRunning) {
+			isRunning = true;
+			
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
+			Date time = new Date();
+			String sendgroup = format1.format(time);
+			
+			//List<String> msgids = dhnReqService.findByNullSendgroupQuery();
+			
+			dhnReqService.updateBySendgroupQuery(sendgroup);
+			//dhnReqService.updateByMsgidsSendgroupQuery(sendgroup, msgids);
+			isRunning = false;
+			
 			try {
-				isRunning = true;
-				List<DhnRequest> dhnReqs = dhnReqService.findAll();
+				List<DhnRequest> dhnReqs = dhnReqService.findBySendgroupQuery(sendgroup);
 				
 				if(dhnReqs != null && dhnReqs.size() > 0) {
-					
+					log.info(sendgroup + " 발송 시작");
+
 					HttpHeaders headers = new HttpHeaders();
 					final String URL = API_SERVER + "/v2/" + PROFILE_KEY + "/sendMessage";
 					List<MediaType> accept = new ArrayList<>();
@@ -77,7 +88,7 @@ public class SendRequest {
 						DhnRequest dr = (DhnRequest)dhnReqs.get(i);
 
 						
-						if(dr.getMESSAGE_TYPE().toLowerCase().equals("at")) {
+						if(dr.getMESSAGETYPE().toLowerCase().equals("at")) {
 							
 							Date now = new Date();
 							SimpleDateFormat serialformat = new SimpleDateFormat("yyyyMMdd-");
@@ -89,7 +100,7 @@ public class SendRequest {
 							alimtalk.setSender_key(dr.getPROFILE());
 							alimtalk.setPhone_number(dr.getPHN());
 							//alimtalk.setApp_user_id("");
-							alimtalk.setTemplate_code(dr.getTMPL_ID());
+							alimtalk.setTemplate_code(dr.getTMPLID());
 							alimtalk.setMessage(dr.getMSG().replaceAll("(\r\n|\r|\n|\n\r)", "\n"));
 							alimtalk.setResponse_method("polling");
 							alimtalk.setTimeout(30);
@@ -117,11 +128,54 @@ public class SendRequest {
 						
 							String jsonStr = mapper.writeValueAsString(alimtalk);
 							
-							log.info("AT JSON - : " + jsonStr);
+							//log.info("AT JSON - : " + jsonStr);
 							
 							HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);						
 							
 							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(URL, entity, String.class);
+							
+							
+							//dhnReqService.deleteByMsgidQeury(dr.getMSGID());
+							
+							DhnResult DR = new DhnResult();
+							
+							DR.setAdflag(dr.getADFLAG());
+							DR.setButton1(dr.getBUTTON1());
+							DR.setButton2(dr.getBUTTON2());
+							DR.setButton3(dr.getBUTTON3());
+							DR.setButton4(dr.getBUTTON4());
+							DR.setButton5(dr.getBUTTON5());
+							DR.setImagelink(dr.getIMAGELINK());
+							DR.setImageurl(dr.getIMAGEURL());
+							DR.setMessagetype(dr.getMESSAGETYPE());
+							DR.setMsg(dr.getMSG());
+							DR.setMsgsms(dr.getMSGSMS());
+							DR.setMsgid(dr.getMSGID());
+							DR.setOnlysms(dr.getONLYSMS());
+							DR.setPcom(dr.getPCOM());
+							DR.setPinvoice(dr.getPINVOICE());
+							DR.setPhn(dr.getPHN());
+							DR.setProfile(dr.getPROFILE());
+							DR.setRegdt(dr.getREGDT());
+							DR.setRemark1(dr.getREMARK1());
+							DR.setRemark2(dr.getREMARK2());
+							DR.setRemark3(dr.getREMARK3());
+							DR.setRemark4(dr.getREMARK4());
+							DR.setRemark5(dr.getREMARK5());
+							DR.setReservedt(dr.getRESERVEDT());
+							DR.setResult("N");
+							DR.setScode(dr.getSCODE());
+							DR.setSmskind(dr.getSMSKIND());
+							DR.setSmslmstit(dr.getSMSLMSTIT());
+							DR.setSmssender(dr.getSMSSENDER());
+							DR.setSync("N");
+							DR.setTmplid(dr.getTMPLID());
+							DR.setUserid(dr.getUserid());
+							DR.setWide(dr.getWIDE());
+							
+							SaveResult.Save(DR);
+							
+							
 							response.addCallback(new ListenableFutureCallback<ResponseEntity<String>>() {
 
 								@Override
@@ -130,62 +184,27 @@ public class SendRequest {
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
 										SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"));
-										log.info("FT Response Success : " + result );
+										if(!res.get("code").equals("0000")) {
+											//log.info(Thread.currentThread().getName() + " / " + "AT Response Success : " + result );
+											//e_cnt++;
+										} else {
+											//s_cnt++;
+										}
 									} catch (JsonProcessingException e) {
 										// TODO Auto-generated catch block
-										e.printStackTrace();
+										log.info("알림톡  발송 오류 : " + e.toString());
 									} 
 								}
 
 								@Override
 								public void onFailure(Throwable ex) {
 									// TODO Auto-generated method stub
-									log.info("AT Response Failure : " + ex.toString() );
+									log.info(Thread.currentThread().getName() + " / " + "AT Response Failure : " + ex.toString() );
+									//e_cnt++;
 								}
 							});
-							
-							dhnReqService.deleteByMsgidQeury(dr.getMSGID());
-							
-							DhnResult DR = new DhnResult();
-							
-							DR.setAd_flag(dr.getAD_FLAG());
-							DR.setButton1(dr.getBUTTON1());
-							DR.setButton2(dr.getBUTTON2());
-							DR.setButton3(dr.getBUTTON3());
-							DR.setButton4(dr.getBUTTON4());
-							DR.setButton5(dr.getBUTTON5());
-							DR.setImage_link(dr.getIMAGE_LINK());
-							DR.setImage_url(dr.getIMAGE_URL());
-							DR.setMessage_type(dr.getMESSAGE_TYPE());
-							DR.setMsg(dr.getMSG());
-							DR.setMsg_sms(dr.getMSG_SMS());
-							DR.setMsgid(dr.getMSGID());
-							DR.setOnly_sms(dr.getONLY_SMS());
-							DR.setP_com(dr.getP_COM());
-							DR.setP_invoice(dr.getP_INVOICE());
-							DR.setPhn(dr.getPHN());
-							DR.setProfile(dr.getPROFILE());
-							DR.setReg_dt(dr.getREG_DT());
-							DR.setRemark1(dr.getREMARK1());
-							DR.setRemark2(dr.getREMARK2());
-							DR.setRemark3(dr.getREMARK3());
-							DR.setRemark4(dr.getREMARK4());
-							DR.setRemark5(dr.getREMARK5());
-							DR.setReserve_dt(dr.getRESERVE_DT());
-							DR.setResult("N");
-							DR.setS_code(dr.getS_CODE());
-							DR.setSms_kind(dr.getSMS_KIND());
-							DR.setSms_lms_tit(dr.getSMS_LMS_TIT());
-							DR.setSms_sender(dr.getSMS_SENDER());
-							DR.setSync("N");
-							DR.setTmpl_id(dr.getTMPL_ID());
-							DR.setUserid(dr.getUserid());
-							DR.setWide(dr.getWIDE());
-							
-							SaveResult.Save(DR);
-							
-							
-						} else if(dr.getMESSAGE_TYPE().toLowerCase().equals("ft")) {
+
+						} else if(dr.getMESSAGETYPE().toLowerCase().equals("ft")) {
 							
 							Date now = new Date();
 							SimpleDateFormat serialformat = new SimpleDateFormat("yyyyMMdd-");
@@ -199,7 +218,7 @@ public class SendRequest {
 							//friendtalk.setApp_user_id("");
 							friendtalk.setUser_key("");
 							friendtalk.setMessage(dr.getMSG().replaceAll("(\r\n|\r|\n|\n\r)", "\n"));
-							friendtalk.setAd_flag(dr.getAD_FLAG());
+							friendtalk.setAd_flag(dr.getADFLAG());
 							friendtalk.setWide(dr.getWIDE());
 							
 							Attachment att = new Attachment();
@@ -219,16 +238,60 @@ public class SendRequest {
 							if(dr.getBUTTON5() != null && !dr.getBUTTON5().isEmpty())
 								att.addButton( mapper.readValue(dr.getBUTTON5(), new TypeReference<Map<String, String>>(){}) );
 							
+							if(dr.getIMAGEURL() != null && !dr.getIMAGEURL().isEmpty()) {
+								att.addImage(dr.getIMAGELINK(), dr.getIMAGEURL());
+							}
+							
 							if(att.button.size() > 0)
 								friendtalk.setAttachment( att ); 
 							
 							String jsonStr = mapper.writeValueAsString(friendtalk);
 							
-							log.info("FT JSON - : " + jsonStr);
+							//log.info("FT JSON - : " + jsonStr);
 							
 							HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);		
 							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(URL, entity, String.class);
 
+							//dhnReqService.deleteByMsgidQeury(dr.getMSGID());
+							
+							DhnResult DR = new DhnResult();
+							
+							DR.setAdflag(dr.getADFLAG());
+							DR.setButton1(dr.getBUTTON1());
+							DR.setButton2(dr.getBUTTON2());
+							DR.setButton3(dr.getBUTTON3());
+							DR.setButton4(dr.getBUTTON4());
+							DR.setButton5(dr.getBUTTON5());
+							DR.setImagelink(dr.getIMAGELINK());
+							DR.setImageurl(dr.getIMAGEURL());
+							DR.setMessagetype(dr.getMESSAGETYPE());
+							DR.setMsg(dr.getMSG());
+							DR.setMsgsms(dr.getMSGSMS());
+							DR.setMsgid(dr.getMSGID());
+							DR.setOnlysms(dr.getONLYSMS());
+							DR.setPcom(dr.getPCOM());
+							DR.setPinvoice(dr.getPINVOICE());
+							DR.setPhn(dr.getPHN());
+							DR.setProfile(dr.getPROFILE());
+							DR.setRegdt(dr.getREGDT());
+							DR.setRemark1(dr.getREMARK1());
+							DR.setRemark2(dr.getREMARK2());
+							DR.setRemark3(dr.getREMARK3());
+							DR.setRemark4(dr.getREMARK4());
+							DR.setRemark5(dr.getREMARK5());
+							DR.setReservedt(dr.getRESERVEDT());
+							DR.setResult("N");
+							DR.setScode(dr.getSCODE());
+							DR.setSmskind(dr.getSMSKIND());
+							DR.setSmslmstit(dr.getSMSLMSTIT());
+							DR.setSmssender(dr.getSMSSENDER());
+							DR.setSync("N");
+							DR.setTmplid(dr.getTMPLID());
+							DR.setUserid(dr.getUserid());
+							DR.setWide(dr.getWIDE());
+							
+							SaveResult.Save(DR);
+							
 							response.addCallback(new ListenableFutureCallback<ResponseEntity<String>>() {
 
 								@Override
@@ -238,70 +301,38 @@ public class SendRequest {
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
 										SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"));
-										log.info("FT Response Success : " + result );
+										if(!res.get("code").equals("0000")) {
+											//log.info(Thread.currentThread().getName() + " / " + "FT Response Success : " + result );
+											//e_cnt++;
+										} else {
+											//s_cnt++;
+										}
 									} catch (JsonProcessingException e) {
 										// TODO Auto-generated catch block
-										e.printStackTrace();
+										log.info("친구톡 발송 오류 : " + e.toString());
 									}
 								}
 
 								@Override
 								public void onFailure(Throwable ex) {
 									// TODO Auto-generated method stub
-									log.info("FT Response Failure : " + ex.toString() );
+									//log.info(Thread.currentThread().getName() + " / " + "FT Response Failure : " + ex.toString() );
+									//e_cnt++;
 								}
 							});
-							
-							dhnReqService.deleteByMsgidQeury(dr.getMSGID());
-							
-							DhnResult DR = new DhnResult();
-							
-							DR.setAd_flag(dr.getAD_FLAG());
-							DR.setButton1(dr.getBUTTON1());
-							DR.setButton2(dr.getBUTTON2());
-							DR.setButton3(dr.getBUTTON3());
-							DR.setButton4(dr.getBUTTON4());
-							DR.setButton5(dr.getBUTTON5());
-							DR.setImage_link(dr.getIMAGE_LINK());
-							DR.setImage_url(dr.getIMAGE_URL());
-							DR.setMessage_type(dr.getMESSAGE_TYPE());
-							DR.setMsg(dr.getMSG());
-							DR.setMsg_sms(dr.getMSG_SMS());
-							DR.setMsgid(dr.getMSGID());
-							DR.setOnly_sms(dr.getONLY_SMS());
-							DR.setP_com(dr.getP_COM());
-							DR.setP_invoice(dr.getP_INVOICE());
-							DR.setPhn(dr.getPHN());
-							DR.setProfile(dr.getPROFILE());
-							DR.setReg_dt(dr.getREG_DT());
-							DR.setRemark1(dr.getREMARK1());
-							DR.setRemark2(dr.getREMARK2());
-							DR.setRemark3(dr.getREMARK3());
-							DR.setRemark4(dr.getREMARK4());
-							DR.setRemark5(dr.getREMARK5());
-							DR.setReserve_dt(dr.getRESERVE_DT());
-							DR.setResult("N");
-							DR.setS_code(dr.getS_CODE());
-							DR.setSms_kind(dr.getSMS_KIND());
-							DR.setSms_lms_tit(dr.getSMS_LMS_TIT());
-							DR.setSms_sender(dr.getSMS_SENDER());
-							DR.setSync("N");
-							DR.setTmpl_id(dr.getTMPL_ID());
-							DR.setUserid(dr.getUserid());
-							DR.setWide(dr.getWIDE());
-							
-							SaveResult.Save(DR);
 							
 						}
 						
 					}
-					log.info("Request Send : " + dhnReqs.size());
+					dhnReqService.deleteAll(dhnReqs);
+					log.info(sendgroup + " : " + "발송 종료 : " + dhnReqs.size());
 				}
 			} catch (Exception e) {
-				log.info(e.toString());
+				log.info(Thread.currentThread().getName() + " / " + e.toString());
 			} finally {
-				isRunning = false;	
-			}
+			}			
+			
 		}
 	}
+	
 }

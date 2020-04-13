@@ -7,17 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DHN_RESULT1")
+@Table(name="DHN_RESULT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DhnResult implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +33,7 @@ public class DhnResult implements Serializable{
 	private String userid;
 
 	@Column(name = "ad_flag", length = 1)
-	private String ad_flag; //` varchar(1) null default null,
+	private String adflag; //` varchar(1) null default null,
 
 	@Column(name = "button1", columnDefinition = "LONGTEXT")
 	private String button1; //` longtext null default null,
@@ -51,10 +54,10 @@ public class DhnResult implements Serializable{
 	private String code; //` varchar(4) null default null,
 
 	@Column(name = "image_link", columnDefinition = "LONGTEXT")
-	private String image_link; //` longtext null default null,
+	private String imagelink; //` longtext null default null,
 
 	@Column(name = "image_url", columnDefinition = "LONGTEXT")
-	private String image_url; //` longtext null default null,
+	private String imageurl; //` longtext null default null,
 
 	@Column(name = "kind", length = 1)
 	private String kind; //` varchar(1) null default null,
@@ -63,22 +66,22 @@ public class DhnResult implements Serializable{
 	private String message; //` longtext null default null,
 
 	@Column(name = "message_type", length = 2)
-	private String message_type; //` varchar(2) null default null,
+	private String messagetype; //` varchar(2) null default null,
 
 	@Column(name = "msg", nullable = false, columnDefinition = "LONGTEXT")
 	private String msg; //` longtext not null,
 
 	@Column(name = "msg_sms", columnDefinition = "LONGTEXT")
-	private String msg_sms; //` longtext null default null,
+	private String msgsms; //` longtext null default null,
 
 	@Column(name = "only_sms", length = 1)
-	private String only_sms; //` varchar(1) null default null,
+	private String onlysms; //` varchar(1) null default null,
 
 	@Column(name = "p_com", length = 2)
-	private String p_com; //` varchar(2) null default null,
+	private String pcom; //` varchar(2) null default null,
 
 	@Column(name = "p_invoice", length = 100)
-	private String p_invoice; //` varchar(100) null default null,
+	private String pinvoice; //` varchar(100) null default null,
 
 	@Column(name = "phn", nullable = false, length = 15)
 	private String phn; //` varchar(15) not null,
@@ -87,7 +90,7 @@ public class DhnResult implements Serializable{
 	private String profile; //` varchar(50) null default null,
 
 	@Column(name = "reg_dt", nullable = false, length = 20)
-	private String reg_dt; //` datetime not null,
+	private String regdt; //` datetime not null,
 
 	@Column(name = "remark1", length = 50)
 	private String remark1; //` varchar(50) null default null,
@@ -105,31 +108,31 @@ public class DhnResult implements Serializable{
 	private String remark5; //` varchar(50) null default null,
 
 	@Column(name = "res_dt", length = 20)
-	private String res_dt; //` datetime null default null,
+	private String resdt; //` datetime null default null,
 
 	@Column(name = "reserve_dt", nullable = false, length = 14)
-	private String reserve_dt; //` varchar(14) not null,
+	private String reservedt; //` varchar(14) not null,
 
 	@Column(name = "result", length = 1)
 	private String result; //` varchar(1) null default null,
 
 	@Column(name = "s_code", length = 2)
-	private String s_code; //` varchar(2) null default null,
+	private String scode; //` varchar(2) null default null,
 
 	@Column(name = "sms_kind", length = 1)
-	private String sms_kind; //` varchar(1) null default null,
+	private String smskind; //` varchar(1) null default null,
 
 	@Column(name = "sms_lms_tit", length = 120)
-	private String sms_lms_tit; //` varchar(120) null default null,
+	private String smslmstit; //` varchar(120) null default null,
 
 	@Column(name = "sms_sender", length = 15)
-	private String sms_sender; //` varchar(15) null default null,
+	private String smssender; //` varchar(15) null default null,
 
 	@Column(name = "sync", nullable = false, length = 1)
 	private String sync; //` varchar(1) not null,
 
 	@Column(name = "tmpl_id", length = 30)
-	private String tmpl_id; //` varchar(30) null default null,
+	private String tmplid; //` varchar(30) null default null,
 
 	@Column(name = "wide", length = 1)
 	private String wide; //` char(1) null default 'n' 
@@ -150,12 +153,12 @@ public class DhnResult implements Serializable{
 		this.userid = userid;
 	}
 
-	public String getAd_flag() {
-		return ad_flag;
+	public String getAdflag() {
+		return adflag;
 	}
 
-	public void setAd_flag(String ad_flag) {
-		this.ad_flag = ad_flag;
+	public void setAdflag(String adflag) {
+		this.adflag = adflag;
 	}
 
 	public String getButton1() {
@@ -206,20 +209,20 @@ public class DhnResult implements Serializable{
 		this.code = code;
 	}
 
-	public String getImage_link() {
-		return image_link;
+	public String getImagelink() {
+		return imagelink;
 	}
 
-	public void setImage_link(String image_link) {
-		this.image_link = image_link;
+	public void setImagelink(String imagelink) {
+		this.imagelink = imagelink;
 	}
 
-	public String getImage_url() {
-		return image_url;
+	public String getImageurl() {
+		return imageurl;
 	}
 
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
 	}
 
 	public String getKind() {
@@ -238,12 +241,12 @@ public class DhnResult implements Serializable{
 		this.message = message;
 	}
 
-	public String getMessage_type() {
-		return message_type;
+	public String getMessagetype() {
+		return messagetype;
 	}
 
-	public void setMessage_type(String message_type) {
-		this.message_type = message_type;
+	public void setMessagetype(String messagetype) {
+		this.messagetype = messagetype;
 	}
 
 	public String getMsg() {
@@ -254,36 +257,36 @@ public class DhnResult implements Serializable{
 		this.msg = msg;
 	}
 
-	public String getMsg_sms() {
-		return msg_sms;
+	public String getMsgsms() {
+		return msgsms;
 	}
 
-	public void setMsg_sms(String msg_sms) {
-		this.msg_sms = msg_sms;
+	public void setMsgsms(String msgsms) {
+		this.msgsms = msgsms;
 	}
 
-	public String getOnly_sms() {
-		return only_sms;
+	public String getOnlysms() {
+		return onlysms;
 	}
 
-	public void setOnly_sms(String only_sms) {
-		this.only_sms = only_sms;
+	public void setOnlysms(String onlysms) {
+		this.onlysms = onlysms;
 	}
 
-	public String getP_com() {
-		return p_com;
+	public String getPcom() {
+		return pcom;
 	}
 
-	public void setP_com(String p_com) {
-		this.p_com = p_com;
+	public void setPcom(String pcom) {
+		this.pcom = pcom;
 	}
 
-	public String getP_invoice() {
-		return p_invoice;
+	public String getPinvoice() {
+		return pinvoice;
 	}
 
-	public void setP_invoice(String p_invoice) {
-		this.p_invoice = p_invoice;
+	public void setPinvoice(String pinvoice) {
+		this.pinvoice = pinvoice;
 	}
 
 	public String getPhn() {
@@ -302,12 +305,12 @@ public class DhnResult implements Serializable{
 		this.profile = profile;
 	}
 
-	public String getReg_dt() {
-		return reg_dt;
+	public String getRegdt() {
+		return regdt;
 	}
 
-	public void setReg_dt(String reg_dt) {
-		this.reg_dt = reg_dt;
+	public void setRegdt(String regdt) {
+		this.regdt = regdt;
 	}
 
 	public String getRemark1() {
@@ -350,20 +353,20 @@ public class DhnResult implements Serializable{
 		this.remark5 = remark5;
 	}
 
-	public String getRes_dt() {
-		return res_dt;
+	public String getResdt() {
+		return resdt;
 	}
 
-	public void setRes_dt(String res_dt) {
-		this.res_dt = res_dt;
+	public void setResdt(String resdt) {
+		this.resdt = resdt;
 	}
 
-	public String getReserve_dt() {
-		return reserve_dt;
+	public String getReservedt() {
+		return reservedt;
 	}
 
-	public void setReserve_dt(String reserve_dt) {
-		this.reserve_dt = reserve_dt;
+	public void setReservedt(String reservedt) {
+		this.reservedt = reservedt;
 	}
 
 	public String getResult() {
@@ -374,36 +377,36 @@ public class DhnResult implements Serializable{
 		this.result = result;
 	}
 
-	public String getS_code() {
-		return s_code;
+	public String getScode() {
+		return scode;
 	}
 
-	public void setS_code(String s_code) {
-		this.s_code = s_code;
+	public void setScode(String scode) {
+		this.scode = scode;
 	}
 
-	public String getSms_kind() {
-		return sms_kind;
+	public String getSmskind() {
+		return smskind;
 	}
 
-	public void setSms_kind(String sms_kind) {
-		this.sms_kind = sms_kind;
+	public void setSmskind(String smskind) {
+		this.smskind = smskind;
 	}
 
-	public String getSms_lms_tit() {
-		return sms_lms_tit;
+	public String getSmslmstit() {
+		return smslmstit;
 	}
 
-	public void setSms_lms_tit(String sms_lms_tit) {
-		this.sms_lms_tit = sms_lms_tit;
+	public void setSmslmstit(String smslmstit) {
+		this.smslmstit = smslmstit;
 	}
 
-	public String getSms_sender() {
-		return sms_sender;
+	public String getSmssender() {
+		return smssender;
 	}
 
-	public void setSms_sender(String sms_sender) {
-		this.sms_sender = sms_sender;
+	public void setSmssender(String smssender) {
+		this.smssender = smssender;
 	}
 
 	public String getSync() {
@@ -414,12 +417,12 @@ public class DhnResult implements Serializable{
 		this.sync = sync;
 	}
 
-	public String getTmpl_id() {
-		return tmpl_id;
+	public String getTmplid() {
+		return tmplid;
 	}
 
-	public void setTmpl_id(String tmpl_id) {
-		this.tmpl_id = tmpl_id;
+	public void setTmplid(String tmplid) {
+		this.tmplid = tmplid;
 	}
 
 	public String getWide() {

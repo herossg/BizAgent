@@ -11,9 +11,17 @@ public interface DhnRequestService {
 	
 	void deleteById(Integer id);
 	
-	String save(DhnRequest dhnRequest);
+	String save(List<DhnRequest> dhnRequest);
+	
+	void deleteAll(List<DhnRequest> dhnRequest);
 	
 	void deleteByMsgidQeury(String msgid);
 
+	void updateBySendgroupQuery(String sendgroup);
 	
+	void updateByMsgidsSendgroupQuery(String sendgroup, List<String> msgids);
+	
+	List<DhnRequest> findBySendgroupQuery(String sendgroup);
+	
+	List<String> findByNullSendgroupQuery();
 }

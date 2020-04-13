@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DHN_REQUEST1")
+@Table(name="DHN_REQUEST")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,7 +35,7 @@ public class DhnRequest implements Serializable {
 	private String userid;
 	
 	@Column(name = "AD_FLAG", nullable = true, length = 1)
-	private String AD_FLAG;  //` VARCHAR(1) NULL DEFAULT NULL,
+	private String ADFLAG;  //` VARCHAR(1) NULL DEFAULT NULL,
 	
 	@Column(name = "BUTTON1", nullable = true, columnDefinition = "LONGTEXT")
 	private String BUTTON1; //` LONGTEXT NULL DEFAULT NULL,
@@ -53,28 +53,28 @@ public class DhnRequest implements Serializable {
 	private String BUTTON5;  //` LONGTEXT NULL DEFAULT NULL,
 	
 	@Column(name = "IMAGE_LINK", nullable = true, columnDefinition = "LONGTEXT")
-	private String IMAGE_LINK;  //` LONGTEXT NULL DEFAULT NULL,
+	private String IMAGELINK;  //` LONGTEXT NULL DEFAULT NULL,
 	
 	@Column(name = "IMAGE_URL", nullable = true, columnDefinition = "LONGTEXT")
-	private String IMAGE_URL;  //` LONGTEXT NULL DEFAULT NULL,
+	private String IMAGEURL;  //` LONGTEXT NULL DEFAULT NULL,
 	
 	@Column(name = "MESSAGE_TYPE", nullable = true, length = 2)
-	private String MESSAGE_TYPE;  //` VARCHAR(2) NULL DEFAULT NULL,
+	private String MESSAGETYPE;  //` VARCHAR(2) NULL DEFAULT NULL,
 	
 	@Column(name = "MSG", nullable = false, columnDefinition = "LONGTEXT")
 	private String MSG;  //` LONGTEXT NOT NULL,
 	
 	@Column(name = "MSG_SMS", nullable = true, columnDefinition = "LONGTEXT")
-	private String MSG_SMS;  //` LONGTEXT NULL DEFAULT NULL,
+	private String MSGSMS;  //` LONGTEXT NULL DEFAULT NULL,
 	
 	@Column(name = "ONLY_SMS", nullable = true, length = 1)
-	private String ONLY_SMS;  //` VARCHAR(1) NULL DEFAULT NULL,
+	private String ONLYSMS;  //` VARCHAR(1) NULL DEFAULT NULL,
 	
 	@Column(name = "P_COM", nullable = true, length = 2)
-	private String P_COM;  //` VARCHAR(2) NULL DEFAULT NULL,
+	private String PCOM;  //` VARCHAR(2) NULL DEFAULT NULL,
 	
 	@Column(name = "P_INVOICE", nullable = true, length = 100)
-	private String P_INVOICE;  //` VARCHAR(100) NULL DEFAULT NULL,
+	private String PINVOICE;  //` VARCHAR(100) NULL DEFAULT NULL,
 	
 	@Column(name = "PHN", nullable = false, length = 15)
 	private String PHN;  //` VARCHAR(15) NOT NULL,
@@ -83,7 +83,7 @@ public class DhnRequest implements Serializable {
 	private String PROFILE;  //` VARCHAR(50) NULL DEFAULT NULL,
 	
 	@Column(name = "REG_DT", nullable = false, length = 20)
-	private String REG_DT;  //` DATETIME NOT NULL,
+	private String REGDT;  //` DATETIME NOT NULL,
 	
 	@Column(name = "REMARK1", nullable = true, length = 50)
 	private String REMARK1;  //` VARCHAR(50) NULL DEFAULT NULL,
@@ -101,22 +101,22 @@ public class DhnRequest implements Serializable {
 	private String REMARK5;  //` VARCHAR(50) NULL DEFAULT NULL,
 	
 	@Column(name = "RESERVE_DT", nullable = false, length = 14)
-	private String RESERVE_DT;  //` VARCHAR(14) NOT NULL,
+	private String RESERVEDT;  //` VARCHAR(14) NOT NULL,
 	
 	@Column(name = "S_CODE", nullable = true, length = 2)
-	private String S_CODE;  //` VARCHAR(2) NULL DEFAULT NULL,
+	private String SCODE;  //` VARCHAR(2) NULL DEFAULT NULL,
 	
 	@Column(name = "SMS_KIND", nullable = true, length = 1)
-	private String SMS_KIND;  //` VARCHAR(1) NULL DEFAULT NULL,
+	private String SMSKIND;  //` VARCHAR(1) NULL DEFAULT NULL,
 	
 	@Column(name = "SMS_LMS_TIT", nullable = true, length = 120)
-	private String SMS_LMS_TIT;  //` VARCHAR(120) NULL DEFAULT NULL,
+	private String SMSLMSTIT;  //` VARCHAR(120) NULL DEFAULT NULL,
 	
 	@Column(name = "SMS_SENDER", nullable = true, length = 15)
-	private String SMS_SENDER;  //` VARCHAR(15) NULL DEFAULT NULL,
+	private String SMSSENDER;  //` VARCHAR(15) NULL DEFAULT NULL,
 	
 	@Column(name = "TMPL_ID", nullable = true, length = 30)
-	private String TMPL_ID;  //` VARCHAR(30) NULL DEFAULT NULL,
+	private String TMPLID;  //` VARCHAR(30) NULL DEFAULT NULL,
 	
 	@Column(name = "WIDE", nullable = true, length = 1)
 	private String WIDE;  //` CHAR(1) NULL DEFAULT 'N'
@@ -137,12 +137,12 @@ public class DhnRequest implements Serializable {
 		this.userid = userid;
 	}
 
-	public String getAD_FLAG() {
-		return AD_FLAG;
+	public String getADFLAG() {
+		return ADFLAG;
 	}
 
-	public void setAD_FLAG(String aD_FLAG) {
-		AD_FLAG = aD_FLAG;
+	public void setADFLAG(String aDFLAG) {
+		ADFLAG = aDFLAG;
 	}
 
 	public String getBUTTON1() {
@@ -185,28 +185,28 @@ public class DhnRequest implements Serializable {
 		BUTTON5 = bUTTON5;
 	}
 
-	public String getIMAGE_LINK() {
-		return IMAGE_LINK;
+	public String getIMAGELINK() {
+		return IMAGELINK;
 	}
 
-	public void setIMAGE_LINK(String iMAGE_LINK) {
-		IMAGE_LINK = iMAGE_LINK;
+	public void setIMAGELINK(String iMAGELINK) {
+		IMAGELINK = iMAGELINK;
 	}
 
-	public String getIMAGE_URL() {
-		return IMAGE_URL;
+	public String getIMAGEURL() {
+		return IMAGEURL;
 	}
 
-	public void setIMAGE_URL(String iMAGE_URL) {
-		IMAGE_URL = iMAGE_URL;
+	public void setIMAGEURL(String iMAGEURL) {
+		IMAGEURL = iMAGEURL;
 	}
 
-	public String getMESSAGE_TYPE() {
-		return MESSAGE_TYPE;
+	public String getMESSAGETYPE() {
+		return MESSAGETYPE;
 	}
 
-	public void setMESSAGE_TYPE(String mESSAGE_TYPE) {
-		MESSAGE_TYPE = mESSAGE_TYPE;
+	public void setMESSAGETYPE(String mESSAGETYPE) {
+		MESSAGETYPE = mESSAGETYPE;
 	}
 
 	public String getMSG() {
@@ -217,36 +217,36 @@ public class DhnRequest implements Serializable {
 		MSG = mSG;
 	}
 
-	public String getMSG_SMS() {
-		return MSG_SMS;
+	public String getMSGSMS() {
+		return MSGSMS;
 	}
 
-	public void setMSG_SMS(String mSG_SMS) {
-		MSG_SMS = mSG_SMS;
+	public void setMSGSMS(String mSGSMS) {
+		MSGSMS = mSGSMS;
 	}
 
-	public String getONLY_SMS() {
-		return ONLY_SMS;
+	public String getONLYSMS() {
+		return ONLYSMS;
 	}
 
-	public void setONLY_SMS(String oNLY_SMS) {
-		ONLY_SMS = oNLY_SMS;
+	public void setONLYSMS(String oNLYSMS) {
+		ONLYSMS = oNLYSMS;
 	}
 
-	public String getP_COM() {
-		return P_COM;
+	public String getPCOM() {
+		return PCOM;
 	}
 
-	public void setP_COM(String p_COM) {
-		P_COM = p_COM;
+	public void setPCOM(String pCOM) {
+		PCOM = pCOM;
 	}
 
-	public String getP_INVOICE() {
-		return P_INVOICE;
+	public String getPINVOICE() {
+		return PINVOICE;
 	}
 
-	public void setP_INVOICE(String p_INVOICE) {
-		P_INVOICE = p_INVOICE;
+	public void setPINVOICE(String pINVOICE) {
+		PINVOICE = pINVOICE;
 	}
 
 	public String getPHN() {
@@ -265,12 +265,12 @@ public class DhnRequest implements Serializable {
 		PROFILE = pROFILE;
 	}
 
-	public String getREG_DT() {
-		return REG_DT;
+	public String getREGDT() {
+		return REGDT;
 	}
 
-	public void setREG_DT(String rEG_DT) {
-		REG_DT = rEG_DT;
+	public void setREGDT(String rEGDT) {
+		REGDT = rEGDT;
 	}
 
 	public String getREMARK1() {
@@ -313,52 +313,52 @@ public class DhnRequest implements Serializable {
 		REMARK5 = rEMARK5;
 	}
 
-	public String getRESERVE_DT() {
-		return RESERVE_DT;
+	public String getRESERVEDT() {
+		return RESERVEDT;
 	}
 
-	public void setRESERVE_DT(String rESERVE_DT) {
-		RESERVE_DT = rESERVE_DT;
+	public void setRESERVEDT(String rESERVEDT) {
+		RESERVEDT = rESERVEDT;
 	}
 
-	public String getS_CODE() {
-		return S_CODE;
+	public String getSCODE() {
+		return SCODE;
 	}
 
-	public void setS_CODE(String s_CODE) {
-		S_CODE = s_CODE;
+	public void setSCODE(String sCODE) {
+		SCODE = sCODE;
 	}
 
-	public String getSMS_KIND() {
-		return SMS_KIND;
+	public String getSMSKIND() {
+		return SMSKIND;
 	}
 
-	public void setSMS_KIND(String sMS_KIND) {
-		SMS_KIND = sMS_KIND;
+	public void setSMSKIND(String sMSKIND) {
+		SMSKIND = sMSKIND;
 	}
 
-	public String getSMS_LMS_TIT() {
-		return SMS_LMS_TIT;
+	public String getSMSLMSTIT() {
+		return SMSLMSTIT;
 	}
 
-	public void setSMS_LMS_TIT(String sMS_LMS_TIT) {
-		SMS_LMS_TIT = sMS_LMS_TIT;
+	public void setSMSLMSTIT(String sMSLMSTIT) {
+		SMSLMSTIT = sMSLMSTIT;
 	}
 
-	public String getSMS_SENDER() {
-		return SMS_SENDER;
+	public String getSMSSENDER() {
+		return SMSSENDER;
 	}
 
-	public void setSMS_SENDER(String sMS_SENDER) {
-		SMS_SENDER = sMS_SENDER;
+	public void setSMSSENDER(String sMSSENDER) {
+		SMSSENDER = sMSSENDER;
 	}
 
-	public String getTMPL_ID() {
-		return TMPL_ID;
+	public String getTMPLID() {
+		return TMPLID;
 	}
 
-	public void setTMPL_ID(String tMPL_ID) {
-		TMPL_ID = tMPL_ID;
+	public void setTMPLID(String tMPLID) {
+		TMPLID = tMPLID;
 	}
 
 	public String getWIDE() {

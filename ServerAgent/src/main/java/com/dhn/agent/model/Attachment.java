@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Attachment {
 	public List<Button> button = new ArrayList<Button>();
+	public Image image;
 	
 	public void addButton(Map<String, String> btn) {
 		Button temp = new Button ();
@@ -17,6 +18,12 @@ public class Attachment {
 		temp.setUrl_pc(btn.get("url_pc"));
 		
 		this.button.add(temp);
+	}
+	
+	public void addImage(String img_link, String img_url) {
+		image = new Image();
+		image.setImg_link(img_link);
+		image.setImg_url(img_url);
 	}
 	
 	public String toJson() {

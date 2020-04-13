@@ -1,7 +1,9 @@
 package com.dhn.agent.controller;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +35,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dhn.agent.model.DhnRequest;
 import com.dhn.agent.model.DhnResult;
+import com.dhn.agent.model.DhnUser;
 import com.dhn.agent.model.JsonResult;
 import com.dhn.agent.service.DhnRequestService;
 import com.dhn.agent.service.DhnResultService;
+import com.dhn.agent.service.DhnUserService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -50,10 +54,14 @@ public class DhnController {
 	@Autowired
 	private DhnResultService dhnResService;
 	
+	@Autowired
+	DhnUserService dhnUserService;
+	
 	private @Value("${PROFILE_KEY}") String PROFILE_KEY;
 	private @Value("${CENTER_SERVER}") String CENTER_SERVER;
 	private ObjectMapper mapper = new ObjectMapper();
 	private static final Logger log = LoggerFactory.getLogger(DhnController.class);
+	private Object sync1 = new Object();
 	
 	@RequestMapping(value = "/req",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<DhnRequest>> getAllRequest() {
@@ -69,10 +77,18 @@ public class DhnController {
 	}
 	
 	@PostMapping(value="/req")
-	public ResponseEntity<String> save(@RequestHeader(name="userid", required=true) String userid,
-			                           @RequestBody DhnRequest dhnRequest) {
-		dhnRequest.setUserid(userid);
-		return new ResponseEntity<String>(dhnReqService.save(dhnRequest), HttpStatus.OK);
+	public ResponseEntity<List<String>> save(@RequestHeader(name="userid", required=true) String userid,
+			                           @RequestBody List<DhnRequest> dhnRequest) {
+		
+		List<String> msgids = new ArrayList<String>();
+		dhnRequest.forEach(dr -> {
+			dr.setUserid(userid);
+			msgids.add(dr.getMSGID());
+		});
+		
+		dhnReqService.save(dhnRequest);
+		
+		return new ResponseEntity<List<String>>(msgids, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/res/{msgid}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -87,6 +103,25 @@ public class DhnController {
 			json.setMessage("존재하지 않음");
 		}
 		return new ResponseEntity<JsonResult>(json, HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/resall")
+	public ResponseEntity<List<DhnResult>> save(@RequestHeader(name="userid", required=true) String userid) {
+		//log.info("Result 호출 됨");
+		//synchronized (sync1) {
+			//log.info("Result 시작 됨");
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
+			Date time = new Date();
+			String send_group = format1.format(time);
+			dhnResService.updateSendGroupByUseridSyncQuery(send_group, userid);
+			List<DhnResult> dhnResult = dhnResService.selectByUseridSendgroupQuery(userid, send_group);
+			dhnResService.updateByMsgidSyncQuery(userid, send_group);
+			
+			if(dhnResult.size()> 0)
+				log.info("Result ( " + send_group + " ) : " + userid + " - " + dhnResult.size() + " 건 전송");
+			
+			return new ResponseEntity<List<DhnResult>>(dhnResult, HttpStatus.OK);
+		//}
 	}
 	
 	@GetMapping(value="/", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -627,7 +662,113 @@ public class DhnController {
 		return result.getBody();
 	}
 	
+	@GetMapping(value="/cstop", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String clientstop() {
+		ThreadGroup rootGroup = Thread.currentThread().getThreadGroup();
+		ThreadGroup parentGroup;
+		while ((parentGroup = rootGroup.getParent()) != null) {
+		    rootGroup = parentGroup;
+		}
+		 
+		Thread[] threads = new Thread[rootGroup.activeCount()];
+		while (rootGroup.enumerate(threads, true) == threads.length) {
+		    threads = new Thread[threads.length * 2];
+		}
+		 
+		String tlist = "";
+		
+		for (Thread t : threads) {
+			if(t != null) {
+				
+				if(t.getName().indexOf("UserResultSend") >= 0) {
+					tlist = tlist + " ID : " +  t.getId() + " , "  + " Name : " + t.getName() + " 종료 요청 했습니다.\r";
+					t.interrupt();
+				}
+			}
+		}
+		
+		return tlist;
+		
+	}
+	
+	@GetMapping(value="/cstatus", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String clientstatus() {
+		ThreadGroup rootGroup = Thread.currentThread().getThreadGroup();
+		ThreadGroup parentGroup;
+		while ((parentGroup = rootGroup.getParent()) != null) {
+		    rootGroup = parentGroup;
+		}
+		 
+		Thread[] threads = new Thread[rootGroup.activeCount()];
+		while (rootGroup.enumerate(threads, true) == threads.length) {
+		    threads = new Thread[threads.length * 2];
+		}
+		 
+		String tlist = "";
+		
+		for (Thread t : threads) {
+			if(t != null) {
+				
+				if(t.getName().indexOf("UserResultSend") >= 0) {
+					tlist = tlist + " ID : " +  t.getId() + " , "  + " Name : " + t.getName() + "\r";
+				}
+			}
+		}
+		
+		return tlist;
+		
+	}
 
+	@GetMapping(value="/cstart", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String clientsStart() {
+		ThreadGroup rootGroup = Thread.currentThread().getThreadGroup();
+		ThreadGroup parentGroup;
+		while ((parentGroup = rootGroup.getParent()) != null) {
+		    rootGroup = parentGroup;
+		}
+		 
+		Thread[] threads = new Thread[rootGroup.activeCount()];
+		while (rootGroup.enumerate(threads, true) == threads.length) {
+		    threads = new Thread[threads.length * 2];
+		}
+		 
+		String tlist = "";
+		int cnt = 0;
+		
+		for (Thread t : threads) {
+			if(t != null) {
+				
+				if(t.getName().indexOf("UserResultSend") >= 0) {
+					t.interrupt();
+					tlist = tlist + " ID : " +  t.getId() + " , "  + " Name : " + t.getName() + "\r";
+					cnt ++;
+				}
+			}
+		}
+		
+		if(cnt > 0) {
+			return "실행중인 Client Thread 가 존재합니다.\r잠시후 다시 시도 하세요.";
+		} else {
+			List<DhnUser> dhnUsers = dhnUserService.findAll();
+			dhnUsers.forEach(e -> {
+				UserResultSend urs = new UserResultSend();
+				urs.dhnResService = dhnResService;
+				urs.clientIp = e.getIp();
+				urs.userId = e.getUserid();
+				
+				Thread t = new Thread(urs);
+				t.setName("UserResultSend_" + urs.userId);
+				t.start();
+			});
+			for(DhnUser d : dhnUsers) {
+				tlist = tlist + "UserResultSend_" + d.getUserid() + " 정상 실행 요청 되었습니다. \r";
+			}
+		}
+		
+		return tlist;
+		
+	}
+	
 	private ResponseEntity<String> reqPost(String url, Map<String, String> header, Map<String, String> param) {
 		HttpHeaders headers = new HttpHeaders();
 		final String URL = url;

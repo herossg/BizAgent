@@ -1,5 +1,8 @@
 package com.dhn.agent.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +31,35 @@ public class DhnResultServiceImpl implements DhnResultService{
 	public void updateByMsgidQuery(String msgid, String code, String message) {
 		dhnResultRepo.updateByMsgidQuery(msgid, code, message);
 		
+	}
+
+	@Override
+	public List<DhnResult> selectByUseridSendgroupQuery(String userid, String send_group) {
+		List<DhnResult> dhnResult = new ArrayList<>();
+		dhnResultRepo.selectByUseridSendgroupQuery(userid, send_group).forEach(e -> dhnResult.add(e));
+		return dhnResult;
+	}
+
+	@Override
+	public void updateByMsgidSyncQuery(String userid, String send_group) {
+		dhnResultRepo.updateByMsgidSyncQuery(userid, send_group);
+	}
+
+	@Override
+	public void updateSendGroupByUseridSyncQuery(String send_group, String userid) {
+		dhnResultRepo.updateSendGroupByUseridSyncQuery(send_group, userid);
+		dhnResultRepo.flush();
+	}
+
+	@Override
+	public void SaveAll(List<DhnResult> dhnResults) {
+		dhnResultRepo.saveAll(dhnResults);
+	}
+
+	@Override
+	public List<DhnResult> selectByUserid(String userid) {
+		List<DhnResult> dhnResults = new ArrayList<>();
+		dhnResultRepo.selectByUserid(userid).forEach(e -> dhnResults.add(e));
+		return dhnResults;
 	}
 }

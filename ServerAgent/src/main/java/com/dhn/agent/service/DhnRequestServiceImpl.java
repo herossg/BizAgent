@@ -35,10 +35,10 @@ public class DhnRequestServiceImpl implements DhnRequestService {
 	}
 
 	@Override
-	public String save(DhnRequest dhnRequest) {
+	public String save(List<DhnRequest> dhnRequest) {
 		String result = "{'code':':code', 'message':':message'}";
 		try {
-			dhnRequestRepo.save(dhnRequest);
+			dhnRequestRepo.saveAll(dhnRequest);
 			result = "{'code':'0000', 'message':'서버전송 성공'}";
 		} catch(Exception ex) {
 			result = "{'code':'9999', 'message':'서버 저장 중 오류 발생'}";
@@ -46,9 +46,42 @@ public class DhnRequestServiceImpl implements DhnRequestService {
 		return result;
 	}
 
+	
+	
 	@Override
 	public void deleteByMsgidQeury(String msgid) {
 		dhnRequestRepo.deleteByMsgidQuery(msgid);
+	}
+
+	@Override
+	public void updateBySendgroupQuery(String sendgroup) {
+		dhnRequestRepo.updateBySendgroupQuery(sendgroup);
+		
+	}
+
+	@Override
+	public List<DhnRequest> findBySendgroupQuery(String sendgroup) {
+		List<DhnRequest> dhnRequests = new ArrayList<>();
+		dhnRequestRepo.findBySendgroupQuery(sendgroup).forEach(e -> dhnRequests.add(e));
+		return dhnRequests;
+	}
+
+	@Override
+	public void deleteAll(List<DhnRequest> dhnRequest) {
+		dhnRequestRepo.deleteAll(dhnRequest);
+	}
+
+	@Override
+	public List<String> findByNullSendgroupQuery() {
+		List<String> ids = new ArrayList<String>(); 
+		dhnRequestRepo.findByNullSendgroupQuery().forEach(e -> ids.add(e.getMSGID()));
+		return ids;
+	}
+
+	@Override
+	public void updateByMsgidsSendgroupQuery(String sendgroup, List<String> msgids) {
+		dhnRequestRepo.updateByMsgidsSendgroupQuery(sendgroup, msgids);
+		
 	}
 
 	
