@@ -25,9 +25,13 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>
-
-    <logger name="com.dhn.client" level="INFO">
+<!-- 
+    <logger name="com.dhn.agent" level="INFO">
         <appender-ref ref="DAILY_ROLLING_FILE_APPENDER" />
     </logger>
-
+ -->
+	<root level="INFO">
+	<appender-ref ref="DAILY_ROLLING_FILE_APPENDER" />
+	</root>
+	
 </configuration>

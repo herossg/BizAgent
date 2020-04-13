@@ -14,16 +14,16 @@ public class Schedulejob {
 	private static final Logger log = LoggerFactory.getLogger(Schedulejob.class);
 
 	//Log log = new Log
-	@Scheduled(cron = "*/5 * * * * *")
+	@Scheduled(cron = "*/2 * * * * *")
 	public void sendRequest() {
 		//log.info("...");
 		SendRequest.run();
 	}
 	
 	//Log log = new Log
-	@Scheduled(cron = "*/5 * * * * *")
+	@Scheduled(cron = "*/2 * * * * *")
 	public void getResult() {
 		//log.info("...");
-		GetResult.run();
+		//GetResult.run();
 	}
 }

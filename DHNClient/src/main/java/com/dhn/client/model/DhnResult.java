@@ -27,7 +27,7 @@ public class DhnResult implements Serializable{
 	private String MSGID; //` varchar(20) not null,
 
 	@Column(name = "AD_FLAG", length = 1)
-	private String AD_FLAG; //` varchar(1) null default null,
+	private String ADFLAG; //` varchar(1) null default null,
 
 	@Column(name = "BUTTON1", columnDefinition = "LONGTEXT")
 	private String BUTTON1; //` longtext null default null,
@@ -48,10 +48,10 @@ public class DhnResult implements Serializable{
 	private String CODE; //` varchar(4) null default null,
 
 	@Column(name = "IMAGE_LINK", columnDefinition = "LONGTEXT")
-	private String IMAGE_LINK; //` longtext null default null,
+	private String IMAGELINK; //` longtext null default null,
 
 	@Column(name = "IMAGE_URL", columnDefinition = "LONGTEXT")
-	private String IMAGE_URL; //` longtext null default null,
+	private String IMAGEURL; //` longtext null default null,
 
 	@Column(name = "KIND", length = 1)
 	private String KIND; //` varchar(1) null default null,
@@ -60,22 +60,22 @@ public class DhnResult implements Serializable{
 	private String MESSAGE; //` longtext null default null,
 
 	@Column(name = "MESSAGE_TYPE", length = 2)
-	private String MESSAGE_TYPE; //` varchar(2) null default null,
+	private String MESSAGETYPE; //` varchar(2) null default null,
 
 	@Column(name = "MSG", nullable = false, columnDefinition = "LONGTEXT")
 	private String MSG; //` longtext not null,
 
 	@Column(name = "MSG_SMS", columnDefinition = "LONGTEXT")
-	private String MSG_SMS; //` longtext null default null,
+	private String MSGSMS; //` longtext null default null,
 
 	@Column(name = "ONLY_SMS", length = 1)
-	private String ONLY_SMS; //` varchar(1) null default null,
+	private String ONLYSMS; //` varchar(1) null default null,
 
 	@Column(name = "P_COM", length = 2)
-	private String P_COM; //` varchar(2) null default null,
+	private String PCOM; //` varchar(2) null default null,
 
 	@Column(name = "P_INVOICE", length = 100)
-	private String P_INVOICE; //` varchar(100) null default null,
+	private String PINVOICE; //` varchar(100) null default null,
 
 	@Column(name = "PHN", nullable = false, length = 15)
 	private String PHN; //` varchar(15) not null,
@@ -84,7 +84,7 @@ public class DhnResult implements Serializable{
 	private String PROFILE; //` varchar(50) null default null,
 
 	@Column(name = "REG_DT", nullable = false, length = 20)
-	private String REG_DT; //` datetime not null,
+	private String REGDT; //` datetime not null,
 
 	@Column(name = "REMARK1", length = 50)
 	private String REMARK1; //` varchar(50) null default null,
@@ -102,322 +102,321 @@ public class DhnResult implements Serializable{
 	private String REMARK5; //` varchar(50) null default null,
 
 	@Column(name = "RES_DT", length = 20)
-	private String RES_DT; //` datetime null default null,
+	private String RESDT; //` datetime null default null,
 
 	@Column(name = "RESERVE_DT", nullable = false, length = 14)
-	private String RESERVE_DT; //` varchar(14) not null,
+	private String RESERVEDT; //` varchar(14) not null,
 
 	@Column(name = "RESULT", length = 1)
 	private String RESULT; //` varchar(1) null default null,
 
 	@Column(name = "S_CODE", length = 2)
-	private String S_CODE; //` varchar(2) null default null,
+	private String SCODE; //` varchar(2) null default null,
 
 	@Column(name = "SMS_KIND", length = 1)
-	private String SMS_KIND; //` varchar(1) null default null,
+	private String SMSKIND; //` varchar(1) null default null,
 
 	@Column(name = "SMS_LMS_TIT", length = 120)
-	private String SMS_LMS_TIT; //` varchar(120) null default null,
+	private String SMSLMSTIT; //` varchar(120) null default null,
 
 	@Column(name = "SMS_SENDER", length = 15)
-	private String SMS_SENDER; //` varchar(15) null default null,
+	private String SMSSENDER; //` varchar(15) null default null,
 
 	@Column(name = "SYNC", nullable = false, length = 1)
 	private String SYNC; //` varchar(1) not null,
 
 	@Column(name = "TMPL_ID", length = 30)
-	private String TMPL_ID; //` varchar(30) null default null,
+	private String TMPLID; //` varchar(30) null default null,
 
 	@Column(name = "WIDE", length = 1)
 	private String WIDE; //` char(1) null default 'n' 
 
-	public String getMsgid() {
+	public String getMSGID() {
 		return MSGID;
 	}
 
-	public void setMsgid(String msgid) {
-		this.MSGID = msgid;
+	public void setMSGID(String mSGID) {
+		MSGID = mSGID;
 	}
 
-	public String getAd_flag() {
-		return AD_FLAG;
+	public String getADFLAG() {
+		return ADFLAG;
 	}
 
-	public void setAd_flag(String ad_flag) {
-		this.AD_FLAG = ad_flag;
+	public void setADFLAG(String aDFLAG) {
+		ADFLAG = aDFLAG;
 	}
 
-	public String getButton1() {
+	public String getBUTTON1() {
 		return BUTTON1;
 	}
 
-	public void setButton1(String button1) {
-		this.BUTTON1 = button1;
+	public void setBUTTON1(String bUTTON1) {
+		BUTTON1 = bUTTON1;
 	}
 
-	public String getButton2() {
+	public String getBUTTON2() {
 		return BUTTON2;
 	}
 
-	public void setButton2(String button2) {
-		this.BUTTON2 = button2;
+	public void setBUTTON2(String bUTTON2) {
+		BUTTON2 = bUTTON2;
 	}
 
-	public String getButton3() {
+	public String getBUTTON3() {
 		return BUTTON3;
 	}
 
-	public void setButton3(String button3) {
-		this.BUTTON3 = button3;
+	public void setBUTTON3(String bUTTON3) {
+		BUTTON3 = bUTTON3;
 	}
 
-	public String getButton4() {
+	public String getBUTTON4() {
 		return BUTTON4;
 	}
 
-	public void setButton4(String button4) {
-		this.BUTTON4 = button4;
+	public void setBUTTON4(String bUTTON4) {
+		BUTTON4 = bUTTON4;
 	}
 
-	public String getButton5() {
+	public String getBUTTON5() {
 		return BUTTON5;
 	}
 
-	public void setButton5(String button5) {
-		this.BUTTON5 = button5;
+	public void setBUTTON5(String bUTTON5) {
+		BUTTON5 = bUTTON5;
 	}
 
-	public String getCode() {
+	public String getCODE() {
 		return CODE;
 	}
 
-	public void setCode(String code) {
-		this.CODE = code;
+	public void setCODE(String cODE) {
+		CODE = cODE;
 	}
 
-	public String getImage_link() {
-		return IMAGE_LINK;
+	public String getIMAGELINK() {
+		return IMAGELINK;
 	}
 
-	public void setImage_link(String image_link) {
-		this.IMAGE_LINK = image_link;
+	public void setIMAGELINK(String iMAGELINK) {
+		IMAGELINK = iMAGELINK;
 	}
 
-	public String getImage_url() {
-		return IMAGE_URL;
+	public String getIMAGEURL() {
+		return IMAGEURL;
 	}
 
-	public void setImage_url(String image_url) {
-		this.IMAGE_URL = image_url;
+	public void setIMAGEURL(String iMAGEURL) {
+		IMAGEURL = iMAGEURL;
 	}
 
-	public String getKind() {
+	public String getKIND() {
 		return KIND;
 	}
 
-	public void setKind(String kind) {
-		this.KIND = kind;
+	public void setKIND(String kIND) {
+		KIND = kIND;
 	}
 
-	public String getMessage() {
+	public String getMESSAGE() {
 		return MESSAGE;
 	}
 
-	public void setMessage(String message) {
-		this.MESSAGE = message;
+	public void setMESSAGE(String mESSAGE) {
+		MESSAGE = mESSAGE;
 	}
 
-	public String getMessage_type() {
-		return MESSAGE_TYPE;
+	public String getMESSAGETYPE() {
+		return MESSAGETYPE;
 	}
 
-	public void setMessage_type(String message_type) {
-		this.MESSAGE_TYPE = message_type;
+	public void setMESSAGETYPE(String mESSAGETYPE) {
+		MESSAGETYPE = mESSAGETYPE;
 	}
 
-	public String getMsg() {
+	public String getMSG() {
 		return MSG;
 	}
 
-	public void setMsg(String msg) {
-		this.MSG = msg;
+	public void setMSG(String mSG) {
+		MSG = mSG;
 	}
 
-	public String getMsg_sms() {
-		return MSG_SMS;
+	public String getMSGSMS() {
+		return MSGSMS;
 	}
 
-	public void setMsg_sms(String msg_sms) {
-		this.MSG_SMS = msg_sms;
+	public void setMSGSMS(String mSGSMS) {
+		MSGSMS = mSGSMS;
 	}
 
-	public String getOnly_sms() {
-		return ONLY_SMS;
+	public String getONLYSMS() {
+		return ONLYSMS;
 	}
 
-	public void setOnly_sms(String only_sms) {
-		this.ONLY_SMS = only_sms;
+	public void setONLYSMS(String oNLYSMS) {
+		ONLYSMS = oNLYSMS;
 	}
 
-	public String getP_com() {
-		return P_COM;
+	public String getPCOM() {
+		return PCOM;
 	}
 
-	public void setP_com(String p_com) {
-		this.P_COM = p_com;
+	public void setPCOM(String pCOM) {
+		PCOM = pCOM;
 	}
 
-	public String getP_invoice() {
-		return P_INVOICE;
+	public String getPINVOICE() {
+		return PINVOICE;
 	}
 
-	public void setP_invoice(String p_invoice) {
-		this.P_INVOICE = p_invoice;
+	public void setPINVOICE(String pINVOICE) {
+		PINVOICE = pINVOICE;
 	}
 
-	public String getPhn() {
+	public String getPHN() {
 		return PHN;
 	}
 
-	public void setPhn(String phn) {
-		this.PHN = phn;
+	public void setPHN(String pHN) {
+		PHN = pHN;
 	}
 
-	public String getProfile() {
+	public String getPROFILE() {
 		return PROFILE;
 	}
 
-	public void setProfile(String profile) {
-		this.PROFILE = profile;
+	public void setPROFILE(String pROFILE) {
+		PROFILE = pROFILE;
 	}
 
-	public String getReg_dt() {
-		return REG_DT;
+	public String getREGDT() {
+		return REGDT;
 	}
 
-	public void setReg_dt(String reg_dt) {
-		this.REG_DT = reg_dt;
+	public void setREGDT(String rEGDT) {
+		REGDT = rEGDT;
 	}
 
-	public String getRemark1() {
+	public String getREMARK1() {
 		return REMARK1;
 	}
 
-	public void setRemark1(String remark1) {
-		this.REMARK1 = remark1;
+	public void setREMARK1(String rEMARK1) {
+		REMARK1 = rEMARK1;
 	}
 
-	public String getRemark2() {
+	public String getREMARK2() {
 		return REMARK2;
 	}
 
-	public void setRemark2(String remark2) {
-		this.REMARK2 = remark2;
+	public void setREMARK2(String rEMARK2) {
+		REMARK2 = rEMARK2;
 	}
 
-	public String getRemark3() {
+	public String getREMARK3() {
 		return REMARK3;
 	}
 
-	public void setRemark3(String remark3) {
-		this.REMARK3 = remark3;
+	public void setREMARK3(String rEMARK3) {
+		REMARK3 = rEMARK3;
 	}
 
-	public String getRemark4() {
+	public String getREMARK4() {
 		return REMARK4;
 	}
 
-	public void setRemark4(String remark4) {
-		this.REMARK4 = remark4;
+	public void setREMARK4(String rEMARK4) {
+		REMARK4 = rEMARK4;
 	}
 
-	public String getRemark5() {
+	public String getREMARK5() {
 		return REMARK5;
 	}
 
-	public void setRemark5(String remark5) {
-		this.REMARK5 = remark5;
+	public void setREMARK5(String rEMARK5) {
+		REMARK5 = rEMARK5;
 	}
 
-	public String getRes_dt() {
-		return RES_DT;
+	public String getRESDT() {
+		return RESDT;
 	}
 
-	public void setRes_dt(String res_dt) {
-		this.RES_DT = res_dt;
+	public void setRESDT(String rESDT) {
+		RESDT = rESDT;
 	}
 
-	public String getReserve_dt() {
-		return RESERVE_DT;
+	public String getRESERVEDT() {
+		return RESERVEDT;
 	}
 
-	public void setReserve_dt(String reserve_dt) {
-		this.RESERVE_DT = reserve_dt;
+	public void setRESERVEDT(String rESERVEDT) {
+		RESERVEDT = rESERVEDT;
 	}
 
-	public String getResult() {
+	public String getRESULT() {
 		return RESULT;
 	}
 
-	public void setResult(String result) {
-		this.RESULT = result;
+	public void setRESULT(String rESULT) {
+		RESULT = rESULT;
 	}
 
-	public String getS_code() {
-		return S_CODE;
+	public String getSCODE() {
+		return SCODE;
 	}
 
-	public void setS_code(String s_code) {
-		this.S_CODE = s_code;
+	public void setSCODE(String sCODE) {
+		SCODE = sCODE;
 	}
 
-	public String getSms_kind() {
-		return SMS_KIND;
+	public String getSMSKIND() {
+		return SMSKIND;
 	}
 
-	public void setSms_kind(String sms_kind) {
-		this.SMS_KIND = sms_kind;
+	public void setSMSKIND(String sMSKIND) {
+		SMSKIND = sMSKIND;
 	}
 
-	public String getSms_lms_tit() {
-		return SMS_LMS_TIT;
+	public String getSMSLMSTIT() {
+		return SMSLMSTIT;
 	}
 
-	public void setSms_lms_tit(String sms_lms_tit) {
-		this.SMS_LMS_TIT = sms_lms_tit;
+	public void setSMSLMSTIT(String sMSLMSTIT) {
+		SMSLMSTIT = sMSLMSTIT;
 	}
 
-	public String getSms_sender() {
-		return SMS_SENDER;
+	public String getSMSSENDER() {
+		return SMSSENDER;
 	}
 
-	public void setSms_sender(String sms_sender) {
-		this.SMS_SENDER = sms_sender;
+	public void setSMSSENDER(String sMSSENDER) {
+		SMSSENDER = sMSSENDER;
 	}
 
-	public String getSync() {
+	public String getSYNC() {
 		return SYNC;
 	}
 
-	public void setSync(String sync) {
-		this.SYNC = sync;
+	public void setSYNC(String sYNC) {
+		SYNC = sYNC;
 	}
 
-	public String getTmpl_id() {
-		return TMPL_ID;
+	public String getTMPLID() {
+		return TMPLID;
 	}
 
-	public void setTmpl_id(String tmpl_id) {
-		this.TMPL_ID = tmpl_id;
+	public void setTMPLID(String tMPLID) {
+		TMPLID = tMPLID;
 	}
 
-	public String getWide() {
+	public String getWIDE() {
 		return WIDE;
 	}
 
-	public void setWide(String wide) {
-		this.WIDE = wide;
+	public void setWIDE(String wIDE) {
+		WIDE = wIDE;
 	}
-
-
+ 
 }

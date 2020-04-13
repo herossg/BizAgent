@@ -14,14 +14,13 @@ import com.dhn.client.model.DhnResult;
 @Repository
 public interface DhnResultRepo extends JpaRepository<DhnResult, String> {
 	
-	final static String RESULT_UPDATE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', sync='Y' where MSGID = :msgid";
+	final static String RESULT_UPDATE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = now() where MSGID = :msgid";
 	
-	List<DhnResult> findByResult(String result);
+	List<DhnResult> findByRESULT(String result);
 	
 	@Modifying
 	@Transactional
 	@Query(value = RESULT_UPDATE, nativeQuery = true)
 	public void updateByMsgidQuery(@Param("msgid") String msgid, @Param("code") String code, @Param("message") String message);
-	
-	
+
 }

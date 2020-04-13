@@ -10,7 +10,10 @@ import com.dhn.client.model.DhnResult;
 public interface DhnResultService {
 	DhnResult save(DhnResult dhnResult);
 	
-	List<DhnResult> findByResult(String res);
+	List<DhnResult> findByRESULT(String res);
+	
+	String SaveAll(List<DhnResult> dhnResutls);
 	
 	public void updateByMsgidQuery(String msgid, String code, String message);
+
 }

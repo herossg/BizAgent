@@ -21,7 +21,9 @@ public class DhnRequestServiceImpl implements DhnRequestService {
 	public List<DhnRequest> findAll() {
 		List<DhnRequest> dhnRequests = new ArrayList<>();
 		Pageable limit = PageRequest.of(0,  1000);
-		dhnRequestRepo.findAll(limit).forEach(e -> dhnRequests.add(e));
+		dhnRequestRepo.findAll(limit).forEach(e -> {
+			dhnRequests.add(e);
+		});
 		return dhnRequests;
 	}
 
@@ -39,6 +41,19 @@ public class DhnRequestServiceImpl implements DhnRequestService {
 	@Override
 	public void deleteByMsgidQeury(String msgid) {
 		dhnRequestRepo.deleteByMsgidQuery(msgid);
+	}
+
+	@Override
+	public List<DhnRequest> selectByReserveQuery() {
+		List<DhnRequest> dhnRequests = new ArrayList<>();
+		dhnRequestRepo.selectByReserveQuery().forEach(e -> dhnRequests.add(e));
+		return dhnRequests;
+	}
+
+	@Override
+	public void deleteByInMsgidQuery(List<String> msgid) {
+		dhnRequestRepo.deleteByInMsgidQuery(msgid);
+		
 	}
 
 }

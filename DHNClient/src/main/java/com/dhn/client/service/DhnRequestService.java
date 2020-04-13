@@ -14,5 +14,8 @@ public interface DhnRequestService {
 
 	void deleteByMsgidQeury(String msgid);
 	
+	List<DhnRequest> selectByReserveQuery();
+	
+	void deleteByInMsgidQuery(List<String> msgid);
 	
 }
