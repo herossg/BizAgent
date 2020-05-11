@@ -20,7 +20,7 @@ public class SaveResult {
 		dhnResService.save(dhnResult);
 	}
 	
-	public static void UpdateResult(String msgid, String code, String message) {
-		dhnResService.updateByMsgidQuery(msgid, code, message);
+	public static void UpdateResult(String msgid, String code, String message, String result) {
+		dhnResService.updateByMsgidQuery(msgid, code, message, result);
 	}
 }

@@ -183,13 +183,14 @@ public class SendRequest {
 									Map<String, String> res;
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
-										SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"));
-										if(!res.get("code").equals("0000")) {
-											//log.info(Thread.currentThread().getName() + " / " + "AT Response Success : " + result );
-											//e_cnt++;
-										} else {
-											//s_cnt++;
+										
+										if(dr.getONLYSMS().equals("N")) {        // request 테이블에 onlysms 필드가 "N" 이면 1차 카카오 2차 SMS 발송을 한다.
+											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "Y");
+										}else if(dr.getONLYSMS().equals("D")) {  // request 테이블에 onlysms 필드가 "D" 이면 1차 카카오 2차 SMS 발송을 한다.
+											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "D");
 										}
+										
+										 
 									} catch (JsonProcessingException e) {
 										// TODO Auto-generated catch block
 										log.info("알림톡  발송 오류 : " + e.toString());
@@ -300,13 +301,13 @@ public class SendRequest {
 									Map<String, String> res;
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
-										SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"));
-										if(!res.get("code").equals("0000")) {
-											//log.info(Thread.currentThread().getName() + " / " + "FT Response Success : " + result );
-											//e_cnt++;
-										} else {
-											//s_cnt++;
+										
+										if(dr.getONLYSMS().equals("N")) {        // request 테이블에 onlysms 필드가 "N" 이면 1차 카카오 2차 SMS 발송을 한다.
+											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "Y");
+										}else if(dr.getONLYSMS().equals("D")) {  // request 테이블에 onlysms 필드가 "D" 이면 1차 카카오 2차 SMS 발송을 한다.
+											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "D");
 										}
+										
 									} catch (JsonProcessingException e) {
 										// TODO Auto-generated catch block
 										log.info("친구톡 발송 오류 : " + e.toString());
@@ -320,6 +321,46 @@ public class SendRequest {
 									//e_cnt++;
 								}
 							});
+							
+						} else if(dr.getMESSAGETYPE().toLowerCase().equals("ph")) {
+						 
+							DhnResult DR = new DhnResult();
+							
+							DR.setAdflag(dr.getADFLAG());
+							DR.setButton1(dr.getBUTTON1());
+							DR.setButton2(dr.getBUTTON2());
+							DR.setButton3(dr.getBUTTON3());
+							DR.setButton4(dr.getBUTTON4());
+							DR.setButton5(dr.getBUTTON5());
+							DR.setImagelink(dr.getIMAGELINK());
+							DR.setImageurl(dr.getIMAGEURL());
+							DR.setMessagetype(dr.getMESSAGETYPE());
+							DR.setMsg(dr.getMSG());
+							DR.setMsgsms(dr.getMSGSMS());
+							DR.setMsgid(dr.getMSGID());
+							DR.setOnlysms(dr.getONLYSMS());
+							DR.setPcom(dr.getPCOM());
+							DR.setPinvoice(dr.getPINVOICE());
+							DR.setPhn(dr.getPHN());
+							DR.setProfile(dr.getPROFILE());
+							DR.setRegdt(dr.getREGDT());
+							DR.setRemark1(dr.getREMARK1());
+							DR.setRemark2(dr.getREMARK2());
+							DR.setRemark3(dr.getREMARK3());
+							DR.setRemark4(dr.getREMARK4());
+							DR.setRemark5(dr.getREMARK5());
+							DR.setReservedt(dr.getRESERVEDT());
+							DR.setResult("D");
+							DR.setScode(dr.getSCODE());
+							DR.setSmskind(dr.getSMSKIND());
+							DR.setSmslmstit(dr.getSMSLMSTIT());
+							DR.setSmssender(dr.getSMSSENDER());
+							DR.setSync("N");
+							DR.setTmplid(dr.getTMPLID());
+							DR.setUserid(dr.getUserid());
+							DR.setWide(dr.getWIDE());
+							
+							SaveResult.Save(DR);
 							
 						}
 						

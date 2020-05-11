@@ -28,8 +28,8 @@ public class DhnResultServiceImpl implements DhnResultService{
 	}
 
 	@Override
-	public void updateByMsgidQuery(String msgid, String code, String message) {
-		dhnResultRepo.updateByMsgidQuery(msgid, code, message);
+	public void updateByMsgidQuery(String msgid, String code, String message, String result) {
+		dhnResultRepo.updateByMsgidQuery(msgid, code, message, result);
 		
 	}
 

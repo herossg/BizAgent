@@ -13,7 +13,7 @@ public interface DhnResultService {
 	
 	DhnResult selectByMsgidQuery(String msgid);
 	
-	void updateByMsgidQuery(String msgid, String code, String message);
+	void updateByMsgidQuery(String msgid, String code, String message, String result);
 
 	List<DhnResult> selectByUseridSendgroupQuery(String userid, String send_group);
 	

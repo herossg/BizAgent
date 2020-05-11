@@ -755,6 +755,7 @@ public class DhnController {
 				urs.dhnResService = dhnResService;
 				urs.clientIp = e.getIp();
 				urs.userId = e.getUserid();
+				urs.port = e.getPort();
 				
 				Thread t = new Thread(urs);
 				t.setName("UserResultSend_" + urs.userId);
