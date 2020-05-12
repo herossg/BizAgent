@@ -1,9 +1,7 @@
 package com.dhn.agent.controller;
 
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,25 +103,25 @@ public class DhnController {
 		return new ResponseEntity<JsonResult>(json, HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/resall")
-	public ResponseEntity<List<DhnResult>> save(@RequestHeader(name="userid", required=true) String userid) {
-		//log.info("Result 호출 됨");
-		//synchronized (sync1) {
-			//log.info("Result 시작 됨");
-			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
-			Date time = new Date();
-			String send_group = format1.format(time);
-			dhnResService.updateSendGroupByUseridSyncQuery(send_group, userid);
-			List<DhnResult> dhnResult = dhnResService.selectByUseridSendgroupQuery(userid, send_group);
-			dhnResService.updateByMsgidSyncQuery(userid, send_group);
-			
-			if(dhnResult.size()> 0)
-				log.info("Result ( " + send_group + " ) : " + userid + " - " + dhnResult.size() + " 건 전송");
-			
-			return new ResponseEntity<List<DhnResult>>(dhnResult, HttpStatus.OK);
-		//}
-	}
-	
+//	@PostMapping(value="/resall")
+//	public ResponseEntity<List<DhnResult>> save(@RequestHeader(name="userid", required=true) String userid) {
+//		//log.info("Result 호출 됨");
+//		//synchronized (sync1) {
+//			//log.info("Result 시작 됨");
+//			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
+//			Date time = new Date();
+//			String send_group = format1.format(time);
+//			dhnResService.updateSendGroupByUseridSyncQuery(send_group, userid);
+//			List<DhnResult> dhnResult = dhnResService.selectByUseridSendgroupQuery(userid, send_group);
+//			dhnResService.updateByMsgidSyncQuery(userid, send_group);
+//			
+//			if(dhnResult.size()> 0)
+//				log.info("Result ( " + send_group + " ) : " + userid + " - " + dhnResult.size() + " 건 전송");
+//			
+//			return new ResponseEntity<List<DhnResult>>(dhnResult, HttpStatus.OK);
+//		//}
+//	}
+//	
 	@GetMapping(value="/", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public String root() {
 		return CENTER_SERVER;

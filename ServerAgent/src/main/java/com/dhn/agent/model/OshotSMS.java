@@ -68,6 +68,118 @@ public class OshotSMS  implements Serializable{
 	@Column(name = "cb_msg_Id", nullable = false, length = 20)
 	private String cb_msg_Id;
 
+	public Integer getMsgID() {
+		return MsgID;
+	}
+
+	public void setMsgID(Integer msgID) {
+		MsgID = msgID;
+	}
+
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public LocalDateTime getReservedt() {
+		return reservedt;
+	}
+
+	public void setReservedt(LocalDateTime reservedt) {
+		this.reservedt = reservedt;
+	}
+
+	public LocalDateTime getTimeoutdt() {
+		return timeoutdt;
+	}
+
+	public void setTimeoutdt(LocalDateTime timeoutdt) {
+		this.timeoutdt = timeoutdt;
+	}
+
+	public LocalDateTime getSenddt() {
+		return senddt;
+	}
+
+	public void setSenddt(LocalDateTime senddt) {
+		this.senddt = senddt;
+	}
+
+	public int getSendresult() {
+		return sendresult;
+	}
+
+	public void setSendresult(int sendresult) {
+		this.sendresult = sendresult;
+	}
+
+	public String getTelecom() {
+		return telecom;
+	}
+
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
+	}
+
+	public LocalDateTime getInsertdt() {
+		return insertdt;
+	}
+
+	public void setInsertdt(LocalDateTime insertdt) {
+		this.insertdt = insertdt;
+	}
+
+	public int getMst_id() {
+		return mst_id;
+	}
+
+	public void setMst_id(int mst_id) {
+		this.mst_id = mst_id;
+	}
+
+	public String getProc_flag() {
+		return proc_flag;
+	}
+
+	public void setProc_flag(String proc_flag) {
+		this.proc_flag = proc_flag;
+	}
+
+	public String getCb_msg_Id() {
+		return cb_msg_Id;
+	}
+
+	public void setCb_msg_Id(String cb_msg_Id) {
+		this.cb_msg_Id = cb_msg_Id;
+	}
+
 	
 }
 

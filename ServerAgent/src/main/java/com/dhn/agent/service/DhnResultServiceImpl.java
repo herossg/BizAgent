@@ -46,8 +46,8 @@ public class DhnResultServiceImpl implements DhnResultService{
 	}
 
 	@Override
-	public void updateSendGroupByUseridSyncQuery(String send_group, String userid) {
-		dhnResultRepo.updateSendGroupByUseridSyncQuery(send_group, userid);
+	public void updateSendGroupByUseridSyncQuery(String send_group) {
+		dhnResultRepo.updateSendGroupByUseridSyncQuery(send_group);
 		dhnResultRepo.flush();
 	}
 
@@ -60,6 +60,13 @@ public class DhnResultServiceImpl implements DhnResultService{
 	public List<DhnResult> selectByUserid(String userid) {
 		List<DhnResult> dhnResults = new ArrayList<>();
 		dhnResultRepo.selectByUserid(userid).forEach(e -> dhnResults.add(e));
+		return dhnResults;
+	}
+	
+	@Override
+	public List<DhnResult> selectBySendgroupQuery(String sendgroup) {
+		List<DhnResult> dhnResults = new ArrayList<>();
+		dhnResultRepo.selectBySendgroupQuery(sendgroup).forEach(e -> dhnResults.add(e));
 		return dhnResults;
 	}
 }

@@ -81,6 +81,158 @@ public class OshotMMS implements Serializable {
 	@Column(name = "cb_msg_Id", nullable = false, length = 20)
 	private String cb_msg_Id;
 
+	public Integer getMsgID() {
+		return MsgID;
+	}
+
+	public void setMsgID(Integer msgID) {
+		MsgID = msgID;
+	}
+
+	public String getMsggroupid() {
+		return msggroupid;
+	}
+
+	public void setMsggroupid(String msggroupid) {
+		this.msggroupid = msggroupid;
+	}
+
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public LocalDateTime getReservedt() {
+		return reservedt;
+	}
+
+	public void setReservedt(LocalDateTime reservedt) {
+		this.reservedt = reservedt;
+	}
+
+	public LocalDateTime getTimeoutdt() {
+		return timeoutdt;
+	}
+
+	public void setTimeoutdt(LocalDateTime timeoutdt) {
+		this.timeoutdt = timeoutdt;
+	}
+
+	public LocalDateTime getSenddt() {
+		return senddt;
+	}
+
+	public void setSenddt(LocalDateTime senddt) {
+		this.senddt = senddt;
+	}
+
+	public int getSendresult() {
+		return sendresult;
+	}
+
+	public void setSendresult(int sendresult) {
+		this.sendresult = sendresult;
+	}
+
+	public String getTelecom() {
+		return telecom;
+	}
+
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
+	}
+
+	public String getFile_path1() {
+		return file_path1;
+	}
+
+	public void setFile_path1(String file_path1) {
+		this.file_path1 = file_path1;
+	}
+
+	public String getFile_path2() {
+		return file_path2;
+	}
+
+	public void setFile_path2(String file_path2) {
+		this.file_path2 = file_path2;
+	}
+
+	public String getFile_path3() {
+		return file_path3;
+	}
+
+	public void setFile_path3(String file_path3) {
+		this.file_path3 = file_path3;
+	}
+
+	public String getFile_path4() {
+		return file_path4;
+	}
+
+	public void setFile_path4(String file_path4) {
+		this.file_path4 = file_path4;
+	}
+
+	public LocalDateTime getInsertdt() {
+		return insertdt;
+	}
+
+	public void setInsertdt(LocalDateTime insertdt) {
+		this.insertdt = insertdt;
+	}
+
+	public int getMst_id() {
+		return mst_id;
+	}
+
+	public void setMst_id(int mst_id) {
+		this.mst_id = mst_id;
+	}
+
+	public String getProc_flag() {
+		return proc_flag;
+	}
+
+	public void setProc_flag(String proc_flag) {
+		this.proc_flag = proc_flag;
+	}
+
+	public String getCb_msg_Id() {
+		return cb_msg_Id;
+	}
+
+	public void setCb_msg_Id(String cb_msg_Id) {
+		this.cb_msg_Id = cb_msg_Id;
+	}
+
 	
 }
 /*

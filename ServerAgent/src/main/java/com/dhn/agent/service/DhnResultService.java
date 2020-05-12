@@ -21,8 +21,10 @@ public interface DhnResultService {
 	
 	void updateByMsgidSyncQuery(String userid, String send_group);
 	
-	void updateSendGroupByUseridSyncQuery(String send_group,String userid);
+	void updateSendGroupByUseridSyncQuery(String send_group);
 
 	List<DhnResult> selectByUserid(String userid);
+	
+	List<DhnResult> selectBySendgroupQuery(String sendgroup);
 
 }
