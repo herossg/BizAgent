@@ -17,6 +17,7 @@ import com.dhn.agent.model.OshotMMS;
 import com.dhn.agent.model.OshotSMS;
 import com.dhn.agent.service.DhnResultService;
 import com.dhn.agent.service.OshotMMSService;
+import com.dhn.agent.service.OshotSMSService;
 
 @Component
 public class SendMMS {
@@ -26,7 +27,10 @@ public class SendMMS {
 	
 	@Autowired
 	private OshotMMSService oshotMMSService;
-	
+
+	@Autowired
+	private OshotSMSService oshotSMSService;
+
 	public static boolean isRunning = false;
 	private static final Logger log = LoggerFactory.getLogger(SendMMS.class);
 	
@@ -57,38 +61,90 @@ public class SendMMS {
 				
 				for(int i=0; i<dhnResult.size(); i++) {
 					DhnResult dr = (DhnResult)dhnResult.get(i);
-					log.info("DHN Result msg_id = " + dr.getMsgid());
+					int strlen = byteCheck(dr.getMsg());
+					log.info("DHN Result msg_id = " + dr.getMsgid() + " / 메시지 길이 : " + dr.getMsg().getBytes().length + " / " + strlen);
 					
-					OshotMMS mms = new OshotMMS();
+					if(strlen > 90) {
 					
-					mms.setMsggroupid(dr.getRemark4());
-					mms.setSender(dr.getSmssender());
-					mms.setReceiver(dr.getPhn());
-					mms.setSubject(dr.getSmslmstit());
-					mms.setMsg(dr.getMsg());
-					
-					if(!dr.getReservedt().equals("00000000000000")) {
-						mms.setReservedt(LocalDateTime.parse(dr.getReservedt(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+						OshotMMS mms = new OshotMMS();
+						
+						mms.setMsggroupid(dr.getRemark4());
+						mms.setSender(dr.getSmssender());
+						mms.setReceiver(dr.getPhn());
+						mms.setSubject(dr.getSmslmstit());
+						mms.setMsg(dr.getMsg());
+						
+						if(!dr.getReservedt().equals("00000000000000")) {
+							mms.setReservedt(LocalDateTime.parse(dr.getReservedt(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+						}
+						
+						mms.setSendresult(0);
+						
+						mms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						mms.setCb_msg_Id(dr.getMsgid());
+						mms.setProc_flag("N");
+						
+						
+						oshotMMSs.add(mms);
+					} else {
+						OshotSMS sms = new OshotSMS();
+						
+						sms.setSender(dr.getSmssender());
+						sms.setReceiver(dr.getPhn());
+						sms.setMsg(dr.getMsg());
+						
+						if(!dr.getReservedt().equals("00000000000000")) {
+							sms.setReservedt(LocalDateTime.parse(dr.getReservedt(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
+						}
+						
+						sms.setSendresult(0);
+						sms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						sms.setCb_msg_Id(dr.getMsgid());
+						sms.setProc_flag("N");
+						
+						oshotSMSs.add(sms);
 					}
-					
-					mms.setSendresult(0);
-					
-					mms.setMst_id(Integer.parseInt(dr.getRemark4()));
-					mms.setCb_msg_Id(dr.getMsgid());
-					mms.setProc_flag("N");
-					
-					
-					oshotMMSs.add(mms);
 				}
 				
 				if(oshotMMSs.size() > 0) {
 					oshotMMSService.save(oshotMMSs);
 				}
-				
+
+				if(oshotSMSs.size() > 0) {
+					oshotSMSService.save(oshotSMSs);
+				}
+
 			}catch(Exception ex) {
 				log.error("MMS 자료 생성중 오류 발생 : " + ex.toString());
 			}
 		}
 		isRunning = false;
 	}
+
+   public int byteCheck(String txt) {
+        if (txt.isEmpty()) { 
+        	return 0; 
+        }
+ 
+        // 바이트 체크 (영문 1, 한글 2, 특문 1)
+        int en = 0;
+        int ko = 0;
+        int etc = 0;
+ 
+        char[] txtChar = txt.toCharArray();
+        for (int j = 0; j < txtChar.length; j++) {
+            if (txtChar[j] >= 'A' && txtChar[j] <= 'z') {
+                en++;
+            } else if (txtChar[j] >= '\uAC00' && txtChar[j] <= '\uD7A3') {
+	                ko+=2;
+	            } else {
+	                etc++;
+	            }
+	        }
+	 
+	        int txtByte = en + ko + etc;
+	        return txtByte;
+	        
+  }
+  
 }
