@@ -16,6 +16,8 @@ public interface DhnRequestService {
 	
 	List<DhnRequest> selectByReserveQuery();
 	
+	List<DhnRequest> selectByReserveQuery_oracle();
+	
 	void deleteByInMsgidQuery(List<String> msgid);
 	
 }

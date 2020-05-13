@@ -29,43 +29,43 @@ public class DhnResult implements Serializable{
 	@Column(name = "AD_FLAG", length = 1)
 	private String ADFLAG; //` varchar(1) null default null,
 
-	@Column(name = "BUTTON1", columnDefinition = "LONGTEXT")
+	@Column(name = "BUTTON1")
 	private String BUTTON1; //` longtext null default null,
 
-	@Column(name = "BUTTON2", columnDefinition = "LONGTEXT")
+	@Column(name = "BUTTON2")
 	private String BUTTON2; //` longtext null default null,
 
-	@Column(name = "BUTTON3", columnDefinition = "LONGTEXT")
+	@Column(name = "BUTTON3")
 	private String BUTTON3; //` longtext null default null,
 
-	@Column(name = "BUTTON4", columnDefinition = "LONGTEXT")
+	@Column(name = "BUTTON4")
 	private String BUTTON4; //` longtext null default null,
 
-	@Column(name = "BUTTON5", columnDefinition = "LONGTEXT")
+	@Column(name = "BUTTON5")
 	private String BUTTON5; //` longtext null default null,
 
 	@Column(name = "CODE", length = 4)
 	private String CODE; //` varchar(4) null default null,
 
-	@Column(name = "IMAGE_LINK", columnDefinition = "LONGTEXT")
+	@Column(name = "IMAGE_LINK")
 	private String IMAGELINK; //` longtext null default null,
 
-	@Column(name = "IMAGE_URL", columnDefinition = "LONGTEXT")
+	@Column(name = "IMAGE_URL")
 	private String IMAGEURL; //` longtext null default null,
 
 	@Column(name = "KIND", length = 1)
 	private String KIND; //` varchar(1) null default null,
 
-	@Column(name = "MESSAGE", columnDefinition = "LONGTEXT")
+	@Column(name = "MESSAGE")
 	private String MESSAGE; //` longtext null default null,
 
 	@Column(name = "MESSAGE_TYPE", length = 2)
 	private String MESSAGETYPE; //` varchar(2) null default null,
 
-	@Column(name = "MSG", nullable = false, columnDefinition = "LONGTEXT")
+	@Column(name = "MSG", nullable = false)
 	private String MSG; //` longtext not null,
 
-	@Column(name = "MSG_SMS", columnDefinition = "LONGTEXT")
+	@Column(name = "MSG_SMS")
 	private String MSGSMS; //` longtext null default null,
 
 	@Column(name = "ONLY_SMS", length = 1)

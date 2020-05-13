@@ -45,8 +45,13 @@ public class SendRequest {
 			totalcnt =0;
 			try {
 				isRunning = true;
-				List<DhnRequest> dhnReqs = dhnReqService.selectByReserveQuery();
-				
+				List<DhnRequest> dhnReqs = null;
+				if(env.getProperty("userid").toUpperCase().equals("MYSQL")) {
+					dhnReqs = dhnReqService.selectByReserveQuery();
+				} else if(env.getProperty("userid").toUpperCase().equals("ORACLE")) {
+					dhnReqs = dhnReqService.selectByReserveQuery_oracle();
+				}
+				log.info("불러온 자료 : " + dhnReqs.size());
 				if(dhnReqs != null && dhnReqs.size() > 0) {
 					log.info(starttime + " - 시작");
 					final String URL =  env.getProperty("server") + "req";
