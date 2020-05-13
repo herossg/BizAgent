@@ -28,4 +28,16 @@ public class OshotMMSServiceImpl implements OshotMMSService{
 		return null;
 	}
 
+	@Override
+	public List<OshotMMS> selectLog(String table) {
+		List<OshotMMS> oshotMMSLogs = new ArrayList<>();
+		oshotMMSRepo.selectLog(table).forEach(e -> oshotMMSLogs.add(e));
+		return oshotMMSLogs;
+	}
+
+	@Override
+	public void updateByMsgids(String table, List<Integer> msgids) {
+		oshotMMSRepo.updateByMsgids(table, msgids);
+	}
+
 }
