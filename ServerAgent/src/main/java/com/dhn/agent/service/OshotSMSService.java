@@ -8,4 +8,8 @@ public interface OshotSMSService {
 	List<OshotSMS> findAll();
 	
 	String save(List<OshotSMS> oshotSMS);
+	
+	public List<OshotSMS> selectLog(String table);
+	
+	public void updateByMsgids(String table, List<Integer> msgids);
 }
