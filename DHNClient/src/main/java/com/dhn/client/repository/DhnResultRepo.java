@@ -15,12 +15,20 @@ import com.dhn.client.model.DhnResult;
 public interface DhnResultRepo extends JpaRepository<DhnResult, String> {
 	
 	final static String RESULT_UPDATE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = now() where MSGID = :msgid";
-	
+
+	final static String RESULT_UPDATE_ORACLE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = sysdate where MSGID = :msgid";
+
 	List<DhnResult> findByRESULT(String result);
 	
 	@Modifying
 	@Transactional
 	@Query(value = RESULT_UPDATE, nativeQuery = true)
 	public void updateByMsgidQuery(@Param("msgid") String msgid, @Param("code") String code, @Param("message") String message);
+	
+	@Modifying
+	@Transactional
+	@Query(value = RESULT_UPDATE, nativeQuery = true)
+	public void updateByMsgidQuery_oracle(@Param("msgid") String msgid, @Param("code") String code, @Param("message") String message);
+
 
 }

@@ -20,10 +20,10 @@ public class Schedulejob {
 		SendRequest.run();
 	}
 	
-	//Log log = new Log
-	@Scheduled(cron = "*/2 * * * * *")
-	public void getResult() {
-		//log.info("...");
-		//GetResult.run();
-	}
+//	//Log log = new Log
+//	@Scheduled(cron = "*/2 * * * * *")
+//	public void getResult() {
+//		//log.info("...");
+//		//GetResult.run();
+//	}
 }

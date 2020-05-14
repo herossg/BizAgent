@@ -16,4 +16,5 @@ public interface DhnResultService {
 	
 	public void updateByMsgidQuery(String msgid, String code, String message);
 
+	public void updateByMsgidQuery_oracle(String msgid, String code, String message);
 }

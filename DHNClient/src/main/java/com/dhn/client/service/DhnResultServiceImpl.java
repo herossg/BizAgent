@@ -40,6 +40,12 @@ public class DhnResultServiceImpl implements DhnResultService{
 	}
 
 	@Override
+	public void updateByMsgidQuery_oracle(String msgid, String code, String message) {
+		dhnResultRepo.updateByMsgidQuery_oracle(msgid, code, message);
+		
+	}
+	
+	@Override
 	public String SaveAll(List<DhnResult> dhnResults) {
 		String res = "저장 완료 - " + dhnResults.size() + " 건 ";
 		try {
