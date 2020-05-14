@@ -182,7 +182,7 @@ public class DhnRequest implements Serializable {
 	}
 
 	public String getREGDT() {
-		return REGDT;
+		return REGDT.substring(0, 19);
 	}
 
 	public String getREMARK1() {

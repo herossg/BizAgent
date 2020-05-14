@@ -46,9 +46,9 @@ public class SendRequest {
 			try {
 				isRunning = true;
 				List<DhnRequest> dhnReqs = null;
-				if(env.getProperty("userid").toUpperCase().equals("MYSQL")) {
+				if(env.getProperty("dbms").toUpperCase().equals("MYSQL")) {
 					dhnReqs = dhnReqService.selectByReserveQuery();
-				} else if(env.getProperty("userid").toUpperCase().equals("ORACLE")) {
+				} else if(env.getProperty("dbms").toUpperCase().equals("ORACLE")) {
 					dhnReqs = dhnReqService.selectByReserveQuery_oracle();
 				}
 				log.info("불러온 자료 : " + dhnReqs.size());
@@ -64,6 +64,8 @@ public class SendRequest {
 					ObjectMapper mapper = new ObjectMapper();
 
 					String jsonStr = mapper.writeValueAsString(dhnReqs);
+					
+					log.info("Req Str : " + jsonStr);
 					
 					HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);						
 					ResponseEntity<List> response = restTemp.postForEntity(URL, entity, List.class ); 
