@@ -21,7 +21,10 @@ public class Schedulejob {
 	
 	@Autowired
 	ResultSMSLog resultSMSLog;
-	
+
+	@Autowired
+	ResultMMSLog resultMMSLog;
+
 	private static final Logger log = LoggerFactory.getLogger(Schedulejob.class);
 
 	//Log log = new Log
@@ -48,5 +51,12 @@ public class Schedulejob {
 		resultSMSLog.run();
 	}
 
+	//Log log = new Log
+	@Scheduled(fixedRate = 5000)
+	@Async
+	public void ResultMMS() {
+		//log.info("SMS Log 처리 실행 됨.");
+		resultMMSLog.run();
+	}
 	
 }

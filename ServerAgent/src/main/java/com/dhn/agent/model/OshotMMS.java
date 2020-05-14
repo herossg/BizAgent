@@ -30,46 +30,46 @@ public class OshotMMS implements Serializable {
 	@Column(name = "msggroupid", nullable = false, length = 20)
 	private String msggroupid;
 	
-	@Column(name = "Sender", nullable = false, length = 15)
+	@Column(name = "sender", nullable = false, length = 15)
 	private String sender;
 	
-	@Column(name = "Receiver", nullable = false, length = 15)
+	@Column(name = "receiver", nullable = false, length = 15)
 	private String receiver;
 	
-	@Column(name = "Subject", nullable = true, length = 120)
+	@Column(name = "subject", nullable = true, length = 120)
 	private String subject;
 	
-	@Column(name = "Msg", nullable = false, length = 4000)
+	@Column(name = "msg", nullable = false, length = 4000)
 	private String msg;
 	
-	@Column(name = "ReserveDT", nullable = true, length = 20)
+	@Column(name = "reservedt", nullable = true, length = 20)
 	private LocalDateTime reservedt;
 	
-	@Column(name = "TimeoutDT", nullable = true, length = 20)
+	@Column(name = "timeoutdt", nullable = true, length = 20)
 	private LocalDateTime timeoutdt;
 	
-	@Column(name = "SendDT", nullable = true, length = 20)
+	@Column(name = "senddt", nullable = true, length = 20)
 	private LocalDateTime senddt;
 	
-	@Column(name = "SendResult", nullable = false, length = 20)
+	@Column(name = "sendresult", nullable = false, length = 20)
 	private int sendresult;
 	
-	@Column(name = "Telecom", nullable = true, length = 7)
+	@Column(name = "telecom", nullable = true, length = 7)
 	private String telecom;
 	
-	@Column(name = "File_Path1", nullable = true, length = 128)
+	@Column(name = "file_path1", nullable = true, length = 128)
 	private String file_path1;
 
-	@Column(name = "File_Path2", nullable = true, length = 128)
+	@Column(name = "file_path2", nullable = true, length = 128)
 	private String file_path2;
 
-	@Column(name = "File_Path3", nullable = true, length = 128)
+	@Column(name = "file_path3", nullable = true, length = 128)
 	private String file_path3;
 	
-	@Column(name = "File_Path4", nullable = true, length = 128)
+	@Column(name = "file_path4", nullable = true, length = 128)
 	private String file_path4;
 
-	@Column(name = "InsertDT", nullable = false, length = 20)
+	@Column(name = "insertdt", nullable = false, length = 20)
 	private LocalDateTime insertdt;
 
 	@Column(name = "mst_id", nullable = true)

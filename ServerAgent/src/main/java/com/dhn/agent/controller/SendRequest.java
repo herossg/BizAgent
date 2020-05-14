@@ -184,9 +184,11 @@ public class SendRequest {
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
 										
-										if(dr.getONLYSMS().equals("N")) {        // request 테이블에 onlysms 필드가 "N" 이면 1차 카카오 2차 SMS 발송을 한다.
+										if(dr.getONLYSMS().equals("N") || res.get("code").equals("0000")) {      
+											// request 테이블에 onlysms 필드가 "N" 이거나 결과 code 값이 "0000"(카카오 발송 성공) 이면 카카오 발송만 한다.
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "Y");
-										}else if(dr.getONLYSMS().equals("D")) {  // request 테이블에 onlysms 필드가 "D" 이면 1차 카카오 2차 SMS 발송을 한다.
+										}else if(dr.getONLYSMS().equals("D") && !res.get("code").equals("0000")) {  
+											// request 테이블에 onlysms 필드가 "D" 이고 결과 code 값이 "0000" 이 아니면 2차 SMS을 위해 dhn_result 테이블 수정
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "D");
 										}
 										
@@ -302,9 +304,11 @@ public class SendRequest {
 									try {
 										res = mapper.readValue(result.getBody(),  new TypeReference<Map<String, String>>(){});
 										
-										if(dr.getONLYSMS().equals("N")) {        // request 테이블에 onlysms 필드가 "N" 이면 1차 카카오 2차 SMS 발송을 한다.
+										if(dr.getONLYSMS().equals("N") || res.get("code").equals("0000")) {      
+											// request 테이블에 onlysms 필드가 "N" 이거나 결과 code 값이 "0000"(카카오 발송 성공) 이면 카카오 발송만 한다.
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "Y");
-										}else if(dr.getONLYSMS().equals("D")) {  // request 테이블에 onlysms 필드가 "D" 이면 1차 카카오 2차 SMS 발송을 한다.
+										}else if(dr.getONLYSMS().equals("D") && !res.get("code").equals("0000")) {  
+											// request 테이블에 onlysms 필드가 "D" 이고 결과 code 값이 "0000" 이 아니면 2차 SMS을 위해 dhn_result 테이블 수정
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "D");
 										}
 										
