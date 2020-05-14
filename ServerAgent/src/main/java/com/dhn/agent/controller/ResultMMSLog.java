@@ -10,21 +10,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dhn.agent.model.OshotSMS;
+import com.dhn.agent.model.OshotMMS;
 import com.dhn.agent.service.DhnResultService;
-import com.dhn.agent.service.OshotSMSService;
+import com.dhn.agent.service.OshotMMSService;
 
 @Component
-public class ResultSMSLog {
+public class ResultMMSLog {
 	
 	@Autowired
 	private DhnResultService dhnResultService;
 	
 	@Autowired
-	private OshotSMSService oshotSMSService;
+	private OshotMMSService oshotMMSService;
 
 	public static boolean isRunning = false;
-	private static final Logger log = LoggerFactory.getLogger(ResultSMSLog.class);
+	private static final Logger log = LoggerFactory.getLogger(ResultMMSLog.class);
 	 
 	public void run() {
 		if(!isRunning) {
@@ -33,25 +33,26 @@ public class ResultSMSLog {
 			Date month = new Date();
 			SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMM");
 			String monthStr = transFormat.format(month);
-			String table = "OShotSMS_" + monthStr;
+			String table = "OShotMMS_" + monthStr;
 			try {
 				
-				List<OshotSMS> smslog = oshotSMSService.selectLog(table);
+				List<OshotMMS> mmslog = oshotMMSService.selectLog(table);
 
 				List<Integer> msgids = new ArrayList<>();
 				
-				for(int i=0; i<smslog.size(); i++) {
-					OshotSMS sms = (OshotSMS)smslog.get(i);
+				for(int i=0; i<mmslog.size(); i++) {
+					OshotMMS mms = (OshotMMS)mmslog.get(i);
 
-					if(sms.getSendresult() == 6) {
-						SaveResult.UpdateResult(sms.getCb_msg_Id(), "0000", "", "Y");
+					if(mms.getSendresult() == 6) {
+						SaveResult.UpdateResult(mms.getCb_msg_Id(), "0000", "", "Y");
 					} else {
-						SaveResult.UpdateResult(sms.getCb_msg_Id(), "000" + sms.getSendresult(), "SMS Error", "Y");
+						SaveResult.UpdateResult(mms.getCb_msg_Id(), "000" + mms.getSendresult(), "SMS Error", "Y");
 					}
-					msgids.add(sms.getMsgID());
+					
+					msgids.add(mms.getMsgID());
 				}
 				
-				oshotSMSService.updateByMsgids(table, msgids);
+				oshotMMSService.updateByMsgids(table, msgids);
 
 			}catch(Exception ex) {
 				log.error("SMS 자료 생성중 오류 발생 : " + ex.toString());
