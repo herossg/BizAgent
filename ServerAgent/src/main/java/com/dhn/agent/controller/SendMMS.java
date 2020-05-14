@@ -64,13 +64,20 @@ public class SendMMS {
 					int strlen = byteCheck(dr.getMsg());
 					log.info("DHN Result msg_id = " + dr.getMsgid() + " / 메시지 길이 : " + dr.getMsg().getBytes().length + " / " + strlen);
 					
+					String phn = "";
+					if(dr.getPhn().substring(0, 2).equals("82")) {
+						phn = "0" + dr.getPhn().substring(2);
+					} else {
+						phn = dr.getPhn();
+					}
+					
 					if(strlen > 90) {
 					
 						OshotMMS mms = new OshotMMS();
 						
 						mms.setMsggroupid(dr.getRemark4());
 						mms.setSender(dr.getSmssender());
-						mms.setReceiver(dr.getPhn());
+						mms.setReceiver(phn);
 						mms.setSubject(dr.getSmslmstit());
 						mms.setMsg(dr.getMsg());
 						
@@ -90,7 +97,7 @@ public class SendMMS {
 						OshotSMS sms = new OshotSMS();
 						
 						sms.setSender(dr.getSmssender());
-						sms.setReceiver(dr.getPhn());
+						sms.setReceiver(phn);
 						sms.setMsg(dr.getMsg());
 						
 						if(!dr.getReservedt().equals("00000000000000")) {
