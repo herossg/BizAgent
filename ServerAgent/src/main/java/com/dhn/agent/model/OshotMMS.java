@@ -27,7 +27,7 @@ public class OshotMMS implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer MsgID;
 	
-	@Column(name = "MsgGroupID", nullable = false, length = 20)
+	@Column(name = "msggroupid", nullable = false, length = 20)
 	private String msggroupid;
 	
 	@Column(name = "Sender", nullable = false, length = 15)
