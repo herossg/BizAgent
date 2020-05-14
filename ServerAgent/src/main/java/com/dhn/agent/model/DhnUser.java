@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="DHN_CLIENT_LIST")
+@Table(name="dhn_client_list")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class DhnUser implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "User_id")
 	private String userid;
 	
 	@Column(name = "ip")

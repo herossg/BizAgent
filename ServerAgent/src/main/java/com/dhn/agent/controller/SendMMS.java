@@ -57,7 +57,7 @@ public class SendMMS {
 				List<OshotMMS> oshotMMSs = new ArrayList<>();
 				List<OshotSMS> oshotSMSs = new ArrayList<>();
 				
-				log.info("sendgroup = " + sendgroup + " : " + dhnResult.size() + " : " + oshotMMSService.toString());
+				//log.info("sendgroup = " + sendgroup + " : " + dhnResult.size() + " : " + oshotMMSService.toString());
 				
 				for(int i=0; i<dhnResult.size(); i++) {
 					DhnResult dr = (DhnResult)dhnResult.get(i);
