@@ -63,15 +63,8 @@ public class UserResultSend implements Runnable {
 					log.info("Client ID : " + userId + " -> " + dhnResults.size() + " 건 전송 성공");
 					errcnt = 1;
 				} catch(Exception ex) {
-					log.info("Client : " + URL + " ( Error CNT : " + errcnt +  " ) -> " + ex.getMessage());
-					errcnt++;
-					try {
-						Thread.sleep(60000 * errcnt);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						//e1.printStackTrace();
-						Thread.currentThread().interrupt();
-					}
+					log.info("Client ID : " + userId + " -> 전송실패 Thread 종료.");
+					Thread.currentThread().interrupt();
 				}
 				dhnResults.clear();
 			}

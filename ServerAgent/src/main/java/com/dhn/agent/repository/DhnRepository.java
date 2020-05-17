@@ -13,15 +13,15 @@ import com.dhn.agent.model.DhnRequest;
 
 @Repository
 public interface DhnRepository extends JpaRepository<DhnRequest, Integer> {
-	final static String DEL_MSGID = "delete from dhn_request where msgid = :msgid";
+	final static String DEL_MSGID = "delete from DHN_REQUEST where msgid = :msgid";
 	
-	final static String SEND_GROUP = "update dhn_request set send_group = :sendgroup where send_group is null limit 1000";
+	final static String SEND_GROUP = "update DHN_REQUEST set send_group = :sendgroup where send_group is null limit 1000";
 
-	final static String MSGID_SEND_GROUP = "update dhn_request set send_group = :sendgroup where msgid in :msgids";
+	final static String MSGID_SEND_GROUP = "update DHN_REQUEST set send_group = :sendgroup where msgid in :msgids";
 
-	final static String SELECT_SEND_GROUP = "select * from dhn_request where send_group = :sendgroup";
+	final static String SELECT_SEND_GROUP = "select * from DHN_REQUEST where send_group = :sendgroup";
 
-	final static String SEL_SEND_GROUP = "select * from dhn_request where send_group is null limit 1000";
+	final static String SEL_SEND_GROUP = "select * from DHN_REQUEST where send_group is null limit 1000";
 	
 	@Modifying
 	@Transactional

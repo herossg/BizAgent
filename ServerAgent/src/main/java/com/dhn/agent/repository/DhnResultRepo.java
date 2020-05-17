@@ -13,13 +13,13 @@ import com.dhn.agent.model.DhnResult;
 
 @Repository
 public interface DhnResultRepo extends JpaRepository<DhnResult, String> {
-	final static String SELECT_MSGID = "select * from dhn_result where msgid = :msgid and result='Y'";
-	final static String SELECT_USERID_SG = "select * from dhn_result where userid = :userid and send_group = :send_group";
-	final static String SELECT_USERID = "select * from dhn_result where userid = :userid and sync='N' and result = 'Y' limit 1000";
-	final static String RESULT_UPDATE = "update dhn_result set code = :code , message = :message, result= :result, res_dt = now() where msgid = :msgid";
-	final static String RESULT_SYNC_UPDATE = "update dhn_result set sync='Y' where userid = :userid and send_group = :send_group";
-	final static String RESULT_SET_UPDATE = "update dhn_result set send_group = :send_group where result='D' and sync='N' and send_group is null limit 1000";
-	final static String SELECT_BY_SG = "select * from dhn_result where result = 'D' and sync='N' and send_group = :send_group";
+	final static String SELECT_MSGID = "select * from DHN_RESULT where msgid = :msgid and result='Y'";
+	final static String SELECT_USERID_SG = "select * from DHN_RESULT where userid = :userid and send_group = :send_group";
+	final static String SELECT_USERID = "select * from DHN_RESULT where userid = :userid and sync='N' and result = 'Y' limit 1000";
+	final static String RESULT_UPDATE = "update DHN_RESULT set code = :code , message = :message, result= :result, res_dt = now() where msgid = :msgid";
+	final static String RESULT_SYNC_UPDATE = "update DHN_RESULT set sync='Y' where userid = :userid and send_group = :send_group";
+	final static String RESULT_SET_UPDATE = "update DHN_RESULT set send_group = :send_group where result='D' and sync='N' and send_group is null limit 1000";
+	final static String SELECT_BY_SG = "select * from DHN_RESULT where result = 'D' and sync='N' and send_group = :send_group";
 	
 	@Query(value = SELECT_MSGID, nativeQuery = true)
 	public DhnResult selectByMsgidQuery(@Param("msgid") String msgid);

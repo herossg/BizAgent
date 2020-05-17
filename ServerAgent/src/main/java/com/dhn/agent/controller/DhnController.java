@@ -6,6 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +40,7 @@ import com.dhn.agent.model.DhnRequest;
 import com.dhn.agent.model.DhnResult;
 import com.dhn.agent.model.DhnUser;
 import com.dhn.agent.model.JsonResult;
+import com.dhn.agent.model.UserInfo;
 import com.dhn.agent.service.DhnRequestService;
 import com.dhn.agent.service.DhnResultService;
 import com.dhn.agent.service.DhnUserService;
@@ -87,6 +93,80 @@ public class DhnController {
 		dhnReqService.save(dhnRequest);
 		
 		return new ResponseEntity<List<String>>(msgids, HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/login")
+	public ResponseEntity<UserInfo> login(@RequestHeader(name="userid", required=true) String userid,
+			                           @RequestBody UserInfo ui) {
+		
+		DhnUser du = dhnUserService.findByUserid(userid);
+		
+		UserInfo _ui = ui;
+		
+		if(du == null) {
+			_ui.rescode = "NO";
+		} else if(du.getUseflag().equals("N")) {
+			_ui.rescode = "NO";
+		} else {
+			_ui.rescode = "OK";
+			
+			HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+			String ip = req.getHeader("X-FORWARDED-FOR");
+			if (ip == null) {
+				ip = req.getRemoteAddr();
+			}
+			_ui.setIp(ip); 
+			du.setIp(ip);
+			du.setPort(_ui.port);
+			
+			dhnUserService.save(du);
+			
+			ThreadGroup rootGroup = Thread.currentThread().getThreadGroup();
+			ThreadGroup parentGroup;
+			while ((parentGroup = rootGroup.getParent()) != null) {
+			    rootGroup = parentGroup;
+			}
+			 
+			Thread[] threads = new Thread[rootGroup.activeCount()];
+			while (rootGroup.enumerate(threads, true) == threads.length) {
+			    threads = new Thread[threads.length * 2];
+			}
+			 
+			String tlist = "";
+			
+			for (Thread t : threads) {
+				if(t != null) {
+					
+					if(t.getName().indexOf("UserResultSend_" + ui.userid) >= 0) {
+						tlist = tlist + " ID : " +  t.getId() + " , "  + " Name : " + t.getName() + " 종료 요청 했습니다.\r";
+						t.interrupt();
+						
+						try {
+							Thread.sleep(3000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+			UserResultSend urs = new UserResultSend();
+			urs.dhnResService = dhnResService;
+			urs.clientIp = ip;
+			urs.userId = ui.userid;
+			urs.port = ui.port;
+			
+			Thread t = new Thread(urs);
+			t.setName("UserResultSend_" + urs.userId);
+			t.start();
+			log.info("UserResultSend_" + ui.userid + " 정상 실행 요청 되었습니다. ");
+			
+			
+			log.info("User ID : " + ui.userid);
+			log.info("IP / Port : " + ip + " / " + ui.port);
+		}
+		
+		return new ResponseEntity<UserInfo>(_ui, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/res/{msgid}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -749,15 +829,17 @@ public class DhnController {
 		} else {
 			List<DhnUser> dhnUsers = dhnUserService.findAll();
 			dhnUsers.forEach(e -> {
-				UserResultSend urs = new UserResultSend();
-				urs.dhnResService = dhnResService;
-				urs.clientIp = e.getIp();
-				urs.userId = e.getUserid();
-				urs.port = e.getPort();
-				
-				Thread t = new Thread(urs);
-				t.setName("UserResultSend_" + urs.userId);
-				t.start();
+				if(e.getUseflag().toUpperCase().equals("Y")) {
+					UserResultSend urs = new UserResultSend();
+					urs.dhnResService = dhnResService;
+					urs.clientIp = e.getIp();
+					urs.userId = e.getUserid();
+					urs.port = e.getPort();
+					
+					Thread t = new Thread(urs);
+					t.setName("UserResultSend_" + urs.userId);
+					t.start();
+				}
 			});
 			for(DhnUser d : dhnUsers) {
 				tlist = tlist + "UserResultSend_" + d.getUserid() + " 정상 실행 요청 되었습니다. \r";

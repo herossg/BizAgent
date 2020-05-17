@@ -62,7 +62,7 @@ public class SendMMS {
 				for(int i=0; i<dhnResult.size(); i++) {
 					DhnResult dr = (DhnResult)dhnResult.get(i);
 					int strlen = byteCheck(dr.getMsg());
-					log.info("DHN Result msg_id = " + dr.getMsgid() + " / 메시지 길이 : " + dr.getMsg().getBytes().length + " / " + strlen);
+					//log.info("DHN Result msg_id = " + dr.getMsgid() + " / 메시지 길이 : " + dr.getMsg().getBytes().length + " / " + strlen);
 					
 					String phn = "";
 					if(dr.getPhn().substring(0, 2).equals("82")) {
@@ -89,7 +89,7 @@ public class SendMMS {
 						
 						mms.setMst_id(Integer.parseInt(dr.getRemark4()));
 						mms.setCb_msg_Id(dr.getMsgid());
-						mms.setProc_flag("N");
+						mms.setProc_flag("Y");
 						
 						
 						oshotMMSs.add(mms);
@@ -107,7 +107,7 @@ public class SendMMS {
 						sms.setSendresult(0);
 						sms.setMst_id(Integer.parseInt(dr.getRemark4()));
 						sms.setCb_msg_Id(dr.getMsgid());
-						sms.setProc_flag("N");
+						sms.setProc_flag("Y");
 						
 						oshotSMSs.add(sms);
 					}
@@ -115,11 +115,15 @@ public class SendMMS {
 				
 				if(oshotMMSs.size() > 0) {
 					oshotMMSService.save(oshotMMSs);
+					log.info("MMS " + oshotMMSs.size() + " 건 처리 완료");
 				}
 
 				if(oshotSMSs.size() > 0) {
 					oshotSMSService.save(oshotSMSs);
+					log.info("MMS " + oshotSMSs.size() + " 건 처리 완료");
 				}
+				
+				
 
 			}catch(Exception ex) {
 				log.error("MMS 자료 생성중 오류 발생 : " + ex.toString());

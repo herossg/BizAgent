@@ -28,4 +28,9 @@ public class DhnUserServiceImpl implements DhnUserService {
 		return dhnUsers;
 	}
 
+	@Override
+	public void save(DhnUser du) {
+		dhnUserRepo.save(du);
+	}
+
 }

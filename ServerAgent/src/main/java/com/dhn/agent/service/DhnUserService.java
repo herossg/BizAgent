@@ -11,4 +11,6 @@ public interface DhnUserService {
 	DhnUser findByUserid(String userid);
 	
 	List<DhnUser> findAll();
+	
+	void save(DhnUser du);
 }

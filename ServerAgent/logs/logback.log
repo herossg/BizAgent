@@ -1,665 +1,60 @@
-[2020-05-15 00:15:52:367][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 6960 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
-[2020-05-15 00:15:52:370][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
-[2020-05-15 00:15:53:714][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[2020-05-15 00:15:53:773][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53ms. Found 7 JPA repository interfaces.
-[2020-05-15 00:15:53:1043][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[2020-05-15 00:15:53:1198][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
-[2020-05-15 00:15:53:1204][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:15:53:1204][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-[2020-05-15 00:15:53:1204][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
-[2020-05-15 00:15:53:1281][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-[2020-05-15 00:15:53:1281][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 877 ms
-[2020-05-15 00:15:53:1363][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[2020-05-15 00:15:53:1596][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[2020-05-15 00:15:53:1657][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[2020-05-15 00:15:54:1699][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
-[2020-05-15 00:15:54:1772][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-[2020-05-15 00:15:54:1833][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
-[2020-05-15 00:15:54:2282][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[2020-05-15 00:15:54:2287][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:15:54:2651][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[2020-05-15 00:15:55:2725][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:15:55:2856][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
-[2020-05-15 00:15:55:2858][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:15:55:2874][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
-[2020-05-15 00:15:55:2875][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.774 seconds (JVM running for 3.54)
-[2020-05-15 00:15:59:6932][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-[2020-05-15 00:15:59:6933][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:15:59:6934][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:15:59:6935][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[2020-05-15 00:15:59:6939][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-[2020-05-15 00:15:59:6946][UserResultSend_dhn58] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@1407e9b2 marked as broken because of SQLSTATE(08S01), ErrorCode(0)
+[2020-05-17 15:52:53:630][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 1540 (started by WE in E:\Git3\ServerAgent)
+[2020-05-17 15:52:53:633][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
+[2020-05-17 15:52:54:1312][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 15:52:54:1387][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68ms. Found 7 JPA repository interfaces.
+[2020-05-17 15:52:54:1870][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 15:52:54:2022][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 15:52:55:2390][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 15:52:55:2439][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 15:52:55:2496][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 15:52:55:2613][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 15:52:55:3039][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 15:52:56:3703][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 15:52:56:3709][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 15:52:57:4399][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 15:52:57:4599][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 15:52:57:4987][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 15:52:57:4992][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 4.652 seconds (JVM running for 5.537)
+[2020-05-17 15:52:58:5284][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 15:52:58:5286][SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 15:52:58:5287][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 15:52:58:5296][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 16:08:16:357][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 16756 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
+[2020-05-17 16:08:16:359][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2020-05-17 16:08:16:688][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 16:08:16:743][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50ms. Found 7 JPA repository interfaces.
+[2020-05-17 16:08:16:1010][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 16:08:16:1166][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
+[2020-05-17 16:08:16:1171][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
+[2020-05-17 16:08:16:1172][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2020-05-17 16:08:16:1172][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[2020-05-17 16:08:16:1245][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2020-05-17 16:08:16:1245][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 847 ms
+[2020-05-17 16:08:16:1329][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 16:08:17:1563][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 16:08:17:1619][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 16:08:17:1656][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 16:08:17:1728][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 16:08:17:1789][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 16:08:17:2226][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 16:08:17:2231][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 16:08:18:2594][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 16:08:18:2668][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 16:08:18:2800][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 16:08:18:2803][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
+[2020-05-17 16:08:18:2828][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
+[2020-05-17 16:08:18:2830][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.733 seconds (JVM running for 3.494)
+[2020-05-17 16:08:20:4920][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2020-05-17 16:08:20:4921][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÏãúÏûë.
+[2020-05-17 16:08:20:4921][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÎÅù.
+[2020-05-17 16:08:20:4922][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 16:08:20:4923][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 16:08:20:4925][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 16:08:20:4929][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 16:08:20:4933][UserResultSend_dhn58] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@724a0a0e marked as broken because of SQLSTATE(08S01), ErrorCode(0)
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:15:59:6946][UserResultSend_dhn] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@1aabcf0b marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:15:59:6946][UserResultSend_hanmaum] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@2c16778a marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 10 milliseconds ago. The last packet sent successfully to the server was 26 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 10 milliseconds ago. The last packet sent successfully to the server was 26 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:15:59:6946][UserResultSend_hanmaum] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:15:59:6946][UserResultSend_hanmaum] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 10 milliseconds ago. The last packet sent successfully to the server was 26 milliseconds ago.
-[2020-05-15 00:15:59:6946][UserResultSend_dhn] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:15:59:6946][UserResultSend_dhn] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-[2020-05-15 00:15:59:6946][UserResultSend_dhn58] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:15:59:6946][UserResultSend_dhn58] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-[2020-05-15 00:15:59:6973][UserResultSend_dhn58] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-[2020-05-15 00:15:59:7128][UserResultSend_dhn58] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-[2020-05-15 00:16:30:366][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 16844 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
-[2020-05-15 00:16:30:368][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
-[2020-05-15 00:16:31:687][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[2020-05-15 00:16:31:743][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 51ms. Found 7 JPA repository interfaces.
-[2020-05-15 00:16:31:1015][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[2020-05-15 00:16:31:1171][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
-[2020-05-15 00:16:31:1176][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:16:31:1177][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-[2020-05-15 00:16:31:1177][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
-[2020-05-15 00:16:31:1252][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-[2020-05-15 00:16:31:1252][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 853 ms
-[2020-05-15 00:16:31:1338][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[2020-05-15 00:16:31:1577][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[2020-05-15 00:16:31:1634][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[2020-05-15 00:16:32:1673][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
-[2020-05-15 00:16:32:1749][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-[2020-05-15 00:16:32:1825][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
-[2020-05-15 00:16:32:2282][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[2020-05-15 00:16:32:2286][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:16:33:2650][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[2020-05-15 00:16:33:2728][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:16:33:2855][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
-[2020-05-15 00:16:33:2857][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:16:33:2873][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
-[2020-05-15 00:16:33:2875][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.776 seconds (JVM running for 3.526)
-[2020-05-15 00:17:14:43864][RMI TCP Connection(10)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-[2020-05-15 00:17:14:43865][RMI TCP Connection(10)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:17:14:43868][RMI TCP Connection(10)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:17:14:43869][RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[2020-05-15 00:17:14:43874][RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-[2020-05-15 00:17:14:43880][UserResultSend_dhn58] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@676b7a1c marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:17:14:43880][UserResultSend_hanmaum] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@1cd16a21 marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 20 milliseconds ago. The last packet sent successfully to the server was 36 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 20 milliseconds ago. The last packet sent successfully to the server was 36 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:17:14:43880][UserResultSend_dhn] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@5f18df5d marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 32 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 32 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:17:14:43881][UserResultSend_dhn58] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:14:43881][UserResultSend_dhn] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:14:43881][UserResultSend_dhn58] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 14 milliseconds ago. The last packet sent successfully to the server was 14 milliseconds ago.
-[2020-05-15 00:17:14:43881][UserResultSend_hanmaum] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:14:43881][UserResultSend_hanmaum] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 20 milliseconds ago. The last packet sent successfully to the server was 36 milliseconds ago.
-[2020-05-15 00:17:14:43881][UserResultSend_dhn] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 32 milliseconds ago.
-[2020-05-15 00:17:14:43909][UserResultSend_dhn] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-[2020-05-15 00:17:14:44053][UserResultSend_dhn] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-[2020-05-15 00:17:29:370][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 18244 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
-[2020-05-15 00:17:29:372][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
-[2020-05-15 00:17:29:694][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[2020-05-15 00:17:29:752][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53ms. Found 7 JPA repository interfaces.
-[2020-05-15 00:17:30:1019][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[2020-05-15 00:17:30:1171][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
-[2020-05-15 00:17:30:1176][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:17:30:1176][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-[2020-05-15 00:17:30:1177][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
-[2020-05-15 00:17:30:1253][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-[2020-05-15 00:17:30:1254][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 851 ms
-[2020-05-15 00:17:30:1340][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[2020-05-15 00:17:30:1567][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[2020-05-15 00:17:30:1635][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[2020-05-15 00:17:30:1675][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
-[2020-05-15 00:17:30:1749][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-[2020-05-15 00:17:30:1809][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
-[2020-05-15 00:17:31:2248][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[2020-05-15 00:17:31:2253][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:17:31:2618][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[2020-05-15 00:17:31:2701][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:17:31:2831][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
-[2020-05-15 00:17:31:2834][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
-[2020-05-15 00:17:31:2850][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
-[2020-05-15 00:17:31:2851][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.747 seconds (JVM running for 3.499)
-[2020-05-15 00:17:43:14057][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-[2020-05-15 00:17:43:14059][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[2020-05-15 00:17:43:14061][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[2020-05-15 00:17:43:14062][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[2020-05-15 00:17:43:14067][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-[2020-05-15 00:17:43:14074][UserResultSend_dhn] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@61e793a8 marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 8 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
+The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 33 milliseconds ago.
 	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
@@ -712,7 +107,7 @@ The last packet successfully received from the server was 8 milliseconds ago. Th
 	at java.lang.Thread.run(Unknown Source)
 Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
 
-The last packet successfully received from the server was 8 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
+The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 33 milliseconds ago.
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -746,197 +141,159 @@ Caused by: java.net.SocketException: Socket closed
 	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
 	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
 	... 52 common frames omitted
-[2020-05-15 00:17:43:14074][UserResultSend_dhn58] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@1ac30920 marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+[2020-05-17 16:08:20:4934][UserResultSend_dhn58] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+[2020-05-17 16:08:20:4934][UserResultSend_dhn58] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
 
-The last packet successfully received from the server was 9 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor79.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 9 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:17:43:14074][UserResultSend_hanmaum] WARN  c.z.hikari.pool.ProxyConnection - HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@2623ee5e marked as broken because of SQLSTATE(08S01), ErrorCode(0)
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 11 milliseconds ago. The last packet sent successfully to the server was 11 milliseconds ago.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1003)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
-	at org.hibernate.loader.Loader.getResultSet(Loader.java:2292)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2050)
-	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2012)
-	at org.hibernate.loader.Loader.doQuery(Loader.java:953)
-	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:354)
-	at org.hibernate.loader.Loader.doList(Loader.java:2815)
-	at org.hibernate.loader.Loader.doList(Loader.java:2797)
-	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
-	at org.hibernate.loader.Loader.list(Loader.java:2624)
-	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
-	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
-	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
-	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
-	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
-	at org.hibernate.query.Query.getResultList(Query.java:165)
-	at sun.reflect.GeneratedMethodAccessor79.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:409)
-	at com.sun.proxy.$Proxy121.getResultList(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:126)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:154)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:142)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:618)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:149)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy106.selectByUserid(Unknown Source)
-	at com.dhn.agent.service.DhnResultServiceImpl.selectByUserid(DhnResultServiceImpl.java:62)
-	at com.dhn.agent.controller.UserResultSend.run(UserResultSend.java:35)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 11 milliseconds ago. The last packet sent successfully to the server was 11 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:539)
-	at com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:703)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:642)
-	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:941)
-	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1075)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:930)
-	... 47 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at java.net.SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:52)
-	at com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:41)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:54)
-	at com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:44)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:533)
-	... 52 common frames omitted
-[2020-05-15 00:17:43:14075][UserResultSend_dhn58] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:43:14075][UserResultSend_dhn] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:43:14075][UserResultSend_hanmaum] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-[2020-05-15 00:17:43:14075][UserResultSend_dhn58] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 9 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
-[2020-05-15 00:17:43:14075][UserResultSend_dhn] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 8 milliseconds ago. The last packet sent successfully to the server was 25 milliseconds ago.
-[2020-05-15 00:17:43:14075][UserResultSend_hanmaum] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet successfully received from the server was 11 milliseconds ago. The last packet sent successfully to the server was 11 milliseconds ago.
-[2020-05-15 00:17:43:14105][UserResultSend_dhn] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-[2020-05-15 00:17:43:14254][UserResultSend_dhn] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+The last packet successfully received from the server was 15 milliseconds ago. The last packet sent successfully to the server was 33 milliseconds ago.
+[2020-05-17 16:08:20:4956][UserResultSend_dhn58] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+[2020-05-17 16:08:20:5101][UserResultSend_dhn58] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+[2020-05-17 16:16:35:600][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 11244 (started by WE in E:\Git3\ServerAgent)
+[2020-05-17 16:16:35:601][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
+[2020-05-17 16:16:35:1020][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 16:16:35:1092][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65ms. Found 7 JPA repository interfaces.
+[2020-05-17 16:16:36:1530][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 16:16:36:1675][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 16:16:36:2004][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 16:16:36:2066][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 16:16:36:2125][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 16:16:36:2242][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 16:16:37:2674][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 16:16:38:3288][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 16:16:38:3294][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 16:16:38:3990][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 16:16:38:4154][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 16:16:39:4523][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 16:16:39:4527][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 4.208 seconds (JVM running for 5.036)
+[2020-05-17 16:16:39:4818][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ Ω√¿€.
+[2020-05-17 16:16:39:4818][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 31 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 16:16:39:4818][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 32 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 16:16:39:4818][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ ≥°.
+[2020-05-17 16:16:39:4820][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 16:16:39:4821][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 31 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 16:16:39:4821][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 32 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 16:16:39:4822][SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 16:16:39:4823][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 16:16:39:4832][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 17:00:00:622][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 3844 (started by WE in E:\Git3\ServerAgent)
+[2020-05-17 17:00:00:624][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
+[2020-05-17 17:00:00:1015][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 17:00:01:1091][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68ms. Found 7 JPA repository interfaces.
+[2020-05-17 17:00:01:1527][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 17:00:01:1669][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 17:00:01:2050][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 17:00:02:2101][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 17:00:02:2162][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 17:00:02:2271][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 17:00:02:2702][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 17:00:03:3326][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 17:00:03:3333][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 17:00:03:4027][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 17:00:04:4194][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 17:00:04:4567][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 17:00:04:4572][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 4.243 seconds (JVM running for 5.053)
+[2020-05-17 17:00:04:4731][task-1] INFO  c.dhn.agent.controller.SendRequest - 20200517170004 πﬂº€ Ω√¿€
+[2020-05-17 17:00:04:4886][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ Ω√¿€.
+[2020-05-17 17:00:04:4887][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 31 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 17:00:04:4887][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 32 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 17:00:04:4887][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ ≥°.
+[2020-05-17 17:00:04:4888][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 17:00:04:4890][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 31 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 17:00:04:4890][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 32 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 17:00:04:4891][SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 17:00:04:4892][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 17:00:04:4903][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 20:43:37:353][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 2452 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
+[2020-05-17 20:43:37:355][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2020-05-17 20:43:37:678][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 20:43:38:736][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52ms. Found 7 JPA repository interfaces.
+[2020-05-17 20:43:38:1001][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 20:43:38:1155][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
+[2020-05-17 20:43:38:1160][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
+[2020-05-17 20:43:38:1161][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2020-05-17 20:43:38:1161][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[2020-05-17 20:43:38:1233][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2020-05-17 20:43:38:1233][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 849 ms
+[2020-05-17 20:43:38:1314][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 20:43:38:1550][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 20:43:38:1615][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 20:43:38:1657][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 20:43:38:1727][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 20:43:39:1786][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 20:43:39:2218][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 20:43:39:2223][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 20:43:39:2612][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 20:43:39:2690][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 20:43:40:2824][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 20:43:40:2827][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
+[2020-05-17 20:43:40:2842][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
+[2020-05-17 20:43:40:2843][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.748 seconds (JVM running for 3.52)
+[2020-05-17 20:43:41:4423][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2020-05-17 20:43:41:4424][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÏãúÏûë.
+[2020-05-17 20:43:41:4424][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest -  ID : 52 ,  Name : UserResultSend_dhn Ï¢ÖÎ£å ÏöîÏ≤≠ ÌñàÏäµÎãàÎã§.
+[2020-05-17 20:43:41:4424][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest -  ID : 53 ,  Name : UserResultSend_dhn58 Ï¢ÖÎ£å ÏöîÏ≤≠ ÌñàÏäµÎãàÎã§.
+[2020-05-17 20:43:41:4424][RMI TCP Connection(7)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÎÅù.
+[2020-05-17 20:43:46:9425][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 20:43:46:9427][RMI TCP Connection(7)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 20:43:46:9428][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 20:43:46:9433][RMI TCP Connection(7)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 20:44:27:603][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 11576 (started by WE in E:\Git3\ServerAgent)
+[2020-05-17 20:44:27:604][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
+[2020-05-17 20:44:28:1000][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 20:44:28:1072][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65ms. Found 7 JPA repository interfaces.
+[2020-05-17 20:44:28:1509][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 20:44:28:1651][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 20:44:29:1987][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 20:44:29:2039][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 20:44:29:2101][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 20:44:29:2216][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 20:44:29:2647][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 20:44:30:3254][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 20:44:30:3260][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 20:44:31:3941][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 20:44:31:4100][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 20:44:31:4458][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 20:44:31:4467][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 4.147 seconds (JVM running for 4.964)
+[2020-05-17 20:44:31:4748][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ Ω√¿€.
+[2020-05-17 20:44:31:4748][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 31 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 20:44:31:4748][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 32 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
+[2020-05-17 20:44:31:4748][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ ≥°.
+[2020-05-17 20:44:36:9751][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 20:44:36:9754][SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 20:44:36:9755][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 20:44:36:9765][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2020-05-17 23:16:09:344][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 2120 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
+[2020-05-17 23:16:09:345][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2020-05-17 23:16:09:673][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-17 23:16:09:730][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52ms. Found 7 JPA repository interfaces.
+[2020-05-17 23:16:10:986][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-17 23:16:10:1136][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
+[2020-05-17 23:16:10:1141][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
+[2020-05-17 23:16:10:1141][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2020-05-17 23:16:10:1142][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[2020-05-17 23:16:10:1214][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2020-05-17 23:16:10:1214][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 838 ms
+[2020-05-17 23:16:10:1295][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2020-05-17 23:16:10:1533][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2020-05-17 23:16:10:1605][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-17 23:16:10:1643][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2020-05-17 23:16:10:1715][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-17 23:16:10:1776][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2020-05-17 23:16:11:2205][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-17 23:16:11:2209][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 23:16:11:2579][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-17 23:16:11:2668][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2020-05-17 23:16:11:2806][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2020-05-17 23:16:11:2808][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
+[2020-05-17 23:16:12:2824][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
+[2020-05-17 23:16:12:2826][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 2.736 seconds (JVM running for 3.462)
+[2020-05-17 23:16:17:8507][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2020-05-17 23:16:17:8507][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÏãúÏûë.
+[2020-05-17 23:16:17:8508][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest -  ID : 54 ,  Name : UserResultSend_dhn Ï¢ÖÎ£å ÏöîÏ≤≠ ÌñàÏäµÎãàÎã§.
+[2020-05-17 23:16:17:8508][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest -  ID : 55 ,  Name : UserResultSend_dhn58 Ï¢ÖÎ£å ÏöîÏ≤≠ ÌñàÏäµÎãàÎã§.
+[2020-05-17 23:16:17:8508][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest -  ID : 56 ,  Name : UserResultSend_hanmaum Ï¢ÖÎ£å ÏöîÏ≤≠ ÌñàÏäµÎãàÎã§.
+[2020-05-17 23:16:17:8508][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÎÅù.
+[2020-05-17 23:16:21:12612][RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2020-05-17 23:16:22:13511][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-05-17 23:16:22:13520][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-17 23:16:22:13524][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2020-05-17 23:16:22:13537][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="dhn_client_list")
+@Table(name="DHN_CLIENT_LIST")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

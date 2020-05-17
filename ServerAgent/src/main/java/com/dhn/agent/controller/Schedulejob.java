@@ -48,7 +48,7 @@ public class Schedulejob {
 	@Async
 	public void ResultSMS() {
 		//log.info("SMS Log 처리 실행 됨.");
-		//resultSMSLog.run();
+		resultSMSLog.run();
 	}
 
 	//Log log = new Log

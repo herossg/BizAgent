@@ -51,7 +51,8 @@ public class ResultSMSLog {
 					msgids.add(sms.getMsgID());
 				}
 				
-				oshotSMSService.updateByMsgids(table, msgids);
+				if(msgids.size() > 0)
+					oshotSMSService.updateByMsgids(table, msgids);
 
 			}catch(Exception ex) {
 				log.error("SMS 자료 생성중 오류 발생 : " + ex.toString());
