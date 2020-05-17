@@ -1,8 +1,10 @@
 package com.dhn.client.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +18,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.dhn.client.model.DhnRequest;
+import com.dhn.client.model.DhnResult;
+import com.dhn.client.model.UserInfo;
 import com.dhn.client.service.DhnRequestService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
@@ -36,6 +42,43 @@ public class SendRequest {
 		SendRequest.env = env;
 	}
 	
+	public static void login() {
+		final String URL =  env.getProperty("server") + "login";
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set("userid", env.getProperty("userid"));
+		
+		RestTemplate restTemp = new RestTemplate();
+		ObjectMapper mapper = new ObjectMapper();
+
+		UserInfo ui = new UserInfo();
+		ui.userid = env.getProperty("userid");
+		ui.port = env.getProperty("server.port");
+		
+		String jsonStr;
+		try {
+			jsonStr = mapper.writeValueAsString(ui);
+			//log.info("Req Str : " + jsonStr);
+			
+			HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);						
+			ResponseEntity<String> response = restTemp.postForEntity(URL, entity, String.class ); 
+			
+			Map<String, String> res;
+			JsonNode json = mapper.readTree(response.getBody());
+			
+			log.info("Log in ...." + json.get("rescode").asText().toUpperCase());
+			if(json.get("rescode").asText().toUpperCase().equals("OK")) {
+				DhnController.isStart = true;
+			}
+				
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void run() {
 		if(!isRunning) {
 			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
@@ -51,7 +94,7 @@ public class SendRequest {
 				} else if(env.getProperty("dbms").toUpperCase().equals("ORACLE")) {
 					dhnReqs = dhnReqService.selectByReserveQuery_oracle();
 				}
-				log.info("불러온 자료 : " + dhnReqs.size());
+				//log.info("불러온 자료 : " + dhnReqs.size());
 				if(dhnReqs != null && dhnReqs.size() > 0) {
 					log.info(starttime + " - 시작");
 					final String URL =  env.getProperty("server") + "req";
@@ -65,7 +108,7 @@ public class SendRequest {
 
 					String jsonStr = mapper.writeValueAsString(dhnReqs);
 					
-					log.info("Req Str : " + jsonStr);
+					//log.info("Req Str : " + jsonStr);
 					
 					HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);						
 					ResponseEntity<List> response = restTemp.postForEntity(URL, entity, List.class ); 

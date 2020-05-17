@@ -17,13 +17,14 @@ public class Schedulejob {
 	@Scheduled(cron = "*/2 * * * * *")
 	public void sendRequest() {
 		//log.info("...");
-		SendRequest.run();
+		if(DhnController.isStart)
+			SendRequest.run();
 	}
 	
-//	//Log log = new Log
-//	@Scheduled(cron = "*/2 * * * * *")
-//	public void getResult() {
-//		//log.info("...");
-//		//GetResult.run();
-//	}
+	@Scheduled(fixedRate = 5000)
+	public void login() {
+		//log.info("Log in 시도");
+		if(!DhnController.isStart)
+			SendRequest.login();
+	}
 }

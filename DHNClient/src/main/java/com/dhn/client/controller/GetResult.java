@@ -143,8 +143,8 @@ public class GetResult {
 										if(r.get("profile") != null)
 											dhnResult.setPROFILE(r.get("profile").asText()) ;
 										
-										if(r.get("reg_dt") != null)
-											dhnResult.setREGDT(r.get("reg_dt").asText()) ;
+										//if(r.get("reg_dt") != null)
+										//	dhnResult.setREGDT(r.get("reg_dt").asText()) ;
 										
 										if(r.get("remark1") != null)
 											dhnResult.setREMARK1(r.get("remark1").asText()) ;
@@ -162,8 +162,8 @@ public class GetResult {
 										if(r.get("remark5") != null)
 											dhnResult.setREMARK5(r.get("remark5").asText()) ;
 										
-										if(r.get("res_dt") != null)
-											dhnResult.setRESDT(r.get("res_dt").asText()) ;
+										//if(r.get("res_dt") != null)
+										//	dhnResult.setRESDT(r.get("res_dt").asText()) ;
 										
 										if(r.get("reserve_dt") != null)
 											dhnResult.setRESERVEDT(r.get("reserve_dt").asText()) ;
