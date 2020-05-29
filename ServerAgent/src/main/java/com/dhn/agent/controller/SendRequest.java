@@ -306,11 +306,11 @@ public class SendRequest {
 										
 										if(dr.getONLYSMS().toUpperCase().equals("N") || res.get("code").equals("0000")) {      
 											// request 테이블에 onlysms 필드가 "N" 이거나 결과 code 값이 "0000"(카카오 발송 성공) 이면 카카오 발송만 한다.
-											log.info("FT 성공 - Only SMS : " + dr.getONLYSMS().toUpperCase() + " / code : " + res.get("code"));
+											//log.info("FT 성공 - Only SMS : " + dr.getONLYSMS().toUpperCase() + " / code : " + res.get("code"));
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "Y");
 										}else if(dr.getONLYSMS().toUpperCase().equals("D") && !res.get("code").equals("0000")) {  
 											// request 테이블에 onlysms 필드가 "D" 이고 결과 code 값이 "0000" 이 아니면 2차 SMS을 위해 dhn_result 테이블 수정
-											log.info("FT 실패 - Only SMS : " + dr.getONLYSMS().toUpperCase() + " / code : " + res.get("code"));
+											//log.info("FT 실패 - Only SMS : " + dr.getONLYSMS().toUpperCase() + " / code : " + res.get("code"));
 											SaveResult.UpdateResult(dr.getMSGID(), res.get("code"), res.get("message"), "D");
 										}
 										

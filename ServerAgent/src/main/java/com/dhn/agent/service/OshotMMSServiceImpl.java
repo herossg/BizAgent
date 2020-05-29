@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dhn.agent.model.OshotMMS;
 import com.dhn.agent.model.OshotSMS;
@@ -48,6 +49,7 @@ public class OshotMMSServiceImpl implements OshotMMSService{
 	}
 
 	@Override
+	@Transactional
 	public void updateByMsgids(String table, List<Integer> msgids) {
 		String ids = "";
 		for(int i=0; i<msgids.size(); i++ ) {

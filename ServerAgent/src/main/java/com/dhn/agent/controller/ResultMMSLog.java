@@ -46,7 +46,8 @@ public class ResultMMSLog {
 					if(mms.getSendresult() == 6) {
 						SaveResult.UpdateResult(mms.getCb_msg_Id(), "0000", "", "Y");
 					} else {
-						SaveResult.UpdateResult(mms.getCb_msg_Id(), "000" + mms.getSendresult(), "SMS Error", "Y");
+						String code = String.format("8%03d", mms.getSendresult());
+						SaveResult.UpdateResult(mms.getCb_msg_Id(), code, "SMS Error", "Y");
 					}
 					
 					msgids.add(mms.getMsgID());
@@ -56,7 +57,7 @@ public class ResultMMSLog {
 					oshotMMSService.updateByMsgids(table, msgids);
 
 			}catch(Exception ex) {
-				log.error("SMS 자료 생성중 오류 발생 : " + ex.toString());
+				log.error("MMS 자료 생성중 오류 발생 : " + ex.toString());
 			}
 		}
 		isRunning = false;

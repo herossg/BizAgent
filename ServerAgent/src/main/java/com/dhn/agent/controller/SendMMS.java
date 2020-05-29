@@ -75,19 +75,26 @@ public class SendMMS {
 					
 						OshotMMS mms = new OshotMMS();
 						
-						mms.setMsggroupid(dr.getRemark4());
+						if(dr.getRemark4() != null && !dr.getRemark4().isEmpty())
+							mms.setMsggroupid(dr.getRemark4());
+						
 						mms.setSender(dr.getSmssender());
 						mms.setReceiver(phn);
-						mms.setSubject(dr.getSmslmstit());
-						mms.setMsg(dr.getMsg());
 						
-						if(!dr.getReservedt().equals("00000000000000")) {
+						if(dr.getSmslmstit() != null && !dr.getSmslmstit().isEmpty())
+							mms.setSubject(dr.getSmslmstit());
+						
+						mms.setMsg(dr.getMsgsms());
+						
+						if(dr.getReservedt() != null && !dr.getReservedt().equals("00000000000000")) {
 							mms.setReservedt(LocalDateTime.parse(dr.getReservedt(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
 						}
 						
 						mms.setSendresult(0);
 						
-						mms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						if(dr.getRemark4() != null && !dr.getRemark4().isEmpty())
+							mms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						
 						mms.setCb_msg_Id(dr.getMsgid());
 						mms.setProc_flag("Y");
 						
@@ -98,14 +105,17 @@ public class SendMMS {
 						
 						sms.setSender(dr.getSmssender());
 						sms.setReceiver(phn);
-						sms.setMsg(dr.getMsg());
+						sms.setMsg(dr.getMsgsms());
 						
-						if(!dr.getReservedt().equals("00000000000000")) {
+						if(dr.getReservedt() != null && !dr.getReservedt().equals("00000000000000")) {
 							sms.setReservedt(LocalDateTime.parse(dr.getReservedt(), DateTimeFormatter.ofPattern("yyyyMMddHHmmss")));
 						}
 						
 						sms.setSendresult(0);
-						sms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						
+						if(dr.getRemark4() != null && !dr.getRemark4().isEmpty())
+							sms.setMst_id(Integer.parseInt(dr.getRemark4()));
+						
 						sms.setCb_msg_Id(dr.getMsgid());
 						sms.setProc_flag("Y");
 						

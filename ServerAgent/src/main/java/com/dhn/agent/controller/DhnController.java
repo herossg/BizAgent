@@ -323,7 +323,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/create";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/create";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -344,7 +344,7 @@ public class DhnController {
 		@RequestParam(value="senderKeyType", required = false) String senderKeyType
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template?senderKey=" +senderKey + "&templateCode=" + templateCode;
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template?senderKey=" +senderKey + "&templateCode=" + templateCode;
 		if(senderKeyType != null && !senderKeyType.isEmpty()) {
 			URL = URL + "&senderKeyType=" + senderKeyType;
 		}
@@ -360,7 +360,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/request";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/request";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -380,7 +380,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/update";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/update";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -400,7 +400,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/delete";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/delete";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -423,7 +423,7 @@ public class DhnController {
 		@RequestParam(value="count", required = false)int count
 		) {
 		String connStr = "?";
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/last_modified";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/last_modified";
 		
 		if(senderKey != null && !senderKey.isEmpty()) {
 			URL = URL + connStr + "senderKey=" + senderKey;
@@ -465,7 +465,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/comment";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/comment";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -485,7 +485,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/comment_file";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/comment_file";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -505,7 +505,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/test_approve";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/test_approve";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {
@@ -525,7 +525,7 @@ public class DhnController {
 			@RequestBody Map<String, String> postParam
 			) {
 
-		String URL = CENTER_SERVER + "api/v1/" + PROFILE_KEY + "/template/test_reject";
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/test_reject";
 		
 		Map<String, String> header = new HashMap<>();
 		if(account != null && !account.isEmpty()) {

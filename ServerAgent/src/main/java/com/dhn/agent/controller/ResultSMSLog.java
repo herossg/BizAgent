@@ -46,7 +46,8 @@ public class ResultSMSLog {
 					if(sms.getSendresult() == 6) {
 						SaveResult.UpdateResult(sms.getCb_msg_Id(), "0000", "", "Y");
 					} else {
-						SaveResult.UpdateResult(sms.getCb_msg_Id(), "000" + sms.getSendresult(), "SMS Error", "Y");
+						String code = String.format("8%03d", sms.getSendresult());
+						SaveResult.UpdateResult(sms.getCb_msg_Id(), code, "SMS Error", "Y");
 					}
 					msgids.add(sms.getMsgID());
 				}
