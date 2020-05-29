@@ -14,9 +14,9 @@ import com.dhn.client.model.DhnResult;
 @Repository
 public interface DhnResultRepo extends JpaRepository<DhnResult, String> {
 	
-	final static String RESULT_UPDATE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = now() where MSGID = :msgid";
+	final static String RESULT_UPDATE = "update DHN_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = now() where MSGID = :msgid";
 
-	final static String RESULT_UPDATE_ORACLE = "update TBL_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = sysdate where MSGID = :msgid";
+	final static String RESULT_UPDATE_ORACLE = "update DHN_REQUEST_RESULT set CODE = :code , MESSAGE = :message, RESULT='Y', SYNC='Y' , RES_DT = sysdate where MSGID = :msgid";
 
 	List<DhnResult> findByRESULT(String result);
 	

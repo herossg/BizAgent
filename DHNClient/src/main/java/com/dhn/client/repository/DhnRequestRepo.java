@@ -15,13 +15,13 @@ import com.dhn.client.model.DhnRequest;
 @Repository
 public interface DhnRequestRepo extends JpaRepository<DhnRequest, String>, JpaSpecificationExecutor<DhnRequest> {
 
-	final static String DEL_MSGID = "delete from TBL_REQUEST where MSGID = :msgid";
+	final static String DEL_MSGID = "delete from DHN_REQUEST where MSGID = :msgid";
 
-	final static String DELIN_MSGID = "delete from TBL_REQUEST where MSGID in :msgid";
+	final static String DELIN_MSGID = "delete from DHN_REQUEST where MSGID in :msgid";
 
-	final static String REQ_SEND = "select * from TBL_REQUEST where RESERVE_DT < date_format(NOW(), '%Y%m%d%H%i%s') limit 0, 1000";
+	final static String REQ_SEND = "select * from DHN_REQUEST where RESERVE_DT < date_format(NOW(), '%Y%m%d%H%i%s') limit 0, 1000";
 
-	final static String REQ_SEND_ORACLE = "select * from TBL_REQUEST where RESERVE_DT < to_char(sysdate, 'YYYYMMDDHH24MISS') and rownum <=1000";
+	final static String REQ_SEND_ORACLE = "select * from DHN_REQUEST where RESERVE_DT < to_char(sysdate, 'YYYYMMDDHH24MISS') and rownum <=1000";
 	
 	
 	@Modifying
