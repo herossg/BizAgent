@@ -27,6 +27,7 @@ public class BizAgent implements Daemon, Runnable {
     //private final String DB_URL = "jdbc:mysql://222.122.203.68/dhn?characterEncoding=utf8";
     private boolean isStop = false;
     public static int GRS_Proc_cnt = 0;
+    private String resultTable; 
     BizDBCPInit bizDBCP;
     SmtDBCPInit smtDBCP;
 
@@ -103,7 +104,9 @@ public class BizAgent implements Daemon, Runnable {
     	BizAgent.GRS_Proc_cnt = 0;
     	Smt_Proc.isRunning = false;
     	SMART_Proc.isRunning = false;
+    	resultTable = (String) init_p.get("RESULTTABLE");
     	log.info(" GRS" + init_p.get("GRS") + ".");
+    	log.info("Result Table : " + resultTable);
     	
     	if(init_p.get("GRS").equals("1")) {
 	    	Connection conn = null;
@@ -148,7 +151,7 @@ public class BizAgent implements Daemon, Runnable {
 			   
 			for(int i=0; i<10; i++) 
 			{
-	        	TBLReqProcess trp = new TBLReqProcess(DB_URL, log, i);
+	        	TBLReqProcess trp = new TBLReqProcess(DB_URL, log, i, resultTable);
 	        	Thread trp_proc = new Thread(trp);
 	        	if(!isStop)
 	        		trp_proc.start();

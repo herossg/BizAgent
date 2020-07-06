@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+
 public class Smt_Proc implements Runnable {
 
 	private String DB_URL;

@@ -73,9 +73,8 @@ public class SMART_Proc implements Runnable {
 			ResultSet sms_rs = smtsms_msg.executeQuery(sms_exp_str);
 			while(sms_rs.next()) {
 				String sms_movestr = "INSERT INTO " + SMSTable + "(MsgID, Sender, Receiver, Msg, URL, ReserveDT, TimeoutDT, SendDT, SendResult, Telecom, InsertDT, mst_id, proc_flag, cb_msg_id) " +
-									"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+									"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement sms_movest = conn.prepareStatement(sms_movestr);
-				sms_movest.setString(0, sms_rs.getString(0));
 				sms_movest.setString(1, sms_rs.getString(1));
 				sms_movest.setString(2, sms_rs.getString(2));
 				sms_movest.setString(3, sms_rs.getString(3));
@@ -89,13 +88,14 @@ public class SMART_Proc implements Runnable {
 				sms_movest.setString(11, sms_rs.getString(11));
 				sms_movest.setString(12, sms_rs.getString(12));
 				sms_movest.setString(13, sms_rs.getString(13));
+				sms_movest.setString(14, sms_rs.getString(14));
 				
 				sms_movest.executeUpdate();
 				sms_movest.close();
 				
-				String sms_delstr = "DELETE d FROM OShotSMS d WHERE d.msg_id = ?";
+				String sms_delstr = "DELETE d FROM OShotSMS d WHERE d.MsgID = ?";
 				PreparedStatement sms_delst = conn.prepareStatement(sms_delstr);
-				sms_delst.setString(0, sms_rs.getString("MsgID"));
+				sms_delst.setString(1, sms_rs.getString("MsgID"));
 				sms_delst.executeUpdate();
 				sms_delst.close(); 
 					
@@ -117,7 +117,6 @@ public class SMART_Proc implements Runnable {
 				String mms_movestr = "INSERT INTO " + MMSTable + "(MsgID, MsgGroupID, Sender, Receiver, Subject, Msg, ReserveDT, TimeoutDT, SendDT, SendResult, Telecom, File_Path1, File_Path2, File_Path3, File_Path4, InsertDT, mst_id, proc_flag, cb_msg_Id) " +
 									"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement mms_movest = conn.prepareStatement(mms_movestr);
-				mms_movest.setString(0, mms_rs.getString(0));
 				mms_movest.setString(1, mms_rs.getString(1));
 				mms_movest.setString(2, mms_rs.getString(2));
 				mms_movest.setString(3, mms_rs.getString(3));
@@ -136,13 +135,14 @@ public class SMART_Proc implements Runnable {
 				mms_movest.setString(16, mms_rs.getString(16));
 				mms_movest.setString(17, mms_rs.getString(17));
 				mms_movest.setString(18, mms_rs.getString(18));
+				mms_movest.setString(19, mms_rs.getString(19));
 				
 				mms_movest.executeUpdate();
 				mms_movest.close();
 				
-				String mms_delstr = "DELETE d FROM OShotMMS d WHERE d.msg_id = ?";
+				String mms_delstr = "DELETE d FROM OShotMMS d WHERE d.MsgID = ?";
 				PreparedStatement mms_delst = conn.prepareStatement(mms_delstr);
-				mms_delst.setString(0, mms_rs.getString("MsgID"));
+				mms_delst.setString(1, mms_rs.getString("MsgID"));
 				mms_delst.executeUpdate();
 				mms_delst.close(); 
 					

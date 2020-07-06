@@ -24,16 +24,18 @@ public class TBLReqProcess implements Runnable {
 //	private final String NUSER_NAME = "bizsms";
 //	private final String NPASSWORD = "!@nanum0915";
 	public int div_str;
+	public String ResultTable;
 	
 	public static boolean[] isRunning = {false,false,false,false,false,false,false,false,false,false,};
 	public Logger log;
 	
 	Properties p = BizAgent.getProp();
 	
-	public TBLReqProcess(String _db_url, Logger _log, int _div) {
+	public TBLReqProcess(String _db_url, Logger _log, int _div, String _resultTable) {
 		DB_URL = _db_url;
 		log = _log;
 		div_str = _div;
+		ResultTable = _resultTable;
 	}
 	
 	public void run() {
@@ -75,7 +77,7 @@ public class TBLReqProcess implements Runnable {
 					"              ,b.mem_2nd_send" + 
 					"              ,(select mst_mms_content from cb_wt_msg_sent wms where wms.mst_id = a.remark4) as mms_id" + 
 					"              ,(select mst_type2 from cb_wt_msg_sent wms where wms.mst_id = a.remark4) as mst_type2" + 
-					"          from TBL_REQUEST_RESULT a inner join cb_member b on b.mem_id = a.REMARK2" + 
+					"          from " + ResultTable + " a inner join cb_member b on b.mem_id = a.REMARK2" + 
 					"         where REMARK3 = '" + div_str + "'" +
 					"           and ( a.reserve_dt < '" + rd.format(reserve_dt) + "'" + 
 					"              or a.reserve_dt = '00000000000000')" +
@@ -492,9 +494,14 @@ public class TBLReqProcess implements Runnable {
 										break;
 									case "GREEN_SHOT":
 										if(msgtype.equals("SMS")) {
+											/*
 											msgcnt_cal = " mst_err_grs_sms = ifnull(mst_err_grs_sms, 0) + 1 ";
 											msg_type1 = "gs";
 											msg_type2 = "GRS";
+											*/
+											msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+											msg_type1 = "SM";
+											msg_type2 = "SMT";											
 										} else if(msgtype.equals("LMS")) {
 											if(mc_mms1.isEmpty() && mc_mms2.isEmpty() && mc_mms3.isEmpty()) {
 												msgcnt_cal = " mst_err_grs = ifnull(mst_err_grs, 0) + 1 ";
@@ -509,18 +516,28 @@ public class TBLReqProcess implements Runnable {
 										break;
 									case "IMC":
 										if(msgtype.equals("SMS")) {
+											/*
 											msgcnt_cal = " mst_err_imc = ifnull(mst_err_imc, 0) + 1 ";
 											msg_type1 = "im";
 											msg_type2 = "IMC";
+											*/
+											msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+											msg_type1 = "SM";
+											msg_type2 = "SMT";
 										} else if(msgtype.equals("LMS")) {
 											if(mc_mms1.isEmpty() && mc_mms2.isEmpty() && mc_mms3.isEmpty()) {
 												msgcnt_cal = " mst_err_imc = ifnull(mst_err_imc, 0) + 1 ";
 												msg_type1 = "im";
 												msg_type2 = "IMC";
 											} else {
+												/*
 												msgcnt_cal = " mst_err_imc = ifnull(mst_err_imc, 0) + 1 ";
 												msg_type1 = "im";
 												msg_type2 = "IMC";
+												*/
+												msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+												msg_type1 = "SM";
+												msg_type2 = "SMT";												
 											}
 										}
 										break;
@@ -544,18 +561,28 @@ public class TBLReqProcess implements Runnable {
 										break;
 									case "NASELF":
 										if(msgtype.equals("SMS")) {
+											/*
 											msgcnt_cal = " mst_err_nas_sms = ifnull(mst_err_nas_sms, 0) + 1 ";
 											msg_type1 = "ns";
 											msg_type2 = "NAS";
+											*/
+											msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+											msg_type1 = "SM";
+											msg_type2 = "SMT";
 										} else if(msgtype.equals("LMS")) {
 											if(mc_mms1.isEmpty() && mc_mms2.isEmpty() && mc_mms3.isEmpty()) {
 												msgcnt_cal = " mst_err_nas = ifnull(mst_err_nas, 0) + 1 ";
 												msg_type1 = "ns";
 												msg_type2 = "NAS";
 											} else {
+												/*
 												msgcnt_cal = " mst_err_nas_mms = ifnull(mst_err_nas_mms, 0) + 1 ";
 												msg_type1 = "ns";
 												msg_type2 = "NAS";
+												*/
+												msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+												msg_type1 = "SM";
+												msg_type2 = "SMT";
 											}
 										}
 										break;
@@ -938,6 +965,7 @@ public class TBLReqProcess implements Runnable {
 									break;								
 								case "GREEN_SHOT":
 									if(msgtype.equals("SMS")) {
+										/*
 										String funsmsstr = "insert into cb_sms_msg(TR_PHONE"
 												                               + ",TR_CALLBACK"
 												                               + ",TR_ORG_CALLBACK"
@@ -1009,8 +1037,99 @@ public class TBLReqProcess implements Runnable {
 										
 										amtins.executeUpdate();
 										amtins.close();
-										
-									}else if(msgtype.equals("LMS")) {
+										*/
+										try {
+											String smtquery = "insert into OShotSMS( Sender "          
+																					+ ",Receiver "         
+																					+ ",Msg "             
+																					+ ",URL "             
+																					+ ",ReserveDT "
+																					+ ",TimeoutDT "       
+																					+ ",SendResult "
+																					+ ",mst_id "
+																					+ ",cb_msg_id )"
+																					+ "values( ? "           
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? "      
+																					+ ",? )"; 
+											
+											PreparedStatement smtins = conn.prepareStatement(smtquery, Statement.RETURN_GENERATED_KEYS);
+											smtins.setString(1, rs.getString("SMS_SENDER"));
+											smtins.setString(2, phn);
+											smtins.setString(3, msg_sms);
+											smtins.setString(4, null);
+											
+											if(rs.getString("RESERVE_DT").equals("00000000000000")) {
+												smtins.setString(5, null);
+											}else {
+												smtins.setString(5, rs.getString("RESERVE_DT"));
+											} 
+											
+											smtins.setString(6, null);
+											smtins.setString(7, "0");
+											smtins.setString(8, sent_key);
+											smtins.setString(9, rs.getString("MSGID"));
+		
+											int sms_rows = smtins.executeUpdate();
+											
+											String sms_msg_id = "";
+								            if(sms_rows == 1)
+								            {
+								                // get candidate id
+								            	ResultSet sms_rstemp = null;
+								            	sms_rstemp = smtins.getGeneratedKeys();
+								                if(sms_rstemp.next())
+								                	sms_msg_id = sms_rstemp.getString(1);
+								                sms_rstemp.close();
+								            }
+											smtins.close();
+											
+											wtudstr = "update cb_wt_msg_sent set mst_wait=ifnull(mst_wait,0)+1 where mst_id=?";
+											wtud = conn.prepareStatement(wtudstr);
+											wtud.setString(1, sent_key);
+											wtud.executeUpdate();
+											wtud.close();
+											
+											msgudstr = "update cb_msg_" + userid + " set MESSAGE_TYPE='sm',CODE='SMT', MESSAGE = '결과 수신대기', SMS_KIND='S', remark3 = ? where MSGID=?";
+											msgud = conn.prepareStatement(msgudstr);
+											msgud.setString(1, sms_msg_id);
+											msgud.setString(2, msg_id);
+											msgud.executeUpdate();
+											msgud.close();
+																							
+											kind = "P";
+											amount = price.member_price.price_smt_sms;
+											payback = price.member_price.price_smt_sms - price.parent_price.price_smt_sms;
+											admin_amt = price.base_price.price_smt_sms;
+											memo = "웹(C) SMS";
+											if(amount == 0 || amount == 0.0f) {
+												amount = admin_amt;
+											}
+			
+											amtins = conn.prepareStatement(amtStr);
+											amtins.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis())); 
+											amtins.setString(2, kind); 
+											amtins.setFloat(3, amount); 
+											amtins.setString(4, memo); 
+											amtins.setString(5, msg_id); 
+											amtins.setFloat(6, payback); 
+											amtins.setFloat(7, admin_amt); 
+											
+											amtins.executeUpdate();
+											amtins.close();
+										} catch ( Exception ex ) {
+											msgtype = "LMS";
+											log.info("TBL REQUEST RESULT  " + div_str + " ( Smart SMS ) 처리 중 오류 : "+ex.toString());
+											log.info("MSG TYPE : " + msgtype + "  /  MSG ( " + msg_sms.getBytes().length + " ) : " + msg_sms);
+										}
+									}
+									
+									if(msgtype.equals("LMS")) {
 										nanoit = "insert into cb_nanoit_msg(msg_type, remark4, phn, cb_msg_id) values(?, ?, ?, ?)";
 										nanoins = conn.prepareStatement(nanoit);
 										nanoins.setString(1, "GRS");
@@ -1658,7 +1777,7 @@ public class TBLReqProcess implements Runnable {
 						
 					}
 				}
-				String trrdelstr = "delete from TBL_REQUEST_RESULT where MSGID= ?";
+				String trrdelstr = "delete from " + ResultTable + " where MSGID= ?";
 				PreparedStatement trrdel = conn.prepareStatement(trrdelstr);
 				trrdel.setString(1, msg_id);
 				trrdel.executeUpdate();
