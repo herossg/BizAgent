@@ -245,7 +245,7 @@ public class SendRequest {
 								att.addImage(dr.getIMAGELINK(), dr.getIMAGEURL());
 							}
 							
-							if(att.button.size() > 0)
+							if(att.button.size() > 0 || att.image != null)
 								friendtalk.setAttachment( att ); 
 							
 							String jsonStr = mapper.writeValueAsString(friendtalk);

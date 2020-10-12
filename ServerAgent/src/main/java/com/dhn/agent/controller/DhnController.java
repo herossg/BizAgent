@@ -538,7 +538,29 @@ public class DhnController {
 		
 		return result.getBody();
 	}	
+
+	@GetMapping(value="/template/category/all", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String template_category_all() {
+
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/category/all";
+
+		ResponseEntity<String> result = reqGet(URL);
 		
+		return result.getBody();
+	}		
+
+	@GetMapping(value="/template/category", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String template_category(
+			@RequestParam(value="categoryCode")String categoryCode
+			) {
+
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/category?categoryCode=" + categoryCode;
+
+		ResponseEntity<String> result = reqGet(URL);
+		
+		return result.getBody();
+	}		
+
 	@GetMapping(value="/group", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public String group() {
 
