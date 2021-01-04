@@ -28,36 +28,37 @@ public class BizAgent implements Daemon, Runnable {
     private boolean isStop = false;
     public static int GRS_Proc_cnt = 0;
     private String resultTable; 
+    public String BASE_DIR = "/root/BizAgent/"; 
     BizDBCPInit bizDBCP;
     SmtDBCPInit smtDBCP;
+    public String[] reqTable = {"",""};
 
     @Override
     public void init(DaemonContext context) throws DaemonInitException, Exception {
         System.out.println("init...");
         String[] args = context.getArguments();
-        if(args != null) {
-            for(String arg : args) {
-                System.out.println(arg);
-            }
-        }
+ 
+        BASE_DIR = args[0];
         
         try {
         	//p.load(new FileInputStream("E:\\Git\\BizAgent\\conf\\log4j.properties")); 
         	//p.load(new FileInputStream("D:\\BIZ\\BizAgent\\BizAgent\\conf\\log4j.properties")); 
-        	p.load(new FileInputStream("/root/BizAgent/conf/log4j.properties"));
+        	p.load(new FileInputStream(BASE_DIR + "conf/log4j.properties"));
         	PropertyConfigurator.configure(p);
+        	log.info("BASE DIR : " + BASE_DIR);
         	log.info("Log Property Load !!");
             status = "INITED";
             
             this.thread = new Thread(this);
             
+            BizDBCPInit.BASE_DIR = BASE_DIR;
             bizDBCP = BizDBCPInit.getInstance(log);
             
             log.info("init OK.");
             
             //init_p.load(new FileInputStream("E:\\Git\\BizAgent\\conf\\init.properties")); 
         	//init_p.load(new FileInputStream("D:\\BIZ\\BizAgent\\BizAgent\\conf\\init.properties")); 
-        	init_p.load(new FileInputStream("/root/BizAgent/conf/init.properties"));;
+        	init_p.load(new FileInputStream(BASE_DIR + "conf/init.properties"));;
 
             if(init_p.get("SMTPHNDB").equals("1"))
             	smtDBCP = SmtDBCPInit.getInstance(log);
@@ -105,6 +106,10 @@ public class BizAgent implements Daemon, Runnable {
     	Smt_Proc.isRunning = false;
     	SMART_Proc.isRunning = false;
     	resultTable = (String) init_p.get("RESULTTABLE");
+    	
+    	reqTable[0] = (String) init_p.get("REQTABLE1");
+    	reqTable[1] = (String) init_p.get("REQTABLE2");
+    			
     	log.info(" GRS" + init_p.get("GRS") + ".");
     	log.info("Result Table : " + resultTable);
     	
@@ -151,7 +156,7 @@ public class BizAgent implements Daemon, Runnable {
 			   
 			for(int i=0; i<10; i++) 
 			{
-	        	TBLReqProcess trp = new TBLReqProcess(DB_URL, log, i, resultTable);
+	        	TBLReqProcess trp = new TBLReqProcess(DB_URL, log, i, resultTable, reqTable);
 	        	Thread trp_proc = new Thread(trp);
 	        	if(!isStop)
 	        		trp_proc.start();

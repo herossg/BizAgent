@@ -19,7 +19,7 @@ public class BizDBCPInit {
 	private static String PASSWORD = "sjk4556!!22";
 	private static String DB_URL = "jdbc:mysql://210.114.225.53/dhn?characterEncoding=utf8";  
 	private static Logger log;
-	
+	public static String BASE_DIR = "/root/BizAgent/";
 	private BizDBCPInit() {
 		initConnectionPool();
 	}
@@ -37,7 +37,7 @@ public class BizDBCPInit {
 		Properties p = new Properties();
 		try {
 			
-			p.load(new FileInputStream("/root/BizAgent/conf/db.properties"));
+			p.load(new FileInputStream(BASE_DIR + "conf/db.properties"));
 
 			BizDBCPInit.DB_URL = p.getProperty("DB_URL");
 			BizDBCPInit.USER_NAME = p.getProperty("USER_NAME");

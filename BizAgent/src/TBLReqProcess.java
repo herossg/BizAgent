@@ -25,17 +25,19 @@ public class TBLReqProcess implements Runnable {
 //	private final String NPASSWORD = "!@nanum0915";
 	public int div_str;
 	public String ResultTable;
+	public String[] ReqTable;
 	
 	public static boolean[] isRunning = {false,false,false,false,false,false,false,false,false,false,};
 	public Logger log;
 	
 	Properties p = BizAgent.getProp();
 	
-	public TBLReqProcess(String _db_url, Logger _log, int _div, String _resultTable) {
+	public TBLReqProcess(String _db_url, Logger _log, int _div, String _resultTable, String[] _reqTable) {
 		DB_URL = _db_url;
 		log = _log;
 		div_str = _div;
 		ResultTable = _resultTable;
+		ReqTable = _reqTable;
 	}
 	
 	public void run() {
@@ -77,6 +79,7 @@ public class TBLReqProcess implements Runnable {
 					"              ,b.mem_2nd_send" + 
 					"              ,(select mst_mms_content from cb_wt_msg_sent wms where wms.mst_id = a.remark4) as mms_id" + 
 					"              ,(select mst_type2 from cb_wt_msg_sent wms where wms.mst_id = a.remark4) as mst_type2" + 
+					"              ,(select 2nd_alim from cb_wt_msg_sent wms where wms.mst_id = a.remark4) as 2nd_alim" + 
 					"          from " + ResultTable + " a inner join cb_member b on b.mem_id = a.REMARK2" + 
 					"         where REMARK3 = '" + div_str + "'" +
 					"           and ( a.reserve_dt < '" + rd.format(reserve_dt) + "'" + 
@@ -146,136 +149,146 @@ public class TBLReqProcess implements Runnable {
 					pre_mem_id = mem_id;
 				}
 				
-				String insstr = "insert into cb_msg_"+userid+"(MSGID," + 
-									        "AD_FLAG," + 
-									        "BUTTON1," + 
-									        "BUTTON2," + 
-									        "BUTTON3," + 
-									        "BUTTON4," + 
-									        "BUTTON5," + 
-									        "CODE," + 
-									        "IMAGE_LINK," + 
-									        "IMAGE_URL," + 
-									        "KIND," + 
-									        "MESSAGE," + 
-									        "MESSAGE_TYPE," + 
-									        "MSG," + 
-									        "MSG_SMS," + 
-									        "ONLY_SMS," + 
-									        "P_COM," + 
-									        "P_INVOICE," + 
-									        "PHN," + 
-									        "PROFILE," + 
-									        "REG_DT," + 
-									        "REMARK1," + 
-									        "REMARK2," + 
-									        "REMARK3," + 
-									        "REMARK4," + 
-									        "REMARK5," + 
-									        "RES_DT," + 
-									        "RESERVE_DT," + 
-									        "RESULT," + 
-									        "S_CODE," + 
-									        "SMS_KIND," + 
-									        "SMS_LMS_TIT," + 
-									        "SMS_SENDER," + 
-									        "SYNC," + 
-									        "TMPL_ID," + 
-									        "mem_userid," +
-									        "wide)" + 
-								"	  values(?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?," + 
-									        "?)";
-				
-				PreparedStatement insSt = conn.prepareStatement(insstr);
-				insSt.setString(1 , rs.getString("MSGID"));
-				insSt.setString(2 , rs.getString("AD_FLAG"));
-				insSt.setString(3 , rs.getString("BUTTON1"));
-				insSt.setString(4 , rs.getString("BUTTON2"));
-				insSt.setString(5 , rs.getString("BUTTON3"));
-				insSt.setString(6 , rs.getString("BUTTON4"));
-				insSt.setString(7 , rs.getString("BUTTON5"));
-				insSt.setString(8 , rs.getString("CODE"));
-				insSt.setString(9 , rs.getString("IMAGE_LINK"));
-				insSt.setString(10, rs.getString("IMAGE_URL"));
-				insSt.setString(11, rs.getString("KIND"));
-				insSt.setString(12, rs.getString("MESSAGE"));
-				insSt.setString(13, mem_2nd_type);
-				insSt.setString(14, "");
-				insSt.setString(15, "");
-				insSt.setString(16, rs.getString("ONLY_SMS"));
-				insSt.setString(17, rs.getString("P_COM"));
-				insSt.setString(18, rs.getString("P_INVOICE"));
-				insSt.setString(19, rs.getString("PHN"));
-				insSt.setString(20, rs.getString("PROFILE"));
-				insSt.setString(21, rs.getString("REG_DT"));
-				insSt.setString(22, rs.getString("REMARK1"));
-				insSt.setString(23, rs.getString("REMARK2"));
-				insSt.setString(24, null);
-				insSt.setString(25, rs.getString("REMARK4"));
-				insSt.setString(26, rs.getString("REMARK5"));
-				insSt.setString(27, rs.getString("RES_DT"));
-				insSt.setString(28, rs.getString("RESERVE_DT"));
-				insSt.setString(29, rs.getString("RESULT"));
-				insSt.setString(30, rs.getString("S_CODE"));
-				insSt.setString(31, rs.getString("SMS_KIND"));
-				insSt.setString(32, rs.getString("SMS_LMS_TIT"));
-				insSt.setString(33, rs.getString("SMS_SENDER"));
-				insSt.setString(34, rs.getString("SYNC"));
-				insSt.setString(35, rs.getString("TMPL_ID"));
-				insSt.setString(36, rs.getString("mem_userid"));
-				insSt.setString(37, rs.getString("WIDE"));
-				
-				//log.info("한글 : " +rs.getString("MSG")+ "Insert Qeury : " + insSt.toString());
-				try {
-					insSt.executeUpdate();
-				} catch(Exception ex) {
-					/*
-					 * Insert 에러 발생은 MSG ID 중복에 의한 것 말고는 없음.
-					 * 처리함.
-					 * 1. 성공이면 과금 되었는지 확인 하고 안되었으면 그냥 흘린다.
-					 * 1-1. 과금이 되었다면 완전히 빠져 나간다.
-					 */
+				// 친구톡 발송이고 발송실패 이면서 2차 발송이 알림톡이면 알림톡 테이블에서 발송 테이블로 복사 함.
+				if(mem_2nd_type.toLowerCase().equals("ft") && rs.getString("RESULT") != null && rs.getString("RESULT").equals("N") && rs.getString("2nd_alim") != null && !rs.getString("2nd_alim").equals("0")) 
+				{
 					isPass = true;
-					log.info("TBL Process Error : " + msg_id + "( " + ex.toString() + " ) ");
-						
+					//String  alimTable = 
+					String copystr = "insert into ";
+					
+				} else {
+					
+					String insstr = "insert into cb_msg_"+userid+"(MSGID," + 
+										        "AD_FLAG," + 
+										        "BUTTON1," + 
+										        "BUTTON2," + 
+										        "BUTTON3," + 
+										        "BUTTON4," + 
+										        "BUTTON5," + 
+										        "CODE," + 
+										        "IMAGE_LINK," + 
+										        "IMAGE_URL," + 
+										        "KIND," + 
+										        "MESSAGE," + 
+										        "MESSAGE_TYPE," + 
+										        "MSG," + 
+										        "MSG_SMS," + 
+										        "ONLY_SMS," + 
+										        "P_COM," + 
+										        "P_INVOICE," + 
+										        "PHN," + 
+										        "PROFILE," + 
+										        "REG_DT," + 
+										        "REMARK1," + 
+										        "REMARK2," + 
+										        "REMARK3," + 
+										        "REMARK4," + 
+										        "REMARK5," + 
+										        "RES_DT," + 
+										        "RESERVE_DT," + 
+										        "RESULT," + 
+										        "S_CODE," + 
+										        "SMS_KIND," + 
+										        "SMS_LMS_TIT," + 
+										        "SMS_SENDER," + 
+										        "SYNC," + 
+										        "TMPL_ID," + 
+										        "mem_userid," +
+										        "wide)" + 
+									"	  values(?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?," + 
+										        "?)";
+					
+					PreparedStatement insSt = conn.prepareStatement(insstr);
+					insSt.setString(1 , rs.getString("MSGID"));
+					insSt.setString(2 , rs.getString("AD_FLAG"));
+					insSt.setString(3 , rs.getString("BUTTON1"));
+					insSt.setString(4 , rs.getString("BUTTON2"));
+					insSt.setString(5 , rs.getString("BUTTON3"));
+					insSt.setString(6 , rs.getString("BUTTON4"));
+					insSt.setString(7 , rs.getString("BUTTON5"));
+					insSt.setString(8 , rs.getString("CODE"));
+					insSt.setString(9 , rs.getString("IMAGE_LINK"));
+					insSt.setString(10, rs.getString("IMAGE_URL"));
+					insSt.setString(11, rs.getString("KIND"));
+					insSt.setString(12, rs.getString("MESSAGE"));
+					insSt.setString(13, mem_2nd_type);
+					insSt.setString(14, "");
+					insSt.setString(15, "");
+					insSt.setString(16, rs.getString("ONLY_SMS"));
+					insSt.setString(17, rs.getString("P_COM"));
+					insSt.setString(18, rs.getString("P_INVOICE"));
+					insSt.setString(19, rs.getString("PHN"));
+					insSt.setString(20, rs.getString("PROFILE"));
+					insSt.setString(21, rs.getString("REG_DT"));
+					insSt.setString(22, rs.getString("REMARK1"));
+					insSt.setString(23, rs.getString("REMARK2"));
+					insSt.setString(24, null);
+					insSt.setString(25, rs.getString("REMARK4"));
+					insSt.setString(26, rs.getString("REMARK5"));
+					insSt.setString(27, rs.getString("RES_DT"));
+					insSt.setString(28, rs.getString("RESERVE_DT"));
+					insSt.setString(29, rs.getString("RESULT"));
+					insSt.setString(30, rs.getString("S_CODE"));
+					insSt.setString(31, rs.getString("SMS_KIND"));
+					insSt.setString(32, rs.getString("SMS_LMS_TIT"));
+					insSt.setString(33, rs.getString("SMS_SENDER"));
+					insSt.setString(34, rs.getString("SYNC"));
+					insSt.setString(35, rs.getString("TMPL_ID"));
+					insSt.setString(36, rs.getString("mem_userid"));
+					insSt.setString(37, rs.getString("WIDE"));
+					
+					//log.info("한글 : " +rs.getString("MSG")+ "Insert Qeury : " + insSt.toString());
+					try {
+						insSt.executeUpdate();
+					} catch(Exception ex) {
+						/*
+						 * Insert 에러 발생은 MSG ID 중복에 의한 것 말고는 없음.
+						 * 처리함.
+						 * 1. 성공이면 과금 되었는지 확인 하고 안되었으면 그냥 흘린다.
+						 * 1-1. 과금이 되었다면 완전히 빠져 나간다.
+						 */
+						isPass = true;
+						log.info("TBL Process Error : " + msg_id + "( " + ex.toString() + " ) ");
+							
+					}
+					
+					insSt.close();
 				}
-				
-				insSt.close();
 				
 				if(!isPass) {
 					if(rs.getString("RESULT") != null && rs.getString("RESULT").equals("Y")) {
@@ -508,9 +521,14 @@ public class TBLReqProcess implements Runnable {
 												msg_type1 = "gs";
 												msg_type2 = "GRS";
 											} else {
+												/*
 												msgcnt_cal = " mst_err_grs_mms = ifnull(mst_err_grs_mms, 0) + 1 ";
 												msg_type1 = "gs";
 												msg_type2 = "GRS";
+												*/
+												msgcnt_cal = " mst_err_smt = ifnull(mst_err_smt, 0) + 1 ";
+												msg_type1 = "SM";
+												msg_type2 = "SMT";												
 											}
 										}
 										break;
@@ -1130,14 +1148,152 @@ public class TBLReqProcess implements Runnable {
 									}
 									
 									if(msgtype.equals("LMS")) {
-										nanoit = "insert into cb_nanoit_msg(msg_type, remark4, phn, cb_msg_id) values(?, ?, ?, ?)";
-										nanoins = conn.prepareStatement(nanoit);
-										nanoins.setString(1, "GRS");
-										nanoins.setString(2, sent_key);
-										nanoins.setString(3, phn);
-										nanoins.setString(4, rs.getString("MSGID"));
-										nanoins.executeUpdate();
-										nanoins.close();
+										
+										String mms1 = null;
+										String mms2 = null;
+										String mms3 = null;
+										
+										if(rs.getString("mms_id").length()>5) {
+											String mmsinfostr = "select * from cb_mms_images cmi where cmi.mem_id = '" + mem_id + "' and mms_id = '" + rs.getString("mms_id") + "'";
+											Statement mmsinfo = conn.createStatement();
+											ResultSet mmsrs = mmsinfo.executeQuery(mmsinfostr);
+											mmsrs.first();
+											
+											mms1 = mmsrs.getString("origin1_path");
+											mms2 = mmsrs.getString("origin2_path");
+											mms3 = mmsrs.getString("origin3_path");
+		
+											//file_cnt = 1;
+										}
+										
+										if(mms1 != null) {
+											try {
+												String smtmmsquery = "insert into OShotMMS" 
+																			+ "(MsgGroupID "     
+										                                    + ",Sender "          
+										                                    + ",Receiver "        
+										                                    + ",Subject "         
+										                                    + ",Msg "             
+										                                    + ",ReserveDT "       
+										                                    + ",TimeoutDT "       
+										                                    + ",SendResult "      
+										                                    + ",File_Path1 "      
+										                                    + ",File_Path2 "     
+										                                    + ",File_Path3 "      
+										                                    + ",mst_id "      
+										                                    + ",cb_msg_id )"      
+																			+ "values"           
+																			+ "(? "     
+										                                    + ",? "          
+										                                    + ",? "        
+										                                    + ",? "         
+										                                    + ",? "             
+										                                    + ",? "       
+										                                    + ",? "       
+										                                    + ",? "          
+										                                    + ",? "      
+										                                    + ",? "      
+										                                    + ",? "      
+										                                    + ",? "      
+										                                    + ",?) ";
+												PreparedStatement smtmmsins = conn.prepareStatement(smtmmsquery, Statement.RETURN_GENERATED_KEYS);
+												smtmmsins.setString(1, sent_key);
+												smtmmsins.setString(2, rs.getString("SMS_SENDER"));
+												smtmmsins.setString(3, phn);
+												smtmmsins.setString(4, rs.getString("SMS_LMS_TIT").replaceAll("\\r\\n|\\r|\\n", ""));
+												smtmmsins.setString(5, msg_sms);
+												
+												if(rs.getString("RESERVE_DT").equals("00000000000000")) {
+													smtmmsins.setString(6, null);
+												}else {
+													smtmmsins.setString(6, rs.getString("RESERVE_DT"));
+												} 
+												
+												smtmmsins.setString(7, null);
+												smtmmsins.setString(8, "0");
+												
+												smtmmsins.setString(9, mms1);
+												smtmmsins.setString(10, mms2);
+												smtmmsins.setString(11, mms3);
+												smtmmsins.setString(12, sent_key);
+												smtmmsins.setString(13, rs.getString("MSGID"));
+												
+												
+												int mms_rows = smtmmsins.executeUpdate();
+												
+												String mms_msg_id = "";
+									            if(mms_rows == 1)
+									            {
+									                // get candidate id
+									            	ResultSet mms_rstemp = null;
+									            	mms_rstemp = smtmmsins.getGeneratedKeys();
+									                if(mms_rstemp.next())
+									                	mms_msg_id = mms_rstemp.getString(1);
+									                mms_rstemp.close();
+									            }
+									            
+												smtmmsins.close();
+												
+												wtudstr = "update cb_wt_msg_sent set mst_wait=ifnull(mst_wait,0)+1 where mst_id=?";
+												wtud = conn.prepareStatement(wtudstr);
+												wtud.setString(1, sent_key);
+												wtud.executeUpdate();
+												wtud.close();
+												
+												msgudstr = "update cb_msg_" + userid + " set MESSAGE_TYPE='sm',CODE='SMT', MESSAGE = '결과 수신대기', SMS_KIND='L', remark3 = ? where MSGID=?";
+												msgud = conn.prepareStatement(msgudstr);
+												msgud.setString(1, mms_msg_id);
+												msgud.setString(2, msg_id);
+												msgud.executeUpdate();
+												msgud.close();
+																
+												kind = "P";
+			
+												if(mms1 != null) {
+													amount = price.member_price.price_smt_mms;
+													payback = price.member_price.price_smt_mms - price.parent_price.price_smt_mms;
+													admin_amt = price.base_price.price_smt_mms;
+													memo = "웹(C) MMS";
+													if(amount == 0 || amount == 0.0f) {
+														amount = admin_amt;
+													}
+													
+												} else {
+													amount = price.member_price.price_smt;
+													payback = price.member_price.price_smt - price.parent_price.price_smt;
+													admin_amt = price.base_price.price_smt;
+													memo = "웹(C) LMS";
+													if(amount == 0 || amount == 0.0f) {
+														amount = admin_amt;
+													}
+												}
+				
+												amtins = conn.prepareStatement(amtStr);
+												amtins.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis())); 
+												amtins.setString(2, kind); 
+												amtins.setFloat(3, amount); 
+												amtins.setString(4, memo); 
+												amtins.setString(5, msg_id); 
+												amtins.setFloat(6, payback); 
+												amtins.setFloat(7, admin_amt); 
+												
+												amtins.executeUpdate();
+												amtins.close();	
+											} catch(Exception ex) {
+												log.info("TBL REQUEST RESULT " + div_str + " ( Smart LMS ) 처리 중 오류 : "+ex.toString());
+												log.info("MSG TYPE : " + msgtype + "  /  MSG ( " + msg_sms.getBytes().length + " ) : " + msg_sms);
+											}
+										} else {
+											
+											nanoit = "insert into cb_nanoit_msg(msg_type, remark4, phn, cb_msg_id) values(?, ?, ?, ?)";
+											nanoins = conn.prepareStatement(nanoit);
+											nanoins.setString(1, "GRS");
+											nanoins.setString(2, sent_key);
+											nanoins.setString(3, phn);
+											nanoins.setString(4, rs.getString("MSGID"));
+											nanoins.executeUpdate();
+											nanoins.close();
+										}
 										break;		
 									}
 										
