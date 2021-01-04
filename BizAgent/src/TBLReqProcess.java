@@ -150,14 +150,28 @@ public class TBLReqProcess implements Runnable {
 				}
 				
 				// 친구톡 발송이고 발송실패 이면서 2차 발송이 알림톡이면 알림톡 테이블에서 발송 테이블로 복사 함.
-				if(mem_2nd_type.toLowerCase().equals("ft") && rs.getString("RESULT") != null && rs.getString("RESULT").equals("N") && rs.getString("2nd_alim") != null && !rs.getString("2nd_alim").equals("0")) 
+				if(mem_2nd_type.toLowerCase().equals("ft") && rs.getString("2nd_alim") != null && !rs.getString("2nd_alim").equals("0")) 
 				{
-					isPass = true;
-					//String  alimTable = 
-					String copystr = "insert into ";
+					int reqTidx = Integer.parseInt(rs.getString("2nd_alim")) - 1;
+					String  alimTable = ReqTable[reqTidx];
 					
-				} else {
+					if(rs.getString("RESULT") != null && rs.getString("RESULT").equals("N")) {
+						isPass = true;
+
+						String copystr = "insert into " + alimTable + " select * from " + alimTable + "_2ND where MSGID = '" + rs.getString("MSGID") + "'";
+						Statement copyst = conn.createStatement();
+						copyst.execute(copystr);
+						copyst.close();
+					}
 					
+					String delstr = "delete from " + alimTable + "_2ND where MSGID = '" + rs.getString("MSGID") + "'";
+					Statement delst = conn.createStatement();
+					delst.execute(delstr);
+					delst.close();
+					
+				}
+				
+				if(!isPass) {	
 					String insstr = "insert into cb_msg_"+userid+"(MSGID," + 
 										        "AD_FLAG," + 
 										        "BUTTON1," + 
