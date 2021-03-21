@@ -21,6 +21,7 @@ import com.dhn.client.model.DhnRequest;
 import com.dhn.client.model.DhnResult;
 import com.dhn.client.model.UserInfo;
 import com.dhn.client.service.DhnRequestService;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,6 +52,7 @@ public class SendRequest {
 		
 		RestTemplate restTemp = new RestTemplate();
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(Include.NON_NULL);
 
 		UserInfo ui = new UserInfo();
 		ui.userid = env.getProperty("userid");
@@ -105,7 +107,9 @@ public class SendRequest {
 					
 					RestTemplate restTemp = new RestTemplate();
 					ObjectMapper mapper = new ObjectMapper();
-
+					mapper.setSerializationInclusion(Include.NON_NULL);
+					
+					
 					String jsonStr = mapper.writeValueAsString(dhnReqs);
 					
 					//log.info("Req Str : " + jsonStr);

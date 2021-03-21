@@ -199,7 +199,16 @@ public class GetResult {
 										
 										if(r.get("wide") != null)
 											dhnResult.setWIDE(r.get("wide").asText()) ;
-																
+
+										if(r.get("supplement") != null)
+											dhnResult.setSUPPLEMENT(r.get("supplement").asText()) ;
+
+										if(r.get("price") != null)
+											dhnResult.setPRICE(r.get("price").asInt()) ;
+
+										if(r.get("currency_type") != null)
+											dhnResult.setCURRENCY_TYPE(r.get("currency_type").asText()) ;
+
 										//SaveResult.Save(dhnResult);
 										//log.info(r.get("msgid").asText());
 										dhnResutls.add(dhnResult);
