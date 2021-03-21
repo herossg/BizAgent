@@ -14,4 +14,5 @@ public interface OshotMMSService {
 	public List<OshotMMS> selectLog(String table);
 	
 	public void updateByMsgids(String table, List<Integer> msgids);
+	
 }

@@ -31,7 +31,7 @@
     </logger>
  -->
 	<root level="info">
-		<appender-ref ref="DAILY_ROLLING_FILE_APPENDER" />
+		<appender-ref ref="STDOUT" />
 	</root>
 	
 </configuration>

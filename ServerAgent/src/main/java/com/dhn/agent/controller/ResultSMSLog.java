@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.exception.SQLGrammarException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,10 @@ public class ResultSMSLog {
 				if(msgids.size() > 0)
 					oshotSMSService.updateByMsgids(table, msgids);
 
+			} catch(SQLGrammarException ex) {
+				log.error("SMS 자료 생성중 오류 발생 1 : " + ex.toString());
 			}catch(Exception ex) {
-				log.error("SMS 자료 생성중 오류 발생 : " + ex.toString());
+				log.error("SMS 자료 생성중 오류 발생 1 : " + ex.toString());
 			}
 		}
 		isRunning = false;

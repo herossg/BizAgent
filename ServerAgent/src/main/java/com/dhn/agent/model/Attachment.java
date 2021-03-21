@@ -16,6 +16,13 @@ public class Attachment {
 		temp.setScheme_ios(btn.get("scheme_ios"));
 		temp.setUrl_mobile(btn.get("url_mobile"));
 		temp.setUrl_pc(btn.get("url_pc"));
+		temp.setChat_extra(btn.get("chat_extra"));
+		temp.setChat_event(btn.get("chat_event"));
+		temp.setPlugin_id(btn.get("plugin_id"));
+		temp.setRelay_id(btn.get("relay_id"));
+		temp.setOneclick_id(btn.get("oneclick_id"));
+		temp.setProduct_id(btn.get("product_id"));
+		temp.setBiz_form_key(btn.get("biz_form_key"));
 		
 		this.button.add(temp);
 	}

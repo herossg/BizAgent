@@ -1,28 +1,56 @@
-[2020-10-12 20:08:24:739][main] INFO  c.d.a.ServerAgentApplicationTests - Starting ServerAgentApplicationTests on DESKTOP-NH93HRS with PID 17800 (started by WE in E:\Git3\ServerAgent)
-[2020-10-12 20:08:24:742][main] INFO  c.d.a.ServerAgentApplicationTests - No active profile set, falling back to default profiles: default
-[2020-10-12 20:08:25:1141][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[2020-10-12 20:08:25:1214][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 67ms. Found 7 JPA repository interfaces.
-[2020-10-12 20:08:25:1711][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-[2020-10-12 20:08:25:1899][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[2020-10-12 20:08:26:2210][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[2020-10-12 20:08:26:2301][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[2020-10-12 20:08:26:2400][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
-[2020-10-12 20:08:26:2562][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-[2020-10-12 20:08:26:2836][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
-[2020-10-12 20:08:27:3588][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[2020-10-12 20:08:27:3594][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[2020-10-12 20:08:28:4277][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[2020-10-12 20:08:28:4445][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-[2020-10-12 20:08:28:4835][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
-[2020-10-12 20:08:28:4840][main] INFO  c.d.a.ServerAgentApplicationTests - Started ServerAgentApplicationTests in 4.499 seconds (JVM running for 5.351)
-[2020-10-12 20:08:29:5164][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ Ω√¿€.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 33 ,  Name : UserResultSend_dhn ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 34 ,  Name : UserResultSend_dhn58 ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 35 ,  Name : UserResultSend_hanmaum ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 36 ,  Name : UserResultSend_o2o ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest -  ID : 37 ,  Name : UserResultSend_igenie ¡æ∑· ø‰√ª «ﬂΩ¿¥œ¥Ÿ.
-[2020-10-12 20:08:29:5165][SpringContextShutdownHook] INFO  c.dhn.agent.controller.SendRequest - ¡æ∑· ¿Ã∫•∆Æ √≥∏Æ ≥°.
-[2020-10-12 20:08:34:10179][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-[2020-10-12 20:08:34:10187][SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[2020-10-12 20:08:34:10191][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-[2020-10-12 20:08:34:10197][SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2021-03-11 21:26:57:504][main] INFO  c.dhn.agent.ServerAgentApplication - Starting ServerAgentApplication on DESKTOP-NH93HRS with PID 19940 (E:\Git3\ServerAgent\target\classes started by WE in E:\Git3\ServerAgent)
+[2021-03-11 21:26:57:509][main] INFO  c.dhn.agent.ServerAgentApplication - No active profile set, falling back to default profiles: default
+[2021-03-11 21:26:57:1334][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2021-03-11 21:26:58:1400][main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59ms. Found 7 JPA repository interfaces.
+[2021-03-11 21:26:58:1704][main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2021-03-11 21:26:58:1888][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8282 (http)
+[2021-03-11 21:26:58:1895][main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8282"]
+[2021-03-11 21:26:58:1895][main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[2021-03-11 21:26:58:1895][main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[2021-03-11 21:26:58:1965][main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[2021-03-11 21:26:58:1966][main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1416 ms
+[2021-03-11 21:26:58:2070][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2021-03-11 21:26:58:2347][main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2021-03-11 21:26:59:2422][main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[2021-03-11 21:26:59:2492][main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.10.Final}
+[2021-03-11 21:26:59:2605][main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2021-03-11 21:26:59:2694][main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+[2021-03-11 21:26:59:3291][main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2021-03-11 21:26:59:3296][main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2021-03-11 21:27:00:3728][main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2021-03-11 21:27:00:3811][main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[2021-03-11 21:27:00:3951][main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService
+[2021-03-11 21:27:00:3952][main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8282"]
+[2021-03-11 21:27:00:3979][main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8282 (http) with context path ''
+[2021-03-11 21:27:00:3980][main] INFO  c.dhn.agent.ServerAgentApplication - Started ServerAgentApplication in 3.849 seconds (JVM running for 4.803)
+[2021-03-11 21:27:00:4043][task-4] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:00:4043][task-1] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:00:4043][task-4] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotMMS_202103' doesn't exist
+[2021-03-11 21:27:00:4043][task-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotSMS_202103' doesn't exist
+[2021-03-11 21:27:00:4049][task-1] ERROR c.dhn.agent.controller.ResultSMSLog - SMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:00:4049][task-4] ERROR c.dhn.agent.controller.ResultMMSLog - MMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:05:8987][task-8] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:05:8988][task-8] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotMMS_202103' doesn't exist
+[2021-03-11 21:27:05:8988][task-5] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:05:8988][task-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotSMS_202103' doesn't exist
+[2021-03-11 21:27:05:8988][task-8] ERROR c.dhn.agent.controller.ResultMMSLog - MMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:05:8988][task-5] ERROR c.dhn.agent.controller.ResultSMSLog - SMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:10:13988][task-2] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:10:13988][task-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotMMS_202103' doesn't exist
+[2021-03-11 21:27:10:13988][task-1] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:10:13988][task-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotSMS_202103' doesn't exist
+[2021-03-11 21:27:10:13988][task-2] ERROR c.dhn.agent.controller.ResultMMSLog - MMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:10:13988][task-1] ERROR c.dhn.agent.controller.ResultSMSLog - SMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:13:16472][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+[2021-03-11 21:27:13:16473][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÏãúÏûë.
+[2021-03-11 21:27:13:16473][RMI TCP Connection(8)-127.0.0.1] INFO  c.dhn.agent.controller.SendRequest - Ï¢ÖÎ£å Ïù¥Î≤§Ìä∏ Ï≤òÎ¶¨ ÎÅù.
+[2021-03-11 21:27:15:18992][task-7] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:15:18992][task-7] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotMMS_202103' doesn't exist
+[2021-03-11 21:27:15:18992][task-7] ERROR c.dhn.agent.controller.ResultMMSLog - MMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:15:18993][task-5] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+[2021-03-11 21:27:15:18993][task-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'kakao.OShotSMS_202103' doesn't exist
+[2021-03-11 21:27:15:18993][task-5] ERROR c.dhn.agent.controller.ResultSMSLog - SMS ÏûêÎ£å ÏÉùÏÑ±Ï§ë Ïò§Î•ò Î∞úÏÉù : javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2021-03-11 21:27:18:21488][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-03-11 21:27:18:21491][RMI TCP Connection(8)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[2021-03-11 21:27:18:21493][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2021-03-11 21:27:18:21497][RMI TCP Connection(8)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

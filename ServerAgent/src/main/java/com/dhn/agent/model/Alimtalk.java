@@ -12,7 +12,30 @@ public class Alimtalk {
 	private int timeout;
 	private Attachment attachment;
 	private String channel_key;
- 
+	private int price;
+	private String currency_type;
+	private Supplement supplement;
+	
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getCurrency_type() {
+		return currency_type;
+	}
+	public void setCurrency_type(String currency_type) {
+		this.currency_type = currency_type;
+	}
+	public Supplement getSupplement() {
+		return supplement;
+	}
+	public void setSupplement(Supplement supplement) {
+		this.supplement = supplement;
+	}
+	
 	public String getMessage_type() {
 		return message_type;
 	}

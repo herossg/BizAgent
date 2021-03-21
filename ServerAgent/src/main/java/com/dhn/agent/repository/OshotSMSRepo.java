@@ -24,6 +24,5 @@ public interface OshotSMSRepo extends JpaRepository<OshotSMS, Integer> {
 	@Transactional
 	@Query(value = "update :table set proc_flag = 'N' where msgid in :msgids ", nativeQuery = true)
 	public void updateByMsgids(@Param("table") String table, @Param("msgids") List<Integer> msgids);
-	
 
 }

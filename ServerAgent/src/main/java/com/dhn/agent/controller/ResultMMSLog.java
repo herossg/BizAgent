@@ -57,7 +57,7 @@ public class ResultMMSLog {
 					oshotMMSService.updateByMsgids(table, msgids);
 
 			}catch(Exception ex) {
-				log.error("MMS 자료 생성중 오류 발생 : " + ex.toString());
+				log.error("MMS 자료 생성중 오류 발생 2 : " + ex.toString());
 			}
 		}
 		isRunning = false;

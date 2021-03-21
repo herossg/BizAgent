@@ -137,6 +137,40 @@ public class DhnResult implements Serializable{
 	@Column(name = "wide", length = 1)
 	private String wide; //` char(1) null default 'n' 
 
+	@Column(name = "supplement", nullable = true, columnDefinition = "LONGTEXT")
+	private String supplement;  //` CHAR(1) NULL DEFAULT 'N'
+
+	@Column(name = "price", nullable = true)
+	private Integer price;  //` CHAR(1) NULL DEFAULT 'N'
+
+	@Column(name = "currency_type", nullable = true, length = 3)
+	private String currency_type;  //` CHAR(1) NULL DEFAULT 'N'
+
+	
+	public String getSUPPLEMENT() {
+		return supplement;
+	}
+
+	public void setSUPPLEMENT(String sUPPLEMENT) {
+		supplement = sUPPLEMENT;
+	}
+
+	public int getPRICE() {
+		return price;
+	}
+
+	public void setPRICE(Integer pRICE) {
+		price = pRICE;
+	}
+
+	public String getCURRENCY_TYPE() {
+		return currency_type;
+	}
+
+	public void setCURRENCY_TYPE(String cURRENCY_TYPE) {
+		currency_type = cURRENCY_TYPE;
+	}
+	
 	public String getMsgid() {
 		return msgid;
 	}

@@ -24,7 +24,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +41,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dhn.agent.model.DhnRequest;
 import com.dhn.agent.model.DhnResult;
 import com.dhn.agent.model.DhnUser;
+import com.dhn.agent.model.ImageTemplate;
 import com.dhn.agent.model.JsonResult;
 import com.dhn.agent.model.UserInfo;
 import com.dhn.agent.service.DhnRequestService;
@@ -337,6 +340,67 @@ public class DhnController {
 		return result.getBody();
 	}	
 	
+	@PostMapping(value="/template/create_with_image", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String template_create_with_image(
+			@RequestHeader(name="account", required = false) String account,
+			@RequestParam(value="senderKey" ) String senderKey,
+			@RequestParam(value="templateCode" ) String templateCode,
+			@RequestParam(value="templateName" ) String templateName,
+			@RequestParam(value="templateContent" ) String templateContent,
+			@RequestParam(value="templateMessageType" ) String templateMessageType,
+			@RequestParam(value="templateExtra", required = false) String templateExtra,
+			@RequestParam(value="templateAd", required = false) String templateAd,
+			@RequestParam(value="templateEmphasizeType", required = false) String templateEmphasizeType,
+			@RequestParam(value="image") MultipartFile image,
+			@RequestParam(value="senderKeyType", required = false) String senderKeyType,
+			@RequestParam(value="categoryCode", required = false) String categoryCode,
+			@RequestParam(value="securityFlag", required = false) String securityFlag,
+			@RequestParam(value="buttons", required = false) String buttons,
+			@RequestParam(value="quickReplies", required = false) String quickReplies 
+			) {
+
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/create_with_image";
+		
+		Map<String, String> header = new HashMap<>();
+		if(account != null && !account.isEmpty()) {
+			header.put("account", account);
+		} else {
+			header.put("account", "ceodhn");
+		}
+		
+		MultiValueMap<String, Object> bodyMap = new LinkedMultiValueMap<>();
+		
+		bodyMap.add("senderKey", senderKey);
+		bodyMap.add("templateCode", templateCode);
+		bodyMap.add("templateName", templateName);
+		bodyMap.add("templateContent", templateContent);
+		bodyMap.add("templateMessageType", templateMessageType);
+		bodyMap.add("templateExtra", templateExtra);
+		bodyMap.add("templateAd", templateAd);
+		bodyMap.add("templateEmphasizeType", templateEmphasizeType);
+	    bodyMap.add("image", generateFilenameAwareByteArrayResource(image));
+		bodyMap.add("senderKeyType", senderKeyType);
+		bodyMap.add("categoryCode", categoryCode);
+		bodyMap.add("securityFlag", securityFlag);
+		bodyMap.add("buttons", buttons);
+		bodyMap.add("quickReplies", quickReplies);
+
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+		
+	    for( String key : header.keySet() ){
+			headers.add(key,header.get(key));
+		}
+		
+	    HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
+
+	    RestTemplate restTemp = new RestTemplate();
+	    
+	    ResponseEntity<String> response = restTemp.postForEntity(URL, requestEntity, String.class);
+		
+		return response.getBody();
+	}	
+	
 	@GetMapping(value="/template", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public String template( 
 		@RequestParam(value="senderKey")String senderKey,
@@ -374,6 +438,26 @@ public class DhnController {
 		return result.getBody();
 	}	
 	
+	@PostMapping(value="/template/cancel_request", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String template_cancel(
+			@RequestHeader(name="account", required = false) String account,
+			@RequestBody Map<String, String> postParam
+			) {
+
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/cancel_request";
+		
+		Map<String, String> header = new HashMap<>();
+		if(account != null && !account.isEmpty()) {
+			header.put("account", account);
+		} else {
+			header.put("account", "ceodhn");
+		}
+		
+		ResponseEntity<String> result = reqPost(URL, header, postParam);
+		
+		return result.getBody();
+	}	
+	
 	@PostMapping(value="/template/update", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public String template_update(
 			@RequestHeader(name="account", required = false) String account,
@@ -393,6 +477,75 @@ public class DhnController {
 		
 		return result.getBody();
 	}	
+	
+	@PostMapping(value="/template/update_with_image", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String template_update_image(
+			@RequestHeader(name="account", required = false) String account,
+			@RequestParam(value="senderKey") String senderKey,
+			@RequestParam(value="templateCode") String templateCode,
+			@RequestParam(value="senderKeyType", required = false) String senderKeyType,
+			@RequestParam(value="newSenderKey") String newSenderKey,
+			@RequestParam(value="newTemplateCode") String newTemplateCode,
+			@RequestParam(value="newTemplateName") String newTemplateName,
+			@RequestParam(value="newTemplateContent") String newTemplateContent,
+			@RequestParam(value="newTemplateMessageType") String newTemplateMessageType,
+			@RequestParam(value="newTemplateExtra", required = false) String newTemplateExtra,
+			@RequestParam(value="newTemplateAd", required = false) String newTemplateAd,
+			@RequestParam(value="newTemplateEmphasizeType", required = false) String newTemplateEmphasizeType,
+			@RequestParam(value="image") MultipartFile image,
+			@RequestParam(value="newSenderKeyType", required = false) String newSenderKeyType,
+			@RequestParam(value="newCategoryCode", required = false) String newCategoryCode,
+			@RequestParam(value="securityFlag", required = false) String securityFlag,
+			@RequestParam(value="buttons", required = false) String buttons, 
+			@RequestParam(value="quickReplies", required = false) String quickReplies
+			) {
+
+		String URL = CENTER_SERVER + "api/v2/" + PROFILE_KEY + "/alimtalk/template/update_with_image";
+
+		Map<String, String> header = new HashMap<>();
+		if(account != null && !account.isEmpty()) {
+			header.put("account", account);
+		} else {
+			header.put("account", "ceodhn");
+		}
+		
+		MultiValueMap<String, Object> bodyMap = new LinkedMultiValueMap<>();
+		
+		bodyMap.add("senderKey", senderKey);
+		bodyMap.add("templateCode", templateCode);
+		bodyMap.add("senderKeyType", senderKeyType);
+		bodyMap.add("newSenderKey", newSenderKey);
+		bodyMap.add("newTemplateCode", newTemplateCode);
+		bodyMap.add("newTemplateName", newTemplateName);
+		bodyMap.add("newTemplateContent", newTemplateContent);
+		bodyMap.add("newTemplateMessageType", newTemplateMessageType);
+		bodyMap.add("newTemplateExtra", newTemplateExtra);
+		bodyMap.add("newTemplateAd", newTemplateAd);
+		bodyMap.add("newTemplateEmphasizeType", newTemplateEmphasizeType);
+	    bodyMap.add("image", generateFilenameAwareByteArrayResource(image));
+		bodyMap.add("newSenderKeyType", newSenderKeyType);
+		bodyMap.add("newCategoryCode", newCategoryCode);
+		bodyMap.add("securityFlag", securityFlag);
+		bodyMap.add("buttons", buttons);
+		bodyMap.add("quickReplies", quickReplies);
+
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+		
+	    for( String key : header.keySet() ){
+			headers.add(key,header.get(key));
+		}
+		
+	    HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
+
+	    RestTemplate restTemp = new RestTemplate();
+	    
+	    ResponseEntity<String> response = restTemp.postForEntity(URL, requestEntity, String.class);
+		
+		return response.getBody();
+	}	
+	
+	
 	
 	@PostMapping(value="/template/delete", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public String template_delete(

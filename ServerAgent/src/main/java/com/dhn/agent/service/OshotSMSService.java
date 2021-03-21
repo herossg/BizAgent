@@ -12,4 +12,5 @@ public interface OshotSMSService {
 	public List<OshotSMS> selectLog(String table);
 	
 	public void updateByMsgids(String table, List<Integer> msgids);
+
 }

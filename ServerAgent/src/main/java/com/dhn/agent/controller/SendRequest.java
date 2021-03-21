@@ -2,6 +2,8 @@ package com.dhn.agent.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,8 @@ import com.dhn.agent.model.Attachment;
 import com.dhn.agent.model.DhnRequest;
 import com.dhn.agent.model.DhnResult;
 import com.dhn.agent.model.Friendtalk;
+import com.dhn.agent.model.Quick_reply;
+import com.dhn.agent.model.Supplement;
 import com.dhn.agent.service.DhnRequestService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -70,7 +74,8 @@ public class SendRequest {
 					log.info(sendgroup + " 발송 시작");
 
 					HttpHeaders headers = new HttpHeaders();
-					final String URL = API_SERVER + "/v2/" + PROFILE_KEY + "/sendMessage";
+					final String ATURL = API_SERVER + "/v3/" + PROFILE_KEY + "/alimtalk/send";
+					final String FTURL = API_SERVER + "/v3/" + PROFILE_KEY + "/friendtalk/send";
 					List<MediaType> accept = new ArrayList<>();
 					accept.add(MediaType.APPLICATION_JSON);
 					
@@ -102,7 +107,7 @@ public class SendRequest {
 							//alimtalk.setApp_user_id("");
 							alimtalk.setTemplate_code(dr.getTMPLID());
 							alimtalk.setMessage(dr.getMSG().replaceAll("(\r\n|\r|\n|\n\r)", "\n"));
-							alimtalk.setResponse_method("polling");
+							alimtalk.setResponse_method("realtime");
 							alimtalk.setTimeout(30);
 							
 							Attachment att = new Attachment();
@@ -124,15 +129,21 @@ public class SendRequest {
 							if(att.button.size() > 0)
 								alimtalk.setAttachment( att ); 
 							
+							if(dr.getSUPPLEMENT() != null) {
+								Collection<Quick_reply> qr = mapper.readValue(dr.getSUPPLEMENT(), new TypeReference<Collection<Quick_reply>>() {} );
+								Supplement supp = new Supplement(qr);
+								alimtalk.setSupplement(supp);
+							}
+							
 							alimtalk.setChannel_key("base");
 						
 							String jsonStr = mapper.writeValueAsString(alimtalk);
 							
-							//log.info("AT JSON - : " + jsonStr);
+							log.info("AT JSON - : " + jsonStr);
 							
 							HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);						
 							
-							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(URL, entity, String.class);
+							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(ATURL, entity, String.class);
 							
 							
 							//dhnReqService.deleteByMsgidQeury(dr.getMSGID());
@@ -172,9 +183,11 @@ public class SendRequest {
 							DR.setTmplid(dr.getTMPLID());
 							DR.setUserid(dr.getUserid());
 							DR.setWide(dr.getWIDE());
+							DR.setSUPPLEMENT(dr.getSUPPLEMENT());
+							DR.setPRICE(dr.getPRICE());
+							DR.setCURRENCY_TYPE(dr.getCURRENCY_TYPE());
 							
 							SaveResult.Save(DR);
-							
 							
 							response.addCallback(new ListenableFutureCallback<ResponseEntity<String>>() {
 
@@ -253,7 +266,7 @@ public class SendRequest {
 							//log.info("FT JSON - : " + jsonStr);
 							
 							HttpEntity<String> entity = new HttpEntity<String>(jsonStr,headers);		
-							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(URL, entity, String.class);
+							ListenableFuture<ResponseEntity<String>> response = restTemp.postForEntity(FTURL, entity, String.class);
 
 							//dhnReqService.deleteByMsgidQeury(dr.getMSGID());
 							
